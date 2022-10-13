@@ -3,9 +3,9 @@
 ![main](https://github.com/depoksmartcity/depoksmartcity/actions/workflows/dpl.yml/badge.svg?branch=main)
 
 ### 👋 Kelompok F04 - Depok Smart City 👋
-1.  Bagas Shalahuddin Wahid
+1.  Bagas Shalahuddin Wahid - 2106708904
 2.  Maureen Esther Wijaya - 2106705335
-3.  Muhammad Abizar Rachmanda
+3.  Muhammad Abizar Rachmanda - 2106751133
 4.  Muhammad Arief Braja Putra - 2106702352
 5.  Muhammad Rizqy Ramadan - 2106632182
 
@@ -20,14 +20,23 @@ Oleh karena itu, kami ingin membuat sebuah website Depok Smart City. Website ini
 
 ## 🖥️ Modul Aplikasi 🖥️
 1. Modul Kependudukan - Maureen Esther Wijaya
+
     Pengguna dapat melihat tempat pembuatan KTP dan membuat jadwal pembuatan KTP.
+    
 2. Modul Aspirasi - Muhammad Arief Braja Putra
+
     Pengguna dapat melihat aspirasi-aspirasi penduduk lain dan menyampaikan aspirasinya
+    
 3. Modul Kesehatan - Bagas Shalahuddin Wahid
-    Pengguna dapat melihat list layanan-layanan kesehatan yang tersedia dan membuat jadwal konsultasi dokter umum pada pilihan layanan kesehatan. Pengguna juga dapat membaca artikel kesehatan.
+
+    Pengguna dapat melihat list layanan-layanan kesehatan yang tersedia dan membuat jadwal konsultasi dokter umum pada pilihan layanan kesehatan
+    
 4. Modul Restoran - Muhammad Abizar Rachmanda
-    Pengguna dapat melihat list restoran dan tempat makan di Depok serta ratingnya. Kemudian pengguna juga dapat memberikan review.
+
+    Pengguna dapat melihat list restoran dan tempat makan di Depok serta ratingnya. Kemudian pengguna juga dapat memberikan review
+    
 5. Modul Perpustakaan - Muhammad Rizqy Ramadhan
+
     Pengguna dapat melihat perpustakaan-perpustakaan yang tersedia di Depok, buku-buku yang tersedia di perpustakaan daring, dan pengguna dapat meminjam buku tersebut.
 
 
