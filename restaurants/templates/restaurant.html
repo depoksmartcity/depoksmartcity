@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+
+{% block meta %}
+<script>window.CSRF_TOKEN = "{{ csrf_token }}"</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+{% endblock meta %}
+
+{% block content %}
+
+<style>
+    .card{
+      border-radius: 4px;
+      background: #fff;
+      box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);
+      transition: .3s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
+      padding: 14px 80px 18px 36px;
+      cursor: pointer;
+    }
+
+    .card:hover{
+      transform: scale(1.05);
+      box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
+    }
+
+    body {
+            overflow-x: hidden;
+        }
+</style>
+
+<div class="navbar fixed-top navbar-custom color-custom shadow-lg p-3 mb-5 py-10">
+
+    <h1 class="px-2" style="text-align: center;">Assignment 4 PBP/PBD<br></h1><br>
+  
+  
+    <h2 class="px-2" style="text-align: center;">
+      <!-- <button class="btn btn-outline-light btn-lg px-5" data-bs-toggle="modal" data-bs-target="#exampleModal" >Create Task</button> -->
+    
+      <button class="btn btn-outline-light btn-lg px-5">
+        <a href="#"> Logout</a>
+      </button>
+    </h2>
+  
+</div>
+
+<br><br><br><br><br>
+
+<div>
+    
+    <div class="row row-cols-4 g-5 py-5 px-5 row d-flex justify-content-center">
+        {% comment %} Add the data below this line {% endcomment %}
+        {% for item in list %}
+        
+          <div class="col-12 col-md-6 col-lg-4 row d-flex justify-content-center py-4">
+            <div class="card .bg-light .bg-gradient rounded" style="width: 18rem;">
+              <div class="card-body">
+                <h5 class="card-title">{{item.name}}</h5>
+                <p class="card-text">{{item.lokasi}}</p>
+                <h5 class="card-date">{{item.rating}}</h5>
+                <a href="#">Details</a>
+              </div>
+            </div>
+          </div>
+        
+      
+          
+        {% endfor %}
+    </div>
+
+</div>
+
+{% endblock content %}
+

@@ -1,0 +1,38 @@
+[
+    {
+        "model":"restaurants.restaurant",
+        "pk":1,
+        "fields":{
+            "name":"MEKDI",
+            "lokasi":"JALAN BOJONG KENYOT",
+            "rating": "4/5"
+        }
+},
+{
+        "model":"restaurants.restaurant",
+        "pk":2,
+        "fields":{
+            "name":"KEPSI",
+            "lokasi":"JALAN DEPOK",
+            "rating": "3/5"
+        }
+    },
+    {
+        "model":"restaurants.restaurant",
+        "pk":3,
+        "fields":{
+            "name":"SEROK-YA",
+            "lokasi":"JALAN RUMAH DAPUL",
+            "rating": "4/5"
+        }
+    },
+    {
+        "model":"restaurants.restaurant",
+        "pk":4,
+        "fields":{
+            "name":"LAPO",
+            "lokasi":"JALAN BOJONG KENYOT",
+            "rating": "4/5"
+        }
+    }
+]
