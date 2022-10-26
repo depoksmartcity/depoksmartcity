@@ -30,7 +30,7 @@ class Kelurahan(models.Model): # TODO: belum makemigrations and migrate
         return self.name
 
 class RequestKTP(models.Model): # TODO: benerin lg fields nya
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     requested_at = models.DateField(auto_now_add=True) # kalo jadwalin jd gmn
 
     provinsi = "Jawa Barat"
