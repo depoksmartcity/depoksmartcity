@@ -2,11 +2,12 @@
 {% load static %}
 {% block meta %}
 <title>Kependudukan</title>
+<link rel="stylesheet" href="{% static 'css/kependudukan.css' %}">
 {% endblock meta %}
 
 {% block content %}
 <h1>Kependudukan</h1>
-<button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#add-modal" data-bs-whatever="@mdo">Isi Form</button>
+<button type="button" class="btn btn-outline-secondary my-btn" data-bs-toggle="modal" data-bs-target="#add-modal" data-bs-whatever="@mdo">Isi Form</button>
 <div class="modal fade" id="add-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -29,7 +30,7 @@
           </form>
         </div> 
         <div class="modal-footer">
-            <button type="button" class="btn btn-outline-secondary" id="add-task-btn" data-bs-dismiss="modal">Kirim</button>
+            <button type="button" class="btn btn-outline-secondary my-btn" id="add-task-btn" data-bs-dismiss="modal">Kirim</button>
         </div>
       </div>
     </div>

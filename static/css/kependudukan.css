@@ -1,7 +1,28 @@
+body {
+    margin-top: 2%;
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-bottom: 5%;
+}
+
+h1 {
+    text-align: center;
+}
+
 h1,h2,h3,h4,h5,h6 {
     color: #112D4E;
 }
 
 p {
     color: #13191F;
+}
+
+.my-btn {
+    background-color: #112D4E;
+    border-color: #112D4E;
+    color: #FFFFFF;
+    --bs-btn-hover-border-color: transparent;
+    --bs-btn-hover-color: #13191F;
+    --bs-btn-hover-bg: #FFFFFF;
+    --bs-btn-hover-border-color: #13191F;
 }
