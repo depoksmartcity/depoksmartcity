@@ -34,5 +34,14 @@
             "lokasi":"JALAN BOJONG KENYOT",
             "rating": "4/5"
         }
+    },
+    {
+        "model":"restaurants.restaurant",
+        "pk":5,
+        "fields":{
+            "name":"MENYASAKURA",
+            "lokasi":"JALAN LOTTEAVENUE GATAU DA",
+            "rating": "1000/5"
+        }
     }
 ]
