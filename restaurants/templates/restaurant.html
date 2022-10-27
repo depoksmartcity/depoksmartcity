@@ -69,6 +69,20 @@
             <h2 class="display-6 text-center">${item.fields.rating}</h2>
           </div>
         </div>
+
+        <div class="col-md-9">
+          <h1 class="display-6 mt-2"><b>Deskripsi</b></h1>
+          <br>
+          <h1 class="display-6 mt-2"><b>Lokasi</b></h1>
+          <br>
+          <h1 class="display-6 mt-2"><b>Ulasan</b></h1>
+          <div class="container-fluid py-2 rounded">
+            <div class="d-flex flex-column flex-nowrap">
+              <div class="card card-body">Card</div>
+              <div class="card card-body">Card</div>
+              <button class="btn btn-secondary" onclick="">See More</button>
+            </div>
+          </div>
         `;
         
       }
@@ -101,6 +115,10 @@
       box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
     }
 
+    .container-fluid{
+      background-color: azure;
+    }
+
     body {
             overflow-x: hidden;
             background-color: #DBE2EF;
@@ -111,7 +129,7 @@
     }
 
     #detail{
-      height: 400px;
+      height: 600px;
       background-color: rgb(255, 255, 255);
       box-shadow: 10px 10px 20px -10px rgba(158, 158, 158, 0.644);
       border-radius: 30px;
