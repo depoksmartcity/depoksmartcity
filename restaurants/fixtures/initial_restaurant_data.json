@@ -5,7 +5,8 @@
         "fields":{
             "name":"MEKDI",
             "lokasi":"JALAN BOJONG KENYOT",
-            "rating": "4/5"
+            "rating": "4/5",
+            "img": "https://www.qries.com/images/banner_logo.png"
         }
 },
 {
@@ -14,7 +15,8 @@
         "fields":{
             "name":"KEPSI",
             "lokasi":"JALAN DEPOK",
-            "rating": "3/5"
+            "rating": "3/5",
+            "img": "https://www.qries.com/images/banner_logo.png"
         }
     },
     {
@@ -23,7 +25,8 @@
         "fields":{
             "name":"SEROK-YA",
             "lokasi":"JALAN RUMAH DAPUL",
-            "rating": "4/5"
+            "rating": "4/5",
+            "img": "https://www.qries.com/images/banner_logo.png"
         }
     },
     {
@@ -32,7 +35,8 @@
         "fields":{
             "name":"LAPO",
             "lokasi":"JALAN BOJONG KENYOT",
-            "rating": "4/5"
+            "rating": "4/5",
+            "img": "https://www.qries.com/images/banner_logo.png"
         }
     },
     {
@@ -41,7 +45,39 @@
         "fields":{
             "name":"MENYASAKURA",
             "lokasi":"JALAN LOTTEAVENUE GATAU DA",
-            "rating": "1000/5"
+            "rating": "1000/5",
+            "img": "https://www.qries.com/images/banner_logo.png"
+        }
+    },
+    {
+        "model":"restaurants.restaurant",
+        "pk":6,
+        "fields":{
+            "name":"MASJEP",
+            "lokasi":"UI",
+            "rating": "3/5",
+            "img": "https://www.qries.com/images/banner_logo.png"
+        }
+    },
+    {
+        "model":"restaurants.restaurant",
+        "pk":7,
+        "fields":{
+            "name":"SATEPACIL",
+            "lokasi":"UI",
+            "rating": "3/5",
+            "img": "https://www.qries.com/images/banner_logo.png"
+        }
+    },
+    {
+        "model":"restaurants.restaurant",
+        "pk":8,
+        "fields":{
+            "name":"KARDUS",
+            "lokasi":"UI",
+            "rating": "4/5",
+            "img": "https://www.qries.com/images/banner_logo.pngp"
         }
     }
+
 ]
