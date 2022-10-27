@@ -6,21 +6,21 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 class Author(models.Model):
-    first_name = models.CharField()
-    middle_name = models.CharField(null=True, blank=True)
-    last_name = models.CharField()
+    first_name = models.CharField(max_length=30)
+    middle_name = models.CharField(null=True, blank=True, max_length=30)
+    last_name = models.CharField(max_length=30)
     email = models.EmailField()
 
 class Publisher(models.Model):
-    name = models.CharField()
-    address = models.CharField()
+    name = models.CharField(max_length=30)
+    address = models.CharField(max_length=30)
     city = models.CharField(max_length=50)
     state_province = models.CharField(max_length=50)
     country = models.CharField(max_length=50)
     website = models.URLField()
 
 class Book(models.Model):
-    title = models.CharField()
+    title = models.CharField(max_length=30)
     isbn = models.CharField(max_length=13, null=True, blank=True)
     pages = models.IntegerField(validators=[MinValueValidator(1)])
     author = models.ForeignKey(Author, on_delete=models.CASCADE)
@@ -30,7 +30,7 @@ class Book(models.Model):
     photo = models.ImageField(upload_to=None)
     stock = models.IntegerField(default=0, validators=[MinValueValidator(0)])
     is_available = models.BooleanField(default=False)
-    rate = models.DecimalField(max_digit=3, decimal_places=2, validators=[MinValueValidator(0), MaxValueValidator(5)])
+    rate = models.DecimalField(max_digits=3, decimal_places=2, validators=[MinValueValidator(0), MaxValueValidator(5)])
     borrowed_times = models.IntegerField(default=0)
 
 class BookReview(models.Model):
