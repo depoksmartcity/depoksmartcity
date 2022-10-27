@@ -3,6 +3,7 @@
 {% block meta %}
 <title>Kependudukan</title>
 <link rel="stylesheet" href="{% static 'css/kependudukan.css' %}">
+<script src="{% static 'script/request_ktp.js' %}"></script>
 {% endblock meta %}
 
 {% block content %}
@@ -40,16 +41,33 @@
     <h6>Belum ada permohonan pembuatan KTP</h6>
 </div>
 
+<div class="card-container">
 {% for request in requests %}
-<div class="card" style="width: 18rem;">
+<div class="card">
     <div class="card-body">
       <h5 class="card-title">Request</h5>
-      <h6 class="card-subtitle mb-2 text-muted">{{request}}</h6>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      <a href="#" class="card-link">Card link</a>
-      <a href="#" class="card-link">Another link</a>
+      <h6 class="card-subtitle mb-2 text-muted">{{request.requested_at}}</h6>
+      <p class="card-text">provinsi: {{request.provinsi}}</p>
+      <p class="card-text">kota: {{request.provinsi}}</p>
+      <p class="card-text">kecamatan: {{request.provinsi}}</p>
+      <p class="card-text">kelurahan: {{request.provinsi}}</p>
+      <p class="card-text">permohonan: {{request.provinsi}}</p>
+    
+      <p class="card-text">nama_lengkap: {{request.provinsi}}</p>
+      <p class="card-text">nomor_kk: {{request.provinsi}}</p>
+      <p class="card-text">nik: {{request.provinsi}}</p>
+      <p class="card-text">alamat: {{request.provinsi}}</p>
+    
+      <p class="card-text">rt: {{request.provinsi}}</p>
+      <p class="card-text">rw: {{request.provinsi}}</p>
+      <p class="card-text">kode_pos: {{request.provinsi}}</p>
+    
+      <p class="card-text">nomor_hp: {{request.provinsi}}</p>
+    
+      <p class="card-text">schedule_date: {{request.provinsi}}</p>
+      <p class="card-text">schedule_time: {{request.provinsi}}</p>
     </div>
 </div>
 {% endfor %}
-
+</div>
 {% endblock content %}

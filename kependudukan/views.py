@@ -1,8 +1,9 @@
 from django.shortcuts import render
 from django.http import JsonResponse
-from django.urls import reverse
 from kependudukan.models import Kelurahan, RequestKTP
 from kependudukan.forms import RequestKTPForm
+from django.http import HttpResponse
+from django.core import serializers
 
 # Create your views here.
 def show_kependudukan(request):
@@ -85,6 +86,15 @@ def add_request(request):
 def show_request_ktp(request):
     context = {
         'form' : RequestKTPForm(),
+        'requests' : RequestKTP.objects.filter(user=request.user),
     }
     return render(request, "request_ktp.html", context)
+
+def show_json(request):
+    data = Kelurahan.objects.filter(user=request.user)
+    return HttpResponse(serializers.serialize("json", data), content_type="application/json")
+
+def show_request_ktp_json(request):
+    data = RequestKTP.objects.filter(user=request.user)
+    return HttpResponse(serializers.serialize("json", data), content_type="application/json")
     

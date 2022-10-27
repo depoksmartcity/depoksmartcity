@@ -1,4 +1,6 @@
+import datetime
 from django import forms
+from kependudukan.models import TIMESLOT_LIST
 
 # iterables
 KECAMATAN_CHOICES = (
@@ -16,23 +18,50 @@ KECAMATAN_CHOICES = (
 )
 
 KELURAHAN_CHOICES = (
-    (0, "Beji"),
-    (1, "Pancoran Mas"),
-    (2, "Cipayung"),
-    (3, "Sukmajaya"),
-    (4, "Cilodong"),
-    (5, "Limo"),
-    (6, "Cinere"),
-    (7, "Cimanggis"),
-    (8, "Tapos"),
-    (9, "Sawangan"),
-    (10, "Bojong Sari")
+    # Beji
+    ("Beji", "Beji"),("Beji Timur", "Beji Timur"), ("Kemiri Muka", "Kemiri Muka"), 
+    ("Pondok Cina", "Pondok Cina"), ("Kukusan", "Kukusan"), ("Tanah Baru", "Tanah Baru"),
+    # Pancoran Mas
+    ("Pancoran Mas", "Pancoran Mas"), ("Depok", "Depok"), ("Depok Jaya", "Depok Jaya"), 
+    ("Rangkapan Jaya", "Rangkapan Jaya"), ("Rangkapan Jaya Baru", "Rangkapan Jaya Baru"), ("Mampang", "Mampang"), 
+    # Cipayung
+    ("Cipayung", "Cipayung"), ("Cipayung Jaya", "Cipayung Jaya"), ("Ratu Jaya", "Ratu Jaya"), 
+    ("Bojong Pondok Terong", "Bojong Pondok Terong"), ("Pondok Jaya", "Pondok Jaya"), 
+    # Sukamajaya
+    ("Sukmajaya", "Sukmajaya"), ("Mekar Jaya", "Mekar Jaya"), ("Bakti Jaya", "Bakti Jaya"), 
+    ("Abadi Jaya", "Abadi Jaya"), ("Tirta Jaya", "Tirta Jaya"), ("Cisalak", "Cisalak"), 
+    # Cilodong
+    ("Sukamaju", "Sukamaju"), ("Cilodong", "Cilodong"), ("Kalibaru", "Kalibaru"), 
+    ("Kalimulya", "Kalimulya"), ("Jatimulya", "Jatimulya"), 
+    # Limo
+    ("Limo", "Limo"), ("Meruyung", "Meruyung"), ("Grogol", "Grogol"), ("Krukut", "Krukut"), 
+    # Cinere
+    ("Cinere", "Cinere"), ("Gandul", "Gandul"), ("Pengkalan Jati", "Pengkalan Jati"), 
+    ("Pangkalan Jati Baru", "Pangkalan Jati Baru"), 
+    # Cimanggis
+    ("Cisalak Pasar", "Cisalak Pasar"), ("Mekarsari", "Mekarsari"), ("Tugu", "Tugu"), 
+    ("Pasir Gunung Selatan", "Pasir Gunung Selatan"), ("Harjamukti", "Harjamukti"), 
+    ("Curug", "Curug"), 
+    # Tapos
+    ("Tapos", "Tapos"), ("Leuwinanggung", "Leuwinanggung"), ("Sukatani", "Sukatani"), 
+    ("Sukamaju Baru", "Sukamaju Baru"), ("Jatijajar", "Jatijajar"), ("Cilangkap", "Cilangkap"), 
+    ("Cimpaeun", "Cimpaeun"), 
+    # Sawangan
+    ("Sawangan", "Sawangan"), ("Kedaung", "Kedaung"), ("Cinangka", "Cinangka"), 
+    ("Sawangan Baru", "Sawangan Baru"), ("Bedahan", "Bedahan"), ("Pengasinan", "Pengasinan"), 
+    ("Pasir Putih", "Pasir Putih"), 
+    # Bojong Sari
+    ("Bojong Sari", "Bojong Sari"), ("Bojongsari Baru", "Bojongsari Baru"), ("Serua", "Serua"), 
+    ("Pondok Petir", "Pondok Petir"), ("Curug", "Curug"), ("Duren Mekar", "Duren Mekar"), ("Duren Seribu", "Duren Seribu"),
 )
 
 PERMOHONAN_CHOICES = (
     ("Baru", "Baru"),
     ("Penggantian", "Penggantian")
 )
+
+class DateInput(forms.DateInput):
+    input_type = 'date'
 
 # creating a form 
 class RequestKTPForm(forms.Form):
@@ -54,4 +83,9 @@ class RequestKTPForm(forms.Form):
 
     nomor_hp = forms.CharField(max_length=15, widget=forms.TextInput(attrs={'class': 'form-control', 'name': 'nomor_hp'})) # untuk dihubungi dalam melakukan konfirmasi
 
-    jadwal = forms.CharField(max_length = 250, widget=forms.TextInput(attrs={'class': 'form-control', 'name': 'jadwal'}))
+    # jadwal = forms.CharField(max_length = 250, widget=forms.TextInput(attrs={'class': 'form-control', 'name': 'jadwal'}))
+    # schedule
+    schedule_date = forms.DateField(widget=DateInput, initial=datetime.date.today)
+    schedule_time = forms.ChoiceField(choices=TIMESLOT_LIST, widget=forms.Select(attrs={'class': 'form-control', 'name': 'schedule_time'}))
+    # schedule_date = request.POST.get('schedule_date')
+    # schedule_time = request.POST.get('schedule_time')
