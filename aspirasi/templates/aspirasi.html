@@ -2,12 +2,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <section id="testimoni" class="container-fluid p-0 h-75" style="
-    background-attachment: fixed;
-    background-size: cover;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;">
+    <section id="aspirasi">
 
         <div class="row">
             <div class="col">
@@ -24,9 +19,9 @@
                             <form class="d-flex flex-column" method="POST" action="add/" id="postAspirasi">
                                 <p class="w-100 justify-content-center my-1">Halo, <span style="color: #67809F;">{{ user.username }}</span>!</p>
                                 {% csrf_token %}
-                                {% for field in form %}
-                                    <p class="w-100 justify-content-center my-1">{{ field.label }}: <br> {{ field }}</p>
-                                {% endfor %}
+                                <table class="table solid border w-auto" style="text-align:left;margin-right:auto;margin-left:auto;margin-top:25px;">
+                                    {{ form.as_table }}
+                                </table>
                                 <button type="submit" value="Submit" class="tombol btn btn-primary mx-auto my-2">
                                     Submit
                                 </button>
@@ -39,9 +34,9 @@
                 </div>
             </div>
 
-            <div class="col-md-8 p-0" style="max-height: 100%;">
-                <div id="output" class="row bg-white m-auto h-75" style="width: 70%;";>
-                <!-- output testimoni -->
+            <div>
+                <div id="output">
+                <!-- output aspirasi -->
                 </div>
             </div>
 
