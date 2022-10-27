@@ -8,6 +8,83 @@
 
 {% block content %}
 
+<script>
+  $(document).ready(function()  {
+    showCard();
+  });
+
+  async function getData() {
+    return fetch("{% url 'restaurants:json' %}").then((res) => res.json())
+  }
+  
+  async function showCard() {
+    const panel = document.getElementById("panel");
+    const list = await getData()
+    let cards = ``
+    list.forEach((item) => {
+      cards+=`
+      <div class="col-12 col-md-6 col-lg-4 py-2">
+        <div class="card .bg-dark .bg-gradient rounded">
+          <div class="card-body">
+            <img src="${item.fields.img}" class="card-img-top" alt="...">
+              <h5 class="card-title">${item.fields.name}</h5>
+              <h6 class="card-subtitle mb-2 text-muted">${item.fields.rating}</h6>
+              <p class="card-text">${item.fields.lokasi}</p>
+              <p class="card-text"></p> 
+              <button class="btn btn-primary" onclick="detail(${item.pk})">more</button>
+          </div>
+        </div>
+      </div>
+      `;
+    });
+
+    panel.innerHTML = cards;
+
+  }
+
+
+
+
+  async function detail(id){
+    const list = await getData()
+    const detailCard = document.getElementById("detail");
+    detailCard.innerHTML = "";
+    detailCard.style.transform = "scale(1)";
+    panel.style.opacity = 1;
+    panel.style.opacity = 0.5;
+    detailCard.style.opacity = 1;
+    let detail_div = ``
+
+    list.forEach((item) => {
+      if(item.pk == id) {
+        detail_div = `
+        <div class="w-100">
+          <span class="close float-end" onclick="closeDetail()">&times;</span>
+        </div>
+
+        <div class="col-md-3 border-end p-4">
+          <img class="w-100" src="${item.fields.img}" alt="..."/>
+          <div class="">
+            <h2 class="display-6 text-center">${item.fields.name}</h2>
+            <h2 class="display-6 text-center">${item.fields.rating}</h2>
+          </div>
+        </div>
+        `;
+        
+      }
+    })
+    detailCard.innerHTML = detail_div;
+  }
+
+  function closeDetail(){
+    const detailCard = document.getElementById("detail");
+    const panel = document.getElementById("panel");
+    detailCard.style.transform = "scale(0)";
+    detailCard.style.opacity = 0;
+    panel.style.opacity = 1;
+  }
+</script>
+
 <style>
 
     .card{
@@ -28,77 +105,67 @@
             overflow-x: hidden;
             background-color: #DBE2EF;
         }
+
+    #panel{
+      transition: .5s;
+    }
+
+    #detail{
+      height: 400px;
+      background-color: rgb(255, 255, 255);
+      box-shadow: 10px 10px 20px -10px rgba(158, 158, 158, 0.644);
+      border-radius: 30px;
+      transform: scale(0);
+      transition: .5s;
+      position: absolute;
+      top: 40px;
+      left: 10%;
+      width: 80%;
+      opacity: 1;
+    }
+
+    .close{
+      font-size: 30px;
+      cursor: pointer;
+    }
+
+    /* .card{
+      transition: .5s;
+      transform: translate(0px, 0px);
+    }
+
+    .card:hover{
+      box-shadow: 10px 10px 40px -20px rgb(98, 98, 98);
+      transform: translate(-5px,-5px);
+    } */
 </style>
 
-<div class="navbar fixed-top navbar-custom color-custom shadow-lg p-3 mb-5 py-10">
 
-    <h1 class="px-2" style="text-align: center;">Assignment 4 PBP/PBD<br></h1><br>
-  
-  
-    <h2 class="px-2" style="text-align: center;">
-      <!-- <button class="btn btn-outline-light btn-lg px-5" data-bs-toggle="modal" data-bs-target="#exampleModal" >Create Task</button> -->
-    
-      <button class="btn btn-outline-light btn-lg px-5">
-        <a href="#"> Logout</a>
-      </button>
-    </h2>
-  
-</div>
 
 <br><br><br><br><br>
 
 <div>
     
-    <div class="row row-cols-4 g-5 py-5 px-5 row d-flex justify-content-center">
-        {% comment %} Add the data below this line {% endcomment %}
-        {% for item in list %}
-        
-          <div class="col-12 col-md-6 col-lg-4 row d-flex justify-content-center py-4">
-            <div class="card .bg-light .bg-gradient rounded" style="width: 20rem;">
-              <img src="{{item.img}}" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title">{{item.name}}</h5>
-                <p class="card-text">{{item.lokasi}}</p>
-                <h5 class="card-date">{{item.rating}}</h5>
-              </div>
-              <div class="card-footer">
-                <button class="btn btn-outline-dark btn-lg px-5" data-bs-toggle="modal" data-bs-target="#exampleModal" >Detail</button>
+  <div>
+    <h1 class="display-4 my-4 text-center">Catalog</h1>
+  </div>
 
-              </div>
-            </div>
-          </div>
-        
-      
-          
-        {% endfor %}
+  <div class="container">
+    <div class="row" id="panel">
+
     </div>
 
-</div>
+    <div class="row d-flex flex-wrap align-content-center p-3 border" id="detail">
 
-
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Create Task</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-          <form action="" id="form">
-          {% csrf_token %}
-              <div class="mb-md-5 mt-md-4 pb-5 px-2 py-2 bg-light text-dark rounded">
-                  <div class="form-outline form-dark mb-4">
-                      <input type="text" name="review" class="form-control"/>
-                    <label class="form-label" for="typeReview"></label>
-                  </div>
-          </form>
-      </div>
-      <div class="modal-footer">
-          <td><button class="btn btn-outline-dark btn-lg px-5" id="button" data-bs-dismiss="modal" onsubmit="return false;">Submit</button></td>
-      </div>
     </div>
   </div>
+
 </div>
+
+
+
+
+
 
 {% endblock content %}
 
