@@ -1,4 +1,3 @@
-from random import choices
 from django.db import models
 from django.contrib.auth.models import User
 
@@ -30,7 +29,7 @@ class Kelurahan(models.Model): # TODO: belum makemigrations and migrate
     def __str__(self):
         return self.name
 
-class RequestKTP(models.Model): # TODO: benerin lg fields nya
+class RequestKTP(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     requested_at = models.DateField(auto_now_add=True) 
 
@@ -56,32 +55,3 @@ class RequestKTP(models.Model): # TODO: benerin lg fields nya
 
     def __str__(self):
         return self.schedule_date + ' at ' + self.schedule_time
-
-# class Appointment(models.Model):
-#     kelurahan = models.ForeignKey(Kelurahan, on_delete=models.CASCADE)
-#     user = models.ForeignKey(User, on_delete=models.CASCADE)
-#     date = models.DateField(help_text="YYYY-MM-DD")
-#     timeslot = models.IntegerField(choices=TIMESLOT_LIST)
-
-#     def __str__(self):
-#         return '{} {}'.format(self.date, self.time)
-
-#     @property
-#     def time(self):
-#         return self.TIMESLOT_LIST[self.timeslot][1]
-
-
-# class Doctor(models.Model):
-#     """Stores info about doctor"""
-
-#     first_name = models.CharField(max_length=20)
-#     last_name = models.CharField(max_length=20)
-#     middle_name = models.CharField(max_length=20)
-#     specialty = models.CharField(max_length=20)
-
-#     def __str__(self):
-#         return '{} {}'.format(self.specialty, self.short_name)
-
-#     @property
-#     def short_name(self):
-#         return '{} {}.{}.'.format(self.last_name.title(), self.first_name[0].upper(), self.middle_name[0].upper())

@@ -91,7 +91,7 @@ def show_request_ktp(request):
     return render(request, "request_ktp.html", context)
 
 def show_json(request):
-    data = Kelurahan.objects.filter(user=request.user)
+    data = Kelurahan.objects.all()
     return HttpResponse(serializers.serialize("json", data), content_type="application/json")
 
 def show_request_ktp_json(request):
