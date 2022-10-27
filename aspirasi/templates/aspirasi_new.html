@@ -1,0 +1,83 @@
+{% block content %}
+    <section id="testimoni" class="container-fluid p-0 h-75" style="
+    background-attachment: fixed;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;">
+
+        <div class="row">
+            <div class="col">
+                <h2 class="text-center text-dark font-weight-bold my-5">Aspirasi</h2>
+            </div>
+        </div>
+        <div class="row h-75 ml-5" style="max-height: 75%;">
+
+            <div class="col-md-4 d-flex p-0 flex-column align-items-center">
+                <div class="row w-75" style="background: #FDE3A7; border-radius: 24px;">
+                    <div class="col m-2">
+                        {% if request.user.is_authenticated %}
+                            <!-- form aspirasi -->
+                            <form class="d-flex flex-column" method="POST" action="add/" id="postAspirasi">
+                                <p class="w-100 justify-content-center my-1">Halo, <span style="color: #67809F;">{{ user.username }}</span>!</p>
+                                {% csrf_token %}
+                                {% for field in form %}
+                                    <p class="w-100 justify-content-center my-1">{{ field.label }}: <br> {{ field }}</p>
+                                {% endfor %}
+                                <button type="submit" value="Submit" class="tombol btn btn-primary mx-auto my-2">
+                                    Submit
+                                </button>
+                            </form>
+                        {% else %}
+                            <p class="w-100 justify-content-center my-1">Halo, <span style="color: #67809F;">Pendatang</span>!</p>
+                            <br>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-8 p-0" style="max-height: 100%;">
+                <div id="output" class="row bg-white m-auto h-75" style="width: 70%;";>
+                <!-- output testimoni -->
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+ async function getAspirasi(){
+   return fetch("{% url 'aspirasi:show_json' %}").then((res) => res.json())
+ }
+
+ async function refreshAspirasi(){
+   document.getElementById("ajax-cards").innerHTML = ""
+   const aspirasi = await getAspirasi()
+   let htmlString = ``
+   aspirasi.forEach(item=> {
+     htmlString+=`\n
+     <div class = "cards" >
+       <p>
+       <span class="nowrap">${item.fields.aspirasi}</span>
+       </p>
+     </div>
+     `
+   });
+   document.getElementById("ajax-cards").innerHTML = htmlString
+ }
+ 
+ async function addAspirasi() {
+   fetch("{% url 'aspirasi:add_aspirasi_ajax' %}", {
+         method: "POST",
+         body: new FormData(document.querySelector('#formtask'))
+     }).then(refreshAspirasi)
+   return false
+ }
+
+ document.getElementById("addtaskbutton").onclick = addAspirasi
+
+ refreshAspirasi()
+
+</script>
+{% endblock %}
