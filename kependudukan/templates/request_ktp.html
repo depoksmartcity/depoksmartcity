@@ -62,4 +62,8 @@
 </div>
 {% endfor %} -->
 </div>
+<script type="text/javascript">
+  const url_post = "{% url 'kependudukan:add_request' %}";
+  const form_fields = {{ form_fields|safe }};
+</script>
 {% endblock content %}
