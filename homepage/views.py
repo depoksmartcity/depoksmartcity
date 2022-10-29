@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.urls import reverse
 from django.contrib.auth.forms import UserCreationForm
@@ -21,6 +21,10 @@ def login_user(request):
             messages.info(request, 'Username atau Password salah!')
     context = {}
     return render(request, 'login.html', context)
+
+def logout_user(request):
+    logout(request)
+    return redirect('homepage:login')
 
 def register_user(request):
     form = UserCreationForm()
