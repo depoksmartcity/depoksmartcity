@@ -18,6 +18,14 @@ def show_aspirasi(request):
     }
     return render(request, "aspirasi.html", context)
 
+def show_aspirasi_pendatang(request):
+    data_aspirasi = Aspirasi.objects.all()
+    context = {
+        'data_aspirasi': data_aspirasi,
+    }
+    return render(request, "aspirasi.html", context)
+
+
 def show_json(request):
     data_aspirasi = Aspirasi.objects.all()
     return HttpResponse(serializers.serialize("json", data_aspirasi))
