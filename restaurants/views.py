@@ -12,6 +12,8 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.views.decorators.csrf import csrf_exempt
 from restaurants.models import Restaurant
+from restaurants.models import Reviews
+
 
 # Create your views here.
 def show_json(request):

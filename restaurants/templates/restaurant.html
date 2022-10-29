@@ -42,9 +42,6 @@
 
   }
 
-
-
-
   async function detail(id){
     const list = await getData()
     const detailCard = document.getElementById("detail");
@@ -75,13 +72,37 @@
           <br>
           <h1 class="display-6 mt-2"><b>Lokasi</b></h1>
           <br>
-          <button class="btn btn-primary" onclick="">Lihat Ulasan</button>
+          <button class="btn btn-primary" onclick="review(${item.pk})">Lihat Ulasan</button>
           
+        `;
+      }
+    })
+    detailCard.innerHTML = detail_div;
+  }
+
+  async function review(id){
+    const list = await getData()
+    const reviewCard = document.getElementById("review");
+    reviewCard.innerHTML = "";
+    reviewCard.style.transform = "scale(1)";
+    panel.style.opacity = 1;
+    panel.style.opacity = 0.5;
+    reviewCard.style.opacity = 1;
+    let review_div = ``
+
+    list.forEach((item) => {
+      if(item.pk == id) {
+        review_div = `
+        <div class="w-100">
+          <span class="close float-end" onclick="closeReview()">&times;</span>
+        </div>
+
+        <h1><b>Ulasan</b></h1>
         `;
         
       }
     })
-    detailCard.innerHTML = detail_div;
+    reviewCard.innerHTML = review_div;
   }
 
   function closeDetail(){
@@ -90,6 +111,12 @@
     detailCard.style.transform = "scale(0)";
     detailCard.style.opacity = 0;
     panel.style.opacity = 1;
+  }
+
+  function closeReview(){
+    const reviewCard = document.getElementById("review");
+    reviewCard.style.transform = "scale(0)";
+    reviewCard.style.opacity = 0;
   }
 </script>
 
@@ -136,6 +163,21 @@
       opacity: 1;
     }
 
+    
+    #review{
+      height: 600px;
+      background-color: rgb(255, 255, 255);
+      box-shadow: 10px 10px 20px -10px rgba(158, 158, 158, 0.644);
+      border-radius: 30px;
+      transform: scale(0);
+      transition: .5s;
+      position: absolute;
+      top: 40px;
+      left: 10%;
+      width: 80%;
+      opacity: 1;
+    }
+
     .close{
       font-size: 30px;
       cursor: pointer;
@@ -168,6 +210,10 @@
     </div>
 
     <div class="row d-flex flex-wrap align-content-center p-3 border" id="detail">
+
+    </div>
+
+    <div class="row d-flex flex-wrap align-content-center p-3 border" id="review">
 
     </div>
   </div>
