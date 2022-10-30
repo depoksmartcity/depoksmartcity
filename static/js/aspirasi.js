@@ -1,5 +1,5 @@
 async function getAspirasi(){
-    return fetch("/aspirasi/json").then((res) => res.json())
+    return fetch("/aspirasi/json/").then((res) => res.json())
   }
  
   async function refreshAspirasi(){
@@ -19,8 +19,8 @@ async function getAspirasi(){
     document.getElementById("output").innerHTML = htmlString
   }
   
-  async function addAspirasi() {
-    fetch("{% url 'aspirasi:add_aspirasi_ajax' %}", {
+  async function addAspirasi(e) {
+    fetch("/aspirasi/add/", {
           method: "POST",
           body: new FormData(document.querySelector('#postAspirasi'))
       }).then(refreshAspirasi)
