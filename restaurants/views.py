@@ -20,22 +20,27 @@ def show_json(request):
     restaurants = Restaurant.objects.all()
     return HttpResponse(serializers.serialize('json', restaurants))
 
+def review_json(request):
+    reviews = Reviews.objects.all()
+    return HttpResponse(serializers.serialize('json', reviews))
+
 def show_restaurants(request):	
     restaurants = Restaurant.objects.all()
+    reviews = Reviews.objects.all()
     context = {
         'list': restaurants,
+        'reviews': reviews,
         'last_login': request.COOKIES['last_login'],
     }
     return render(request, "restaurant.html", context)
 
-# def create_review(request):
-#     if request.method == 'POST':
-#         name = request.POST.get('name')
-#         lokasi = request.POST.get('lokasi')
-#         rating = request.POST.get('rating')
-#         new_restaurant = Restaurant(name=name, lokasi=lokasi, rating=rating)
-#         new_task.save()
+def create_review(request):
+    if request.method == 'POST':
+        review = request.POST.get('review')
+        resto = request.resto
+        new_reviews = Reviews(resto=resto, review=review)
+        new_reviews.save()
 
-#         return HttpResponse(b"CREATED", status=201)
+        return HttpResponse(b"CREATED", status=201)
 
-#     return HttpResponseNotFound()
+    return HttpResponseNotFound()

@@ -8,117 +8,7 @@
 
 {% block content %}
 
-<script>
-  $(document).ready(function()  {
-    showCard();
-  });
 
-  async function getData() {
-    return fetch("{% url 'restaurants:json' %}").then((res) => res.json())
-  }
-  
-  async function showCard() {
-    const panel = document.getElementById("panel");
-    const list = await getData()
-    let cards = ``
-    list.forEach((item) => {
-      cards+=`
-      <div class="col-12 col-md-6 col-lg-4 py-2">
-        <div class="card .bg-dark .bg-gradient rounded">
-          <div class="card-body">
-            <img src="${item.fields.img}" class="card-img-top" alt="...">
-              <h5 class="card-title">${item.fields.name}</h5>
-              <h6 class="card-subtitle mb-2 text-muted">${item.fields.rating}</h6>
-              <p class="card-text">${item.fields.lokasi}</p>
-              <p class="card-text"></p> 
-              <button class="btn btn-primary" onclick="detail(${item.pk})">more</button>
-          </div>
-        </div>
-      </div>
-      `;
-    });
-
-    panel.innerHTML = cards;
-
-  }
-
-  async function detail(id){
-    const list = await getData()
-    const detailCard = document.getElementById("detail");
-    detailCard.innerHTML = "";
-    detailCard.style.transform = "scale(1)";
-    panel.style.opacity = 1;
-    panel.style.opacity = 0.5;
-    detailCard.style.opacity = 1;
-    let detail_div = ``
-
-    list.forEach((item) => {
-      if(item.pk == id) {
-        detail_div = `
-        <div class="w-100">
-          <span class="close float-end" onclick="closeDetail()">&times;</span>
-        </div>
-
-        <div class="col-md-3 border-end p-4">
-          <img class="w-100" src="${item.fields.img}" alt="..."/>
-          <div class="">
-            <h2 class="display-6 text-center">${item.fields.name}</h2>
-            <h2 class="display-6 text-center">${item.fields.rating}</h2>
-          </div>
-        </div>
-
-        <div class="col-md-9">
-          <h1 class="display-6 mt-2"><b>Deskripsi</b></h1>
-          <br>
-          <h1 class="display-6 mt-2"><b>Lokasi</b></h1>
-          <br>
-          <button class="btn btn-primary" onclick="review(${item.pk})">Lihat Ulasan</button>
-          
-        `;
-      }
-    })
-    detailCard.innerHTML = detail_div;
-  }
-
-  async function review(id){
-    const list = await getData()
-    const reviewCard = document.getElementById("review");
-    reviewCard.innerHTML = "";
-    reviewCard.style.transform = "scale(1)";
-    panel.style.opacity = 1;
-    panel.style.opacity = 0.5;
-    reviewCard.style.opacity = 1;
-    let review_div = ``
-
-    list.forEach((item) => {
-      if(item.pk == id) {
-        review_div = `
-        <div class="w-100">
-          <span class="close float-end" onclick="closeReview()">&times;</span>
-        </div>
-
-        <h1><b>Ulasan</b></h1>
-        `;
-        
-      }
-    })
-    reviewCard.innerHTML = review_div;
-  }
-
-  function closeDetail(){
-    const detailCard = document.getElementById("detail");
-    const panel = document.getElementById("panel");
-    detailCard.style.transform = "scale(0)";
-    detailCard.style.opacity = 0;
-    panel.style.opacity = 1;
-  }
-
-  function closeReview(){
-    const reviewCard = document.getElementById("review");
-    reviewCard.style.transform = "scale(0)";
-    reviewCard.style.opacity = 0;
-  }
-</script>
 
 <style>
 
@@ -214,11 +104,186 @@
     </div>
 
     <div class="row d-flex flex-wrap align-content-center p-3 border" id="review">
+      <div class="row d-flex flex-wrap align-content-center p-3 border" id="review"container>
+        
+      </div>
 
     </div>
   </div>
 
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Create Review</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form action="" id="form">
+            {% csrf_token %}
+                <div class="mb-md-5 mt-md-4 pb-5 px-2 py-2 bg-light text-dark rounded">
+                    <div class="form-outline form-dark mb-4">
+                        <input type="text" name="review" class="form-control"/>
+                      <label class="form-label" for="typeTitle">Insert Your Review</label>
+                    </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <td><button class="btn btn-outline-dark btn-lg px-5" id="button" data-bs-dismiss="modal" onsubmit="return false;">Create</button></td>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </div>
+
+<script>
+  $(document).ready(function()  {
+    showCard();
+  });
+
+  async function getData() {
+    return fetch("{% url 'restaurants:json' %}").then((res) => res.json())
+  }
+  
+  async function showCard() {
+    const panel = document.getElementById("panel");
+    const list = await getData()
+    let cards = ``
+    list.forEach((item) => {
+      cards+=`
+      <div class="col-12 col-md-6 col-lg-4 py-2">
+        <div class="card .bg-dark .bg-gradient rounded">
+          <div class="card-body">
+            <img src="${item.fields.img}" class="card-img-top" alt="...">
+              <h5 class="card-title">${item.fields.name}</h5>
+              <h6 class="card-subtitle mb-2 text-muted">${item.fields.rating}</h6>
+              <p class="card-text">${item.fields.lokasi}</p>
+              <p class="card-text"></p> 
+              <button class="btn btn-outline-dark btn-lg px-5" onclick="detail(${item.pk})">more</button>
+          </div>
+        </div>
+      </div>
+      `;
+    });
+
+    panel.innerHTML = cards;
+
+  }
+
+  async function detail(id){
+    const list = await getData()
+    const detailCard = document.getElementById("detail");
+    detailCard.innerHTML = "";
+    detailCard.style.transform = "scale(1)";
+    panel.style.opacity = 1;
+    panel.style.opacity = 0.5;
+    detailCard.style.opacity = 1;
+    let detail_div = ``
+
+    list.forEach((item) => {
+      if(item.pk == id) {
+        detail_div = `
+        <div class="w-100">
+          <span class="close float-end" onclick="closeDetail()">&times;</span>
+        </div>
+
+        <div class="col-md-3 border-end p-4">
+          <img class="w-100" src="${item.fields.img}" alt="..."/>
+          <div class="">
+            <h2 class="display-6 text-center">${item.fields.name}</h2>
+            <h2 class="display-6 text-center">${item.fields.rating}</h2>
+          </div>
+        </div>
+
+        <div class="col-md-9">
+          <h1 class="display-6 mt-2"><b>Deskripsi</b></h1>
+          <br>
+          <h1 class="display-6 mt-2"><b>Lokasi</b></h1>
+          <br>
+          <button class="btn btn-outline-dark btn-lg px-5" onclick="review(${item.pk})">Lihat Ulasan</button>
+          
+        `;
+      }
+    })
+    detailCard.innerHTML = detail_div;
+  }
+
+  async function review(id){
+    const list = await getData()
+    const reviewCard = document.getElementById("review");
+    reviewCard.innerHTML = "";
+    reviewCard.style.transform = "scale(1)";
+    panel.style.opacity = 1;
+    panel.style.opacity = 0.5;
+    reviewCard.style.opacity = 1;
+    let review_div = ``
+
+    list.forEach((item) => {
+      if(item.pk == id) {
+        review_div = `
+        <div class="w-100">
+          <span class="close float-end" onclick="closeReview()">&times;</span>
+        </div>
+
+        <h1><b>Ulasan</b></h1>
+
+        <h2 class="px-2" style="text-align: center;">
+          <button class="btn btn-outline-dark btn-lg px-5" data-bs-toggle="modal" data-bs-target="#exampleModal" >Create Review</button>
+   
+        </h2>
+        `;
+        
+      }
+    })
+    reviewCard.innerHTML = review_div;
+  }
+
+  function closeDetail(){
+    const detailCard = document.getElementById("detail");
+    const panel = document.getElementById("panel");
+    detailCard.style.transform = "scale(0)";
+    detailCard.style.opacity = 0;
+    panel.style.opacity = 1;
+  }
+
+  function closeReview(){
+    const reviewCard = document.getElementById("review");
+    reviewCard.style.transform = "scale(0)";
+    reviewCard.style.opacity = 0;
+  }
+
+  async function getReviews() {
+    return fetch("{% url 'restaurants:rev_json' %}").then((res) => res.json())
+  }
+
+  async function refreshReviews() {
+          document.getElementById("reviewcontainer").innerHTML = ""
+          const reviews = await getReviews()
+          let htmlString = ``
+          reviews.forEach((item) => {
+            htmlString += `
+            <div class="card" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">REVIEW</h5>
+              <p class="card-text">TESTESTESTESTES</p>
+            </div>
+          </div>` 
+          })
+          
+          document.getElementById("reviewcontainer").innerHTML = htmlString
+    }
+  
+    function addReview() {
+      fetch("{% url 'restaurants:create-review' %}", {
+            method: "POST",
+            body: new FormData(document.querySelector('#form'))
+        }).then(refreshReviews)
+      return false
+    }
+
+    document.getElementById("button").onclick = addReview
+</script>
 
 
 
