@@ -8,8 +8,6 @@
 
 {% block content %}
 
-
-
 <style>
 
     .card{
@@ -29,6 +27,15 @@
     .container-fluid{
       background-color: azure;
     }
+
+    .vertical-scrollable>.row {
+            position: absolute;
+            top: 30px;
+            bottom: 30px;
+            left: 180px;
+            width: 50%;
+            overflow-y: scroll;
+        }
 
     body {
             overflow-x: hidden;
@@ -104,9 +111,7 @@
     </div>
 
     <div class="row d-flex flex-wrap align-content-center p-3 border" id="review">
-      <div class="row d-flex flex-wrap align-content-center p-3 border" id="review"container>
-        
-      </div>
+
 
     </div>
   </div>
@@ -119,11 +124,11 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-            <form action="" id="form">
+            <form action="" id="form" method="POST">
             {% csrf_token %}
                 <div class="mb-md-5 mt-md-4 pb-5 px-2 py-2 bg-light text-dark rounded">
                     <div class="form-outline form-dark mb-4">
-                        <input type="text" name="review" class="form-control"/>
+                        <input type="text" id="review-form" name="review" class="form-control"/>
                       <label class="form-label" for="typeTitle">Insert Your Review</label>
                     </div>
             </form>
@@ -218,15 +223,28 @@
     panel.style.opacity = 0.5;
     reviewCard.style.opacity = 1;
     let review_div = ``
+    
+    let resto = ""
 
     list.forEach((item) => {
       if(item.pk == id) {
+        resto = item
+        console.log(item)
+        console.log(resto)
+
         review_div = `
         <div class="w-100">
           <span class="close float-end" onclick="closeReview()">&times;</span>
         </div>
 
         <h1><b>Ulasan</b></h1>
+        
+        <div class="container vertical-scrollable">
+          <div class="row d-flex flex-wrap align-content-center p-3 border " id="reviewcontainer">
+        
+          </div>
+        </div>
+
 
         <h2 class="px-2" style="text-align: center;">
           <button class="btn btn-outline-dark btn-lg px-5" data-bs-toggle="modal" data-bs-target="#exampleModal" >Create Review</button>
@@ -236,6 +254,9 @@
         
       }
     })
+
+    document.getElementById("button").onclick = addReview(resto.pk)
+
     reviewCard.innerHTML = review_div;
   }
 
@@ -258,31 +279,49 @@
   }
 
   async function refreshReviews() {
-          document.getElementById("reviewcontainer").innerHTML = ""
-          const reviews = await getReviews()
-          let htmlString = ``
-          reviews.forEach((item) => {
-            htmlString += `
-            <div class="card" style="width: 18rem;">
-            <div class="card-body">
-              <h5 class="card-title">REVIEW</h5>
-              <p class="card-text">TESTESTESTESTES</p>
-            </div>
-          </div>` 
-          })
-          
-          document.getElementById("reviewcontainer").innerHTML = htmlString
+    const review = document.getElementById("reviewcontainer");
+    review.innerHTML = "";
+    const reviews = await getReviews()
+    let htmlString = ``
+    reviews.forEach((item) => {
+      htmlString += `
+      <div class="card" style="width: 35rem;">
+      <div class="card-body">
+        <h5 class="card-title">REVIEW</h5>
+        <p class="card-text">TESTESTESTESTES</p>
+      </div>
+    </div>`;
+    });
+    
+    review.innerHTML = htmlString
     }
   
-    function addReview() {
+    async function addReview(id) {
+
+      const list = await getData();
+      let res = ''
+
+      list.forEach((item) => {
+        if (item.pk == id) {
+          res = item
+        }
+      })
+      console.log(res)
+      
+
+      const csrf = document.getElementsByName('csrfmiddlewaretoken')
+      var formData = new FormData()
+      formData.append('csrfmiddlewaretoken', csrf[0].value)
+      formData.append('review', 'review')
+      formData.append('pk_resto', id)
+
       fetch("{% url 'restaurants:create-review' %}", {
             method: "POST",
-            body: new FormData(document.querySelector('#form'))
+            body: formData
         }).then(refreshReviews)
       return false
     }
 
-    document.getElementById("button").onclick = addReview
 </script>
 
 

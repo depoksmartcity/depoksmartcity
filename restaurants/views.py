@@ -30,15 +30,23 @@ def show_restaurants(request):
     context = {
         'list': restaurants,
         'reviews': reviews,
-        'last_login': request.COOKIES['last_login'],
     }
     return render(request, "restaurant.html", context)
 
 def create_review(request):
     if request.method == 'POST':
+        print('masuk post')
         review = request.POST.get('review')
-        resto = request.resto
-        new_reviews = Reviews(resto=resto, review=review)
+        pk_resto = request.POST.get('pk_resto')
+        print(review)
+
+        a = Restaurant.objects.filter(pk=pk_resto)
+        a = a.first()
+        print(a)
+
+        # bikin objek review
+        # resto = request.resto
+        new_reviews = Reviews(resto=a, review=review)
         new_reviews.save()
 
         return HttpResponse(b"CREATED", status=201)
