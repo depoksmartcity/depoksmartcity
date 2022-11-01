@@ -24,16 +24,15 @@
       box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
     }
 
-    .container-fluid{
-      background-color: azure;
-    }
+
 
     .vertical-scrollable>.row {
             position: absolute;
             top: 30px;
             bottom: 30px;
-            left: 180px;
-            width: 50%;
+            left: 400px;
+            width: 60%;
+            overflow-x: hidden;
             overflow-y: scroll;
         }
 
@@ -128,7 +127,7 @@
             {% csrf_token %}
                 <div class="mb-md-5 mt-md-4 pb-5 px-2 py-2 bg-light text-dark rounded">
                     <div class="form-outline form-dark mb-4">
-                        <input type="text" id="review-form" name="review" class="form-control"/>
+                        <input type="text" id="review-form" name="review" class="form-control" />
                       <label class="form-label" for="typeTitle">Insert Your Review</label>
                     </div>
             </form>
@@ -202,11 +201,26 @@
         </div>
 
         <div class="col-md-9">
-          <h1 class="display-6 mt-2"><b>Deskripsi</b></h1>
+          <div class="container vertical-scrollable">
+            <div class="card" style="width: 48rem;">
+              <div class="card-body">
+                <h5 class="card-title"><b>Deskripsi</b></h5>
+                <p class="card-text">${item.fields.desc}</p>
+              </div>
+            </div>
+            
+            <br>
+
+            <div class="card" style="width: 48rem;">
+              <div class="card-body">
+                <h5 class="card-title"><b>Lokasi</b></h5>
+                <p class="card-text">${item.fields.lokasi}</p>
+              </div>
+            </div>
+          </div>
+
           <br>
-          <h1 class="display-6 mt-2"><b>Lokasi</b></h1>
-          <br>
-          <button class="btn btn-outline-dark btn-lg px-5" onclick="review(${item.pk})">Lihat Ulasan</button>
+          <button class="btn btn-outline-dark btn-lg px-5" style = "position:relative; left:300px; " onclick="review(${item.pk})">Lihat Ulasan</button>
           
         `;
       }
@@ -235,29 +249,33 @@
         review_div = `
         <div class="w-100">
           <span class="close float-end" onclick="closeReview()">&times;</span>
+          <h1><b>Ulasan</b></h1>
+          <button class="btn btn-outline-dark btn-lg px-5" data-bs-toggle="modal" data-bs-target="#exampleModal" >Create Review</button>
+
         </div>
 
-        <h1><b>Ulasan</b></h1>
+        
         
         <div class="container vertical-scrollable">
-          <div class="row d-flex flex-wrap align-content-center p-3 border " id="reviewcontainer">
+          <div class="row d-flex flex-wrap align-content-center p-3 border" id="reviewcontainer">
         
           </div>
         </div>
 
 
-        <h2 class="px-2" style="text-align: center;">
-          <button class="btn btn-outline-dark btn-lg px-5" data-bs-toggle="modal" data-bs-target="#exampleModal" >Create Review</button>
-   
-        </h2>
-        `;
+           `;
         
       }
     })
+    
 
     document.getElementById("button").onclick = addReview(resto.pk)
 
+
+
     reviewCard.innerHTML = review_div;
+
+
   }
 
   function closeDetail(){
@@ -284,13 +302,16 @@
     const reviews = await getReviews()
     let htmlString = ``
     reviews.forEach((item) => {
-      htmlString += `
-      <div class="card" style="width: 35rem;">
-      <div class="card-body">
-        <h5 class="card-title">REVIEW</h5>
-        <p class="card-text">TESTESTESTESTES</p>
-      </div>
-    </div>`;
+      if (item.fields.review != "" ) {
+        htmlString += `
+        <div class="card" style="width: 42rem;">
+          <div class="card-body">
+            <h5 class="card-title">REVIEW</h5>
+            <p class="card-text">${item.fields.review}</p>
+          </div>
+        </div>`;
+      }
+
     });
     
     review.innerHTML = htmlString
@@ -312,16 +333,19 @@
       const csrf = document.getElementsByName('csrfmiddlewaretoken')
       var formData = new FormData()
       formData.append('csrfmiddlewaretoken', csrf[0].value)
-      formData.append('review', 'review')
+      formData.append('review', document.getElementById('review-form').value)
       formData.append('pk_resto', id)
-
+      const input = document.getElementById('review-form');
+      input.value = '';
       fetch("{% url 'restaurants:create-review' %}", {
             method: "POST",
             body: formData
         }).then(refreshReviews)
       return false
     }
+    
 
+    
 </script>
 
 

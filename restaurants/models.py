@@ -6,6 +6,7 @@ class Restaurant(models.Model):
     name = models.TextField()
     lokasi = models.TextField()
     rating = models.TextField()
+    desc = models.TextField()
     img = models.ImageField(default='')
 
 class Reviews(models.Model):

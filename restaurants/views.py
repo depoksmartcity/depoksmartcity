@@ -35,14 +35,12 @@ def show_restaurants(request):
 
 def create_review(request):
     if request.method == 'POST':
-        print('masuk post')
         review = request.POST.get('review')
         pk_resto = request.POST.get('pk_resto')
         print(review)
 
         a = Restaurant.objects.filter(pk=pk_resto)
         a = a.first()
-        print(a)
 
         # bikin objek review
         # resto = request.resto
