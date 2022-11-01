@@ -20,13 +20,14 @@ def show_json(request):
     restaurants = Restaurant.objects.all()
     return HttpResponse(serializers.serialize('json', restaurants))
 
-def review_json(request):
-    reviews = Reviews.objects.all()
+def review_json(request, pk):
+    reviews = Reviews.objects.filter(resto__pk=pk)
     return HttpResponse(serializers.serialize('json', reviews))
 
-def show_restaurants(request):	
+def show_restaurants(request, *args, **kwargs):	
     restaurants = Restaurant.objects.all()
-    reviews = Reviews.objects.all()
+    pk = kwargs.get('pk')
+    reviews = Reviews.objects.filter(resto__pk=pk)
     context = {
         'list': restaurants,
         'reviews': reviews,

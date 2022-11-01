@@ -292,14 +292,15 @@
     reviewCard.style.opacity = 0;
   }
 
-  async function getReviews() {
-    return fetch("{% url 'restaurants:rev_json' %}").then((res) => res.json())
+  async function getReviews(id) {
+    return fetch("/restaurants/json-rev/" + id).then((res) => res.json())
+    
   }
 
-  async function refreshReviews() {
+  async function refreshReviews(id) {
     const review = document.getElementById("reviewcontainer");
     review.innerHTML = "";
-    const reviews = await getReviews()
+    const reviews = await getReviews(id)
     let htmlString = ``
     reviews.forEach((item) => {
       if (item.fields.review != "" ) {
@@ -318,7 +319,6 @@
     }
   
     async function addReview(id) {
-
       const list = await getData();
       let res = ''
 
@@ -340,10 +340,12 @@
       fetch("{% url 'restaurants:create-review' %}", {
             method: "POST",
             body: formData
-        }).then(refreshReviews)
+        }).then(refreshReviews(id))
+      refreshReviews(id)
+
       return false
     }
-    
+  
 
     
 </script>
