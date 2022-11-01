@@ -6,7 +6,11 @@
 <nav class="navbar" style="background-color: #90ee90;">
     <div class="container-fluid">
       <span class="navbar-brand mb-0 h1">Welcome! {{user}}</span>
+      {% if request.user.is_authenticated %}
       <a class="btn btn-info" href="{% url 'homepage:logout' %}" role="button">Logout</a>
+      {% else %}
+      <a class="btn btn-info" href="{% url 'homepage:login' %}" role="button">Login</a>
+      {% endif %}
     </div>
   </nav>
     <section id="aspirasi">
