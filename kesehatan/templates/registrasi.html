@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+
+{% block meta %}
+    <title>Registrasi Faskes</title>
+    <link rel="shortcut icon" href="https://dinkes.depok.go.id/assets/img/icon/id-card.png">
+    <script>
+    </script>    
+    <style>
+        #registrationCard{
+            margin: auto;
+            flex-wrap: wrap;
+        }
+    </style>
+{% endblock meta %}
+
+{% block content %}
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
+    <div class="container">
+      <a class="navbar-brand" href="#">Depok Smart City</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain" aria-controls="navbarMain" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>        
+      <div class="collapse navbar-collapse" id="navbarMain">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Hello, {{user.get_username}}!
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="{% url 'homepage:logout' %}">Logout</a></li>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+<div class="min-vh-100" style="background-color: #dbe2ef; margin: auto;">
+    <div class="container py-5 h-100">
+        <div id="registrationCard" class="d-flex justify-content-center align-items-center h-100">
+            <div class="col col-xl-8">
+                <div class="card" style="border-radius: 0.5rem;">
+                    <div class="col-md-12 col-lg-15 d-flex align-items-center">
+                        <div class="card-body p-4 p-lg-5 text-black">
+
+                            <form method="POST" action="">
+                                {% csrf_token %}
+
+                                <div class="d-flex align-items-center mb-3 pb-1">
+                                    <label class="h1 fw-bold mb-0">Registrasi Faskes</label>
+                                </div>
+            
+                                <div class="form-outline mb-2">
+                                    <label class="form-label" for="formfirstName">Nama Depan</label>
+                                    <input type="firstName" name = "firstName" id="formfirstName" class="form-control form-control-md" placeholder="Nama Depan" required/>
+                                </div>
+
+                                <div class="form-outline mb-2">
+                                    <label class="form-label" for="formlastName">Nama Belakang</label>
+                                    <input type="lastName" name = "lastName" id="formlastName" class="form-control form-control-md" placeholder="Nama Belakang"/>
+                                </div>
+
+                                <div class="form-outline mb-2">
+                                    <label class="form-label" for="formmotherName">Nama Ibu</label>
+                                    <input type="motherName" name = "motherName" id="formmotherName" class="form-control form-control-md" placeholder="Nama Ibu" required/>
+                                </div>
+
+                                <div class="form-outline mb-2">
+                                    <label class="form-label" for="formemail">Email</label>
+                                    <input type="email" name = "email" id="formemail" class="form-control form-control-md" placeholder="Email" required/>
+                                </div>
+                                
+                                <div class="form-outline mb-2">
+                                    <label class="form-label" for="formgender">Jenis Kelamin</label>
+                                    <select type="gender" class="form-control form-control-md" id="formgender" name="gender" required>
+                                      <option>Laki-laki</option>
+                                      <option>Perempuan</option>
+                                      <option>Lainnya</option>
+                                    </select>
+                                    
+                                </div>
+
+                                <div class="form-outline mb-2" >
+                                    <label class="form-label" for="formage">Umur</label>
+                                    <input type="age" name = "age" id="formage" class="form-control form-control-md" placeholder="Umur" required/>
+                                </div>
+
+                                <div class="form-outline mb-2">
+                                    <label class="form-label" for="formaddress">Alamat</label>
+                                    <textarea type="address" name = "address" id="formaddress" class="form-control form-control-md" placeholder="Alamat" rows="3" required></textarea>
+                                </div>
+
+                                <div class="mt-4 mb-0">
+                                    <button class="btn btn-success btn-md btn-block" type="submit">Tambah Pasien</button>
+                                </div>
+                            </form>
+                        </div>    
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
