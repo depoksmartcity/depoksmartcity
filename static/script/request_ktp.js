@@ -29,7 +29,7 @@ $(document).ready(function() {
 
         for (i=0;i<data.length;i++){
             if (i === 0) $("#no-request").hide();
-            $(".requests-card-container").append(
+            $(".requests-card-container").prepend(
             `<div class="card">
                 <div class="card-body">
                     <h5 class="card-title">Request</h5>
@@ -80,7 +80,7 @@ $(document).ready(function() {
             success : function(results) {
                 result = results[0]
                 $("#no-request").hide();
-                    $(".requests-card-container").append(
+                    $(".requests-card-container").prepend(
                         `<div class="card">
                             <div class="card-body">
                                 <h5 class="card-title">Request</h5>

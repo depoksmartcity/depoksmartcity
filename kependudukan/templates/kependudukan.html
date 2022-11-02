@@ -2,10 +2,61 @@
 {% load static %}
 {% block meta %}
 <title>Kependudukan</title>
-<link rel="stylesheet" href="{% static 'css/kependudukan.css' %}">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href={% static 'bootstrap.css' %} />
+  <!-- font awesome style -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- Custom styles for this template -->
+  <link href={% static 'style.css' %} rel="stylesheet" />
+  <link rel="stylesheet" href="{% static 'css/kependudukan.css' %}">
 {% endblock meta %}
 
 {% block content %}
+<!-- header section strats -->
+<header class="header_section">
+    <div class="container-fluid">
+      <nav class="navbar navbar-expand-lg custom_nav-container ">
+        <a class="navbar-brand" href="{% url 'perpustakaan:get_book' %}">
+          <span>
+            e-Lib Depok
+          </span>
+        </a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class=""> </span>
+        </button>
+        
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+              <a class="nav-link pl-lg-0" href="html"> Home </a>
+            </li>
+
+            {% if user.is_authenticated %}
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Hello, {{user.get_username}}!
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="{% url 'homepage:logout' %}">Logout</a></li>
+            </li>
+          
+          {% else %}
+            <li class="nav-item active">
+              <a class="nav-link pl-lg-0" href="{% url 'homepage:login' %}"> Login </a>
+            </li>
+          {% endif %}
+          </ul>
+        </div>
+        
+      </nav>
+    </div>
+  </header>
+  <!-- end header section -->
+
+<div id="content">
 <h1>Kependudukan</h1>
 <br>
 
@@ -18,135 +69,37 @@
 <h2>Daftar Kelurahan</h2>
 
 <h3>Kecamatan Beji</h3>
-<div id="kec-beji">
-    <!-- {% for kelurahan in beji %}
-    <div class="card" style="width: 18rem;">
-        <div class="card-body">
-        <h5 class="card-title">{{kelurahan.name}}</h5>
-        <h6 class="card-subtitle mb-2 text-muted">{{kelurahan.address}}</h6>
-        </div>
-    </div>
-    {% endfor %} -->
-</div>
+<div id="kec-beji"></div>
 
 <h3>Kecamatan Pancoran Mas</h3>
-<div id="kec-pancoran-mas">
-    <!-- {% for kelurahan in pancoran_mas %}
-    <div class="card" style="width: 18rem;">
-        <div class="card-body">
-        <h5 class="card-title">{{kelurahan.name}}</h5>
-        <h6 class="card-subtitle mb-2 text-muted">{{kelurahan.address}}</h6>
-        </div>
-    </div>
-    {% endfor %} -->
-</div>
+<div id="kec-pancoran-mas"></div>
 
 <h3>Kecamatan Cipayung</h3>
-<div id="kec-cipayung">
-    <!-- {% for kelurahan in cipayung %}
-    <div class="card" style="width: 18rem;">
-        <div class="card-body">
-        <h5 class="card-title">{{kelurahan.name}}</h5>
-        <h6 class="card-subtitle mb-2 text-muted">{{kelurahan.address}}</h6>
-        </div>
-    </div>
-    {% endfor %} -->
-</div>
+<div id="kec-cipayung"></div>
 
 <h3>Kecamatan Sukmajaya</h3>
-<div id="kec-sukmajaya">
-    <!-- {% for kelurahan in sukmajaya %}
-    <div class="card" style="width: 18rem;">
-        <div class="card-body">
-        <h5 class="card-title">{{kelurahan.name}}</h5>
-        <h6 class="card-subtitle mb-2 text-muted">{{kelurahan.address}}</h6>
-        </div>
-    </div>
-    {% endfor %} -->
-</div>
+<div id="kec-sukmajaya"></div>
 
 <h3>Kecamatan Cilodong</h3>
-<div id="kec-cilodong">
-    <!-- {% for kelurahan in cilodong %}
-    <div class="card" style="width: 18rem;">
-        <div class="card-body">
-        <h5 class="card-title">{{kelurahan.name}}</h5>
-        <h6 class="card-subtitle mb-2 text-muted">{{kelurahan.address}}</h6>
-        </div>
-    </div>
-    {% endfor %} -->
-</div>
+<div id="kec-cilodong"></div>
 
 <h3>Kecamatan Limo</h3>
-<div id="kec-limo">
-    <!-- {% for kelurahan in limo %}
-    <div class="card" style="width: 18rem;">
-        <div class="card-body">
-        <h5 class="card-title">{{kelurahan.name}}</h5>
-        <h6 class="card-subtitle mb-2 text-muted">{{kelurahan.address}}</h6>
-        </div>
-    </div>
-    {% endfor %} -->
-</div>
+<div id="kec-limo"></div>
 
 <h3>Kecamatan Cinere</h3>
-<div id="kec-cinere">
-    <!-- {% for kelurahan in cinere %}
-    <div class="card" style="width: 18rem;">
-        <div class="card-body">
-        <h5 class="card-title">{{kelurahan.name}}</h5>
-        <h6 class="card-subtitle mb-2 text-muted">{{kelurahan.address}}</h6>
-        </div>
-    </div>
-    {% endfor %} -->
-</div>
+<div id="kec-cinere"></div>
 
 <h3>Kecamatan Cimanggis</h3>
-<div id="kec-cimanggis">
-    <!-- {% for kelurahan in cimanggis %}
-    <div class="card" style="width: 18rem;">
-        <div class="card-body">
-        <h5 class="card-title">{{kelurahan.name}}</h5>
-        <h6 class="card-subtitle mb-2 text-muted">{{kelurahan.address}}</h6>
-        </div>
-    </div>
-    {% endfor %} -->
-</div>
+<div id="kec-cimanggis"></div>
 
 <h3>Kecamatan Tapos</h3>
-<div id="kec-tapos">
-    <!-- {% for kelurahan in tapos %}
-    <div class="card" style="width: 18rem;">
-        <div class="card-body">
-        <h5 class="card-title">{{kelurahan.name}}</h5>
-        <h6 class="card-subtitle mb-2 text-muted">{{kelurahan.address}}</h6>
-        </div>
-    </div>
-    {% endfor %} -->
-</div>
+<div id="kec-tapos"></div>
 
 <h3>Kecamatan Sawangan</h3>
-<div id="kec-sawangan">
-    <!-- {% for kelurahan in sawangan %}
-    <div class="card" style="width: 18rem;">
-        <div class="card-body">
-        <h5 class="card-title">{{kelurahan.name}}</h5>
-        <h6 class="card-subtitle mb-2 text-muted">{{kelurahan.address}}</h6>
-        </div>
-    </div>
-    {% endfor %} -->
-</div>
+<div id="kec-sawangan"></div>
 
 <h3>Kecamatan Bojong Sari</h3>
-<div id="kec-bojong-sari">
-    <!-- {% for kelurahan in bojong_sari %}
-    <div class="card" style="width: 18rem;">
-        <div class="card-body">
-        <h5 class="card-title">{{kelurahan.name}}</h5>
-        <h6 class="card-subtitle mb-2 text-muted">{{kelurahan.address}}</h6>
-        </div>
-    </div>
-    {% endfor %} -->
+<div id="kec-bojong-sari"></div>
 </div>
 
 <script src="{% static 'script/kependudukan.js' %}"></script>
