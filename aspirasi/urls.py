@@ -1,4 +1,5 @@
 from django.urls import path
+<<<<<<< HEAD:perpustakaan/urls.py
 from .views import (get_book, get_book_by_id_json, get_book_json, get_book_by_id,
                     get_book_review_id_json,get_book_history_active_id_json,
                     get_book_history_done_id_json,
@@ -23,3 +24,16 @@ urlpatterns = [
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+=======
+from aspirasi.views import show_aspirasi, show_json, add_aspirasi_ajax, show_aspirasi_pendatang
+
+app_name = 'aspirasi'
+
+urlpatterns = [
+    path('', show_aspirasi, name='show_aspirasi'),
+    path('json/', show_json, name='show_json'),
+    path('add/', add_aspirasi_ajax, name='add_aspirasi_ajax'),
+    path('show-aspirasi/', show_aspirasi_pendatang, name='show_aspirasi_pendatang'),
+
+]
+>>>>>>> 20cca0dcf0a46c8bc1fa9424f3d724a97f2058d4:aspirasi/urls.py

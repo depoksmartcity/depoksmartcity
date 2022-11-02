@@ -1,0 +1,39 @@
+body {
+}
+
+.background {
+    background-color: #DBE2EF;
+}
+
+.message {
+    color: #112D4E;
+}
+
+.form-title {
+    color: #112D4E;
+}
+
+h1 {
+    text-align: center;
+}
+
+h1,h2,h3,h4,h5,h6 {
+    color: #112D4E;
+}
+
+p {
+    color: #13191F;
+}
+.kelurahan-card {
+    width: 18rem;
+}
+
+.my-btn {
+    background-color: #112D4E;
+    border-color: #112D4E;
+    color: #FFFFFF;
+    --bs-btn-hover-border-color: transparent;
+    --bs-btn-hover-color: #13191F;
+    --bs-btn-hover-bg: #FFFFFF;
+    --bs-btn-hover-border-color: #13191F;
+}

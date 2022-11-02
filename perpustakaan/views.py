@@ -4,7 +4,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.core import serializers
 
 from perpustakaan.forms import reviewForm
-from .models import Author, BookHistory, Publisher, Book, BookReview, BookFavorite
+from .models import Author, BookHistory, Publisher, Book, BookReview
 import datetime
 
 # Create your views here.

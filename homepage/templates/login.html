@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block meta %}
+<title>Login</title>
+{% endblock meta %}
+
+{% block content %}
+
+<nav class="navbar" style="background-color: #232b2b;">
+    <div class="container-fluid">
+      <span class="navbar-brand mb-0 h1"> <b style="color:white">Login Page</b></span>
+    </div>
+</nav>
+
+<div class = "login" style="text-align:center">
+    <h1 style="margin-top: 25px">Login</h1>
+    <form method="POST" action="" >
+        {% csrf_token %}
+        <table style="margin-left:auto;margin-right:auto; margin-top: 25px" class="table table-bordered w-auto">
+            <tr>
+                <td style="vertical-align: middle">Username: </td>
+                <td><input type="text" name="username" placeholder="Username" class="form-control"></td>
+            </tr>
+                    
+            <tr>
+                <td style="vertical-align: middle">Password: </td>
+                <td><input type="password" name="password" placeholder="Password" class="form-control"></td>
+            </tr>
+        </table>
+        <td><input class="btn btn-primary" type="submit" value="Login"></td>
+    </form>
+
+    {% if messages %}
+        <ul>
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}     
+
+    Belum mempunyai akun? <a href="{% url 'homepage:register' %}">Buat Akun</a>
+        
+
+</div>
+
+{% endblock content %}

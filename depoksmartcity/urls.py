@@ -24,6 +24,8 @@ urlpatterns = [
     path('', include('homepage.urls')),
     path('kependudukan/', include('kependudukan.urls')),
     path('perpustakaan/', include('perpustakaan.urls')),
+    path('aspirasi/', include('aspirasi.urls')),
+    path('restaurants/', include('restaurants.urls')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

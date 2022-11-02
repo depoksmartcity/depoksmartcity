@@ -46,7 +46,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'homepage',
     'kependudukan',
-    'perpustakaan',
+    'aspirasi',
+    'restaurants',
+    # 'perpustakaan',
+
 ]
 
 MIDDLEWARE = [
