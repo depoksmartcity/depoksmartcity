@@ -28,6 +28,7 @@
       })
       </script>
 
+      <!--Internal CSS-->
       <style>
         #facilityTable{
           margin-top: 2%;
@@ -52,6 +53,7 @@
       </button>        
       <div class="collapse navbar-collapse" id="navbarMain">
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          {% if user.is_authenticated %}
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" style="color: white;" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Hello, {{user.get_username}} !
@@ -59,6 +61,12 @@
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
               <li><a class="dropdown-item" href="{% url 'homepage:logout' %}">Logout</a></li>
           </li>
+
+          {% else %}
+          <li class="nav-item active">
+            <a class="nav-link pl-lg-0" style="color: white;" href="{% url 'homepage:login' %}"> Login </a>
+          </li>
+          {% endif %}
         </ul>
       </div>
     </div>
@@ -71,6 +79,7 @@
               <div class="col col-xl-8">
 
                 <div class="container" id = "facilityTable" >
+                  <!--Header Tabel Fasilitas Kesehatan-->
                   <table class="table table-stripped table-hover table-dark table-bordered shadow">
                     <thead>
                       <tr id="headerTable">
@@ -81,7 +90,8 @@
                       </tr>
                     </thead>
                   </table>
-              
+
+                <!--Fasilitas Kesehatan-->
                 <table class="table table-stripped table-hover table-bordered shadow" id = "facilityTableContents" style="background-color:white;">
                 </table>
                 </div>

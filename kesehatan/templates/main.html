@@ -107,13 +107,20 @@
       </button>        
       <div class="collapse navbar-collapse" id="navbarMain">
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          {% if user.is_authenticated %}
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" style="color: white;"  href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link dropdown-toggle" style="color: white;" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Hello, {{user.get_username}} !
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
               <li><a class="dropdown-item" href="{% url 'homepage:logout' %}">Logout</a></li>
           </li>
+
+          {% else %}
+          <li class="nav-item active">
+            <a class="nav-link pl-lg-0" style="color: white;" href="{% url 'homepage:login' %}"> Login </a>
+          </li>
+          {% endif %}
         </ul>
       </div>
     </div>
@@ -121,6 +128,7 @@
 <!--Navbar End-->
 
 <div class="min-vh-100" style="background-color: #dbe2ef; margin: auto;">
+<!--Carousel Start-->
 <div class="container" id="containerAll">
   <div id="carouselDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
       <div class="carousel-indicators">
@@ -165,7 +173,9 @@
       </button>
     </div>
 </div>
+<!--Carousel End-->
 
+<!--Layanan Kesehatan Card Start-->
 <div class="row g-3 justify-content-center mt-4">
   <div class="col-md-3">
   <div class="card shadow bg-body rounded text-center zoom">
@@ -218,9 +228,10 @@
     </div>
   </div>
 </div>
-
 </div>
+<!--Layanan Kesehatan Card End-->
 
+<!--Daftar Appointment Start-->
 <div class="d-block mt-5 py-1 shadow rounded" style="background-color: #063547;" id="daftarAppointmentLabel" >
   <ul class="pt-3 px-5">
     <li style="font-size: 170%; color: white;">
@@ -231,7 +242,7 @@
 </div>
 <div class="d-flex flex-wrap justify-content-center align-items-center gap-5 container py-4" id = "appointmentCard">
 </div>
-
+<!--Daftar Appointment End-->
 </div>
 
 {% endblock content %}
