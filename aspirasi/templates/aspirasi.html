@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+<div style="overflow-x :hidden;">
+  <nav class="navbar" style="background-color: #232b2b;">
+    <div class="container-fluid">
+      <span class="navbar-brand mb-0 h1">
+        <b style="color:white">Welcome! {{user}}</b></span>
+      <form class="form-inline">
+      <a class="btn btn-info" href="{% url 'homepage:index' %}" role="button">Kembali</a>
+      {% if request.user.is_authenticated %}
+      <a class="btn btn-info" href="{% url 'homepage:logout' %}" role="button">Logout</a>
+      {% else %}
+      <a class="btn btn-info" href="{% url 'homepage:login' %}" role="button">Login</a>
+      {% endif %}
+      </form>
+    </div>
+  </nav>
+
+
+  <link rel="stylesheet" href="{% static 'css/aspirasi.css' %}">
+  <div class="backgroundImages">
+    <section id="aspirasi" >
+
+        <div class="row">
+            <div class="col">
+                <h2 class="text-center text-dark font-weight-bold my-5">Aspirasi</h2>
+            </div>
+        </div>
+        
+        
+        <div style="display:inline-flex">
+            <div class="col-md-4 d-flex p-0 flex-column align-items-center" style="margin-right:225px;margin-left:280px">
+                <div style="background: #ADD8E6; border-radius: 24px; padding-right:20px; width:380px;padding-left:20px;padding-top:20px;padding-bottom:20px" >
+                    <div class="col m-2">
+                        {% if request.user.is_authenticated %}
+                            <!-- form aspirasi -->
+                            <form method="POST" id="postAspirasi" onsubmit="addAspirasi();return false" >
+                                <p class="w-100 justify-content-center my-1">Halo, <span style="color: #67809F;">{{ user }}</span>!</p>
+                                {% csrf_token %}
+                                {{ form }}
+                                <button type="submit" value="Submit" class="tombol btn btn-primary mx-auto my-2">
+                                    Submit
+                                </button>
+                            </form>
+                        {% else %}
+                            <p class="w-100 justify-content-center my-1"">Halo, <span style="color: #67809F;">Pendatang</span>!</p>
+                            <p class="w-100 justify-content-center my-1"">Login untuk menyalurkan aspirasi Anda</p>
+
+                            <form action="{% url 'aspirasi:show_aspirasi_pendatang' %}">
+                            <button type="submit" class="tombol btn btn-primary mx-auto my-2">Login</button>
+                            </form>
+
+                            
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-8 p-0" style="max-height: 100%;text-align: center;">
+              <p>
+              <div id="output" class="outputStyle">
+            
+              <!-- output aspirasi -->
+              </div>
+          </div>
+        
+        </div>
+
+
+
+
+    </section>
+    </div>
+</div>
+    <script src="{% static 'js/aspirasi.js' %}"></script>
+{% endblock content %}
+
