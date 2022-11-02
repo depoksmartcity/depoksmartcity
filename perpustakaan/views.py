@@ -8,6 +8,16 @@ from .models import Author, BookHistory, Publisher, Book, BookReview
 import datetime
 
 # Create your views here.
+def get_author_by_id_json(request, id):
+    author_data = Author.objects.get(id=id)
+    context = {'data': author_data}
+    return HttpResponse(serializers.serialize("json", author_data), content_type="application/json")
+
+def get_publisher_by_id_json(request, id):
+    publisher_data = Publisher.objects.get(id=id)
+    context = {'data': publisher_data}
+    return HttpResponse(serializers.serialize("json", publisher_data), content_type="application/json")
+
 def get_book(request):
     book_data = Book.objects.all()
     context = {'data': book_data}
@@ -19,9 +29,13 @@ def get_book_json(request):
     return HttpResponse(serializers.serialize("json", book_data), content_type="application/json")
 
 def get_book_by_id(request, id):
-    book_data = Book.objects.filter(id=id)
+    book_data = Book.objects.get(id=id)
+    author_id = book_data.author.id
+    publisher_id = book_data.publisher.id
     context = {'data': book_data,
-                'id': id}
+                'id': id,
+                'author_id': author_id,
+                'publisher_id': publisher_id}
     return render(request, "book_id.html", context)
 
 def get_book_by_id_json(request, id):

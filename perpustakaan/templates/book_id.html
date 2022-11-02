@@ -36,6 +36,14 @@
         $.get( "{% url 'perpustakaan:get_book_history_done_id_json' id %}", function(data) {
           checkReviewButton(data);      
         });
+
+        $.get( "{% url 'perpustakaan:get_author_by_id_json' author_id %}", function(data) {
+          getAuthorName(data);      
+        });
+
+        $.get( "{% url 'perpustakaan:get_publisher_by_id_json' publisher_id %}", function(data) {
+          getPublisherName(data);      
+        });
     
       });
     </script>

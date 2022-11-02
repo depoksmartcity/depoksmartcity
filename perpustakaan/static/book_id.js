@@ -116,6 +116,24 @@ function bookData(data) {
     }
   };
 
+  function getAuthorName(data) {
+    $.each(data, function(key, val) {        
+
+      var author = document.getElementById('author');
+
+      author.innerHTML = "By " + val.fields.first_name + " " + val.fields.last_name;
+  });
+  };
+
+  function getPublisherName(data) {
+    $.each(data, function(key, val) {        
+
+      var publisher = document.getElementById('publisher');
+
+      publisher.innerHTML = "Published by " + val.fields.name;
+  });
+  };
+
   function checkBorrowReturnButton(data) {
     if (data.length == 0) {
       // If no active borrow, can borrow, can't return  
