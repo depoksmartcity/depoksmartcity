@@ -1,2 +1,2 @@
-release: python manage.py migrate
+release: python manage.py migrate && python manage.py loaddata initial_restaurant_data.json
 web: gunicorn depoksmartcity.wsgi --log-file -
