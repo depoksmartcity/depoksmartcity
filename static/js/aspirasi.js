@@ -19,14 +19,5 @@ async function getAspirasi(){
     document.getElementById("output").innerHTML = htmlString
   }
   
-  async function addAspirasi(e) {
-    fetch("/aspirasi/add/", {
-          method: "POST",
-          body: new FormData(document.querySelector('#postAspirasi'))
-      }).then(refreshAspirasi)
-    return false
-  }
- 
- 
   refreshAspirasi()
  

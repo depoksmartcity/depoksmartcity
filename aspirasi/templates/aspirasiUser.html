@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+{% load static %}
+ {% block content %}
+
+ <link rel="stylesheet" href="{% static 'css/aspirasi.css' %}">
+<style>
+      table{
+    border: 1px solid;
+}
+
+th{
+    border: 1px solid;
+}
+.cards{
+    border: 1px solid black;
+    margin: 13px;
+    padding: 15px;
+    width: 600px;
+    display: inline-block;
+    background-color: #ADD8E6;
+    border: 1px solid #c9c9c9;
+    border-radius: 7%
+  }
+
+.nowrap {
+    white-space: nowrap ;
+}
+
+.buttonwrapper{
+    display: flex;
+}
+
+.centeredtext{
+    text-align:center; 
+
+}
+.button{
+    color:blue;
+}
+header{
+    text-align: center;
+}
+body{
+    background: hsla(192, 80%, 51%, 1);
+
+    background: linear-gradient(90deg, hsla(192, 80%, 51%, 1) 0%, hsla(355, 85%, 63%, 1) 94%);
+
+    background: -moz-linear-gradient(90deg, hsla(192, 80%, 51%, 1) 0%, hsla(355, 85%, 63%, 1) 94%);
+
+    background: -webkit-linear-gradient(90deg, hsla(192, 80%, 51%, 1) 0%, hsla(355, 85%, 63%, 1) 94%);
+
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#1DBDE6", endColorstr="#F1515E", GradientType=1 );
+    width: 100vw;
+    min-height: 100vh;
+}
+
+textarea {
+    resize: none;
+    width: 300px;
+    height: 30px;
+}
+
+.cards:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+</style>
+
+    <nav class="navbar" style="background-color: #232b2b;">
+      <div class="container-fluid">
+        <span class="navbar-brand mb-0 h1">
+          <b style="color:white">Welcome! {{user}}</b></span>
+        <form class="form-inline">
+        <a class="btn btn-info" href="{% url 'aspirasi:show_aspirasi' %}" role="button">Kembali</a>
+        {% if request.user.is_authenticated %}
+        <a class="btn btn-info" href="{% url 'homepage:logout' %}" role="button">Logout</a>
+        {% else %}
+        <a class="btn btn-info" href="{% url 'homepage:login' %}" role="button">Login</a>
+        {% endif %}
+        </form>
+      </div>
+    </nav>
+
+<br></br>
+<h1 class="centeredtext" >Aspirasi Anda :</h1>
+<br></br>
+    <div class="card-deck">
+    {% for x in data_aspirasi_user %}
+      <div class="cards" >
+        <p>
+        <span class="nowrap">{{x.aspirasi}}</span>
+        </p>
+      </div>
+    {% endfor %}
+    </div>
+
+
+  <br></br>
+ {% endblock content %}

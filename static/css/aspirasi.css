@@ -33,4 +33,13 @@
     
   }
 
+@media (max-width: 600px) {
+    /* untuk HP */
+    .layout {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+
   
