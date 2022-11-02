@@ -7,7 +7,7 @@ class Restaurant(models.Model):
     name = models.TextField()
     lokasi = models.TextField()
     desc = models.TextField()
-    img = models.ImageField(default='')
+    img = models.URLField(default='')
 
 class Reviews(models.Model):
     resto = models.ForeignKey(Restaurant, on_delete=models.CASCADE)
