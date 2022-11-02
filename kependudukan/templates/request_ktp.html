@@ -57,7 +57,10 @@
 
 <div id="content">
   <h1>Kependudukan</h1>
+
+  <!-- button to open modal form -->
   <button type="button" class="btn btn-outline-secondary my-btn" data-bs-toggle="modal" data-bs-target="#add-modal" data-bs-whatever="@mdo">Isi Form</button>
+  <!-- modal form -->
   <div class="modal fade" id="add-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -78,12 +81,15 @@
       </div>
   </div>
 
+  <!-- shown only if haven't made any requests -->
   <div id="no-request">
       <h6>Belum terdapat permohonan pembuatan KTP</h6>
   </div>
 
+  <!-- request cards -->
   <div class="requests-card-container">
   </div>
+  
 </div>
 
 <script type="text/javascript">

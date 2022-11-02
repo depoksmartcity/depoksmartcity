@@ -34,39 +34,6 @@ def add_request(request):
         ktp = form.save()
         ktp.user=request.user
         ktp.save()
-        # kecamatan = request.POST.get('kecamatan')
-        # kelurahan = request.POST.get('kelurahan')
-        # permohonan = request.POST.get('permohonan')
-
-        # nama_lengkap = request.POST.get('nama_lengkap')
-        # nomor_kk = request.POST.get('nomor_kk')
-        # nik = request.POST.get('nik')
-        # alamat = request.POST.get('alamat')
-
-        # rt = request.POST.get('rt')
-        # rw = request.POST.get('rw')
-        # kode_pos = request.POST.get('kode_pos')
-
-        # nomor_hp = request.POST.get('nomor_hp')
-
-        # schedule_date = request.POST.get('schedule_date')
-        # schedule_time = request.POST.get('schedule_time')
-
-        # ktp = RequestKTP.objects.create(
-        #     kecamatan=kecamatan, 
-        #     kelurahan=kelurahan,
-        #     permohonan=permohonan,
-        #     nama_lengkap=nama_lengkap,
-        #     nomor_kk=nomor_kk,
-        #     nik=nik,
-        #     alamat=alamat,
-        #     rt=rt,
-        #     rw=rw,
-        #     kode_pos=kode_pos,
-        #     nomor_hp=nomor_hp,
-        #     schedule_date=schedule_date,
-        #     schedule_time=schedule_time
-        #     )
         return serialize_ktp([ktp])
         
 
@@ -89,6 +56,10 @@ def show_json(request):
 @login_required(login_url='/login/')
 def show_request_ktp_json(request):
     data = RequestKTP.objects.filter(user=request.user)
+    return serialize_ktp(data)
+
+def show_all_request_ktp_json(request):
+    data = RequestKTP.objects.all()
     return serialize_ktp(data)
 
 def serialize_ktp(ktps):
