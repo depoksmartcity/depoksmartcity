@@ -5,9 +5,9 @@ from django.db import models
 class Restaurant(models.Model):
     name = models.TextField()
     lokasi = models.TextField()
-    rating = models.TextField()
     desc = models.TextField()
     img = models.ImageField(default='')
+    fixtures = ['initial_restaurant_Data.json']
 
 class Reviews(models.Model):
     resto = models.ForeignKey(Restaurant, on_delete=models.CASCADE)

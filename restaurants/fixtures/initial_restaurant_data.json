@@ -3,66 +3,60 @@
         "model":"restaurants.restaurant",
         "pk":1,
         "fields":{
-            "name":"MEKDI",
-            "lokasi":"JALAN BOJONG KENYOT",
-            "rating": "4/5",
-            "desc": "KFC (kependekan dari Kentucky Fried Chicken), adalah jaringan restoran cepat saji Amerika yang berkantor pusat di Louisville, Kentucky, yang berspesialisasi dalam ayam goreng. Ini adalah jaringan restoran terbesar kedua di dunia (diukur berdasarkan penjualan) setelah McDonald's, dengan 22.621 lokasi secara global di 150 negara pada Desember 2019. ",
-            "img": "https://www.qries.com/images/banner_logo.png"
+            "name":"McDonald's",
+            "lokasi":"Jl. Margonda Raya No.229",
+            "desc": "McDonald’s merupakan restoran fast food terbesar di dunia yang diawali pada tahun 1955 di California, Amerika Serikat. Dengan produk unggulan berupa Burger bernama Bigmac, McDonald’s hingga saat ini telah memiliki ribuan restoran yang tersebar di lebih dari 100 negara, salah satunya Indonesia. McDonald’s pertama kali masuk ke Indonesia pada tahun 1991 dengan membuka restoran pertamanya di Sarinah, Thamrin.",
+            "img": "https://static.wikia.nocookie.net/logopedia/images/4/4b/McDonald%27s_logo.svg/revision/latest/scale-to-width-down/200?cb=20170115015608"
         }
 },
 {
         "model":"restaurants.restaurant",
         "pk":2,
         "fields":{
-            "name":"KEPSI",
-            "lokasi":"JALAN DEPOK",
-            "rating": "3/5",
+            "name":"KFC",
+            "lokasi":"Jl. Margonda Raya",
             "desc": "KFC (kependekan dari Kentucky Fried Chicken), adalah jaringan restoran cepat saji Amerika yang berkantor pusat di Louisville, Kentucky, yang berspesialisasi dalam ayam goreng. Ini adalah jaringan restoran terbesar kedua di dunia (diukur berdasarkan penjualan) setelah McDonald's, dengan 22.621 lokasi secara global di 150 negara pada Desember 2019.",
-            "img": "https://www.qries.com/images/banner_logo.png"
+            "img": "https://static.wikia.nocookie.net/logopedia/images/7/7e/KFC_%282018%29.svg/revision/latest/scale-to-width-down/190?cb=20220528041248"
         }
     },
     {
         "model":"restaurants.restaurant",
         "pk":3,
         "fields":{
-            "name":"SEROK-YA",
-            "lokasi":"JALAN RUMAH DAPUL",
-            "rating": "4/5",
-            "desc": "KFC (kependekan dari Kentucky Fried Chicken), adalah jaringan restoran cepat saji Amerika yang berkantor pusat di Louisville, Kentucky, yang berspesialisasi dalam ayam goreng. Ini adalah jaringan restoran terbesar kedua di dunia (diukur berdasarkan penjualan) setelah McDonald's, dengan 22.621 lokasi secara global di 150 negara pada Desember 2019.",
-            "img": "https://www.qries.com/images/banner_logo.png"
+            "name":"Seirock-Ya",
+            "lokasi":"Jl. Margonda Raya No.358",
+            "desc": "Our main menu is Toripaitan Ramen which has extremely rich taste made from chicken broth. Nowadays, it became one of the most famous type of Ramen in Japan. Many people think that customizing to the halal menu will loss the original taste or flavor, and that is inferior to the non halal menu. However our Ramen has the completely same quality level compare to which of Japan. In addition, Toripaitan Ramen is popular to women because which broth includes lots of collagen that is good for beauty. Now, it's time to have a great meal experience!",
+            "img": "https://www.seirock-ya.asia/assets/img/seirockya_logo1.jpg"
         }
     },
     {
         "model":"restaurants.restaurant",
         "pk":4,
         "fields":{
-            "name":"LAPO",
-            "lokasi":"JALAN BOJONG KENYOT",
-            "rating": "4/5",
-            "desc": "KFC (kependekan dari Kentucky Fried Chicken), adalah jaringan restoran cepat saji Amerika yang berkantor pusat di Louisville, Kentucky, yang berspesialisasi dalam ayam goreng. Ini adalah jaringan restoran terbesar kedua di dunia (diukur berdasarkan penjualan) setelah McDonald's, dengan 22.621 lokasi secara global di 150 negara pada Desember 2019.",
-            "img": "https://www.qries.com/images/banner_logo.png"
+            "name":"Mie Gacoan",
+            "lokasi":"Jl. Margonda Raya No.23E",
+            "desc": "Berdiri sejak awal tahun 2016, saat ini merk Mie Gacoan telah tumbuh menjadi market leader, utamanya di provinsi Jawa Timur, Jawa Tengah, Jawa Barat, Kepulauan Bali, dan sedang dalam jalur kuat utk berekspansi menjadi merk terbesar nomor 1 secara nasional. Mengusung konsep bersantap modern dengan harga yg affordable, kehadiran Mie Gacoan telah mendapatkan apresiasi luar biasa di setiap market dimana Mie Gacoan hadir utk melayani puluhan ribu pelanggan setiap bulan nya. Oleh karena itu, inovasi akan selalu kami kedepankan agar Mie Gacoan tetap relevan dan menjadi pilihan terbaik bagi para customer fanatik.",
+            "img": "https://miegacoan.com/images/logo-full.png"
         }
     },
     {
         "model":"restaurants.restaurant",
         "pk":5,
         "fields":{
-            "name":"MENYASAKURA",
-            "lokasi":"JALAN LOTTEAVENUE GATAU DA",
-            "rating": "1000/5",
-            "desc": "KFC (kependekan dari Kentucky Fried Chicken), adalah jaringan restoran cepat saji Amerika yang berkantor pusat di Louisville, Kentucky, yang berspesialisasi dalam ayam goreng. Ini adalah jaringan restoran terbesar kedua di dunia (diukur berdasarkan penjualan) setelah McDonald's, dengan 22.621 lokasi secara global di 150 negara pada Desember 2019.",
-            "img": "https://www.qries.com/images/banner_logo.png"
+            "name":"Marugame Udon",
+            "lokasi":"Jl. Margonda Raya No.356",
+            "desc": "Marugame Udon adalah Udon & Tempura terbaik dari Jepang. Marugame Udon pertama kali buka di Indonesia pada tgl 14 Februari 2013 di Mall Taman Anggrek. Semua resep yang digunakan merupakan resep asli dari Marugame Jepang, dimasak dengan menggunakan bahan-bahan berkualitas dan natural, diproses disetiap gerainya dengan tekhnik khusus dari Jepang dan dikontrol dengan standard quality assurance yang ketat di setiap gerainya.",
+            "img": "https://www.marugameudon.co.id/webroot/assets/img/logo.svg"
         }
     },
     {
         "model":"restaurants.restaurant",
         "pk":6,
         "fields":{
-            "name":"MASJEP",
-            "lokasi":"UI",
-            "rating": "3/5",
-            "desc": "KFC (kependekan dari Kentucky Fried Chicken), adalah jaringan restoran cepat saji Amerika yang berkantor pusat di Louisville, Kentucky, yang berspesialisasi dalam ayam goreng. Ini adalah jaringan restoran terbesar kedua di dunia (diukur berdasarkan penjualan) setelah McDonald's, dengan 22.621 lokasi secara global di 150 negara pada Desember 2019.",
-            "img": "https://www.qries.com/images/banner_logo.png"
+            "name":"HokBen",
+            "lokasi":"Jl. Margonda Raya Lantai Ground No.2/5",
+            "desc": "HokBen (nama baru dari Hoka Hoka Bento) adalah jaringan restoran makanan cepat saji yang menyajikan makanan bergaya Jepang yang berbasis di Jakarta, Indonesia. Hingga kini, HokBen memiliki 170 gerai (per akhir Januari 2020) yang tersebar di pulau Jawa, Bali dan Sumatera. Nama Hoka Hoka Bento sendiri berasal dari bahasa Jepang yang berarti 'makanan hangat dalam Kotak'.",
+            "img": "https://seeklogo.com/images/H/hokben-logo-C25A703DFE-seeklogo.com.png"
         }
     },
     {
@@ -71,7 +65,6 @@
         "fields":{
             "name":"SATEPACIL",
             "lokasi":"UI",
-            "rating": "3/5",
             "desc": "KFC (kependekan dari Kentucky Fried Chicken), adalah jaringan restoran cepat saji Amerika yang berkantor pusat di Louisville, Kentucky, yang berspesialisasi dalam ayam goreng. Ini adalah jaringan restoran terbesar kedua di dunia (diukur berdasarkan penjualan) setelah McDonald's, dengan 22.621 lokasi secara global di 150 negara pada Desember 2019.",
             "img": "https://www.qries.com/images/banner_logo.png"
         }
@@ -82,7 +75,6 @@
         "fields":{
             "name":"KARDUS",
             "lokasi":"UI",
-            "rating": "4/5",
             "desc": "KFC (kependekan dari Kentucky Fried Chicken), adalah jaringan restoran cepat saji Amerika yang berkantor pusat di Louisville, Kentucky, yang berspesialisasi dalam ayam goreng. Ini adalah jaringan restoran terbesar kedua di dunia (diukur berdasarkan penjualan) setelah McDonald's, dengan 22.621 lokasi secara global di 150 negara pada Desember 2019.",
             "img": "https://www.qries.com/images/banner_logo.png"
         }

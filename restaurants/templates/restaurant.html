@@ -88,6 +88,13 @@
       box-shadow: 10px 10px 40px -20px rgb(98, 98, 98);
       transform: translate(-5px,-5px);
     } */
+
+    #card-pic {
+      max-height: 110px;
+      width: auto;
+    }
+
+
 </style>
 
 
@@ -159,9 +166,9 @@
       <div class="col-12 col-md-6 col-lg-4 py-2">
         <div class="card .bg-dark .bg-gradient rounded">
           <div class="card-body">
-            <img src="${item.fields.img}" class="card-img-top" alt="...">
+            <img id="card-pic" src="${item.fields.img}" class="card-img-top" alt="...">
+              <br><br>
               <h5 class="card-title">${item.fields.name}</h5>
-              <h6 class="card-subtitle mb-2 text-muted">${item.fields.rating}</h6>
               <p class="card-text">${item.fields.lokasi}</p>
               <p class="card-text"></p> 
               <button class="btn btn-outline-dark btn-lg px-5" onclick="detail(${item.pk})">more</button>
@@ -194,9 +201,8 @@
 
         <div class="col-md-3 border-end p-4">
           <img class="w-100" src="${item.fields.img}" alt="..."/>
-          <div class="">
+          <div>
             <h2 class="display-6 text-center">${item.fields.name}</h2>
-            <h2 class="display-6 text-center">${item.fields.rating}</h2>
           </div>
         </div>
 
@@ -345,6 +351,10 @@
 
       return false
     }
+
+    const reviewCard = document.getElementById("review");
+    reviewCard.style.transform = "scale(0)";
+    reviewCard.style.opacity = 0;
   
 
     
