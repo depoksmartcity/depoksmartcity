@@ -37,16 +37,11 @@ class Patient(models.Model):
     
 class Appointment(models.Model):
     appointed_by = models.ForeignKey(Patient, on_delete=models.CASCADE)
+    appointed_by_name = models.CharField(max_length=80)
     facility = models.ForeignKey(HealthFacility, on_delete=models.CASCADE)
+    facility_name = models.CharField(max_length=50)
     date = models.DateField(help_text="YYYY-MM-DD")
     timeslot = models.CharField(max_length=20, choices=Appointment_Timeslot)
-    
+
     def __str__(self):
         return f'{self.appointed_by} - {self.facility} - ( {self.date}, {self.timeslot} )'
-
-    @property
-    def id(self):
-        date_id = self.date.strftime("%d%m%Y")
-        timeslot_index = self.timeslot()
-        id = date_id + '-' + timeslot_index
-        return id

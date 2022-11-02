@@ -1,7 +1,6 @@
 from multiprocessing import context
 from django.shortcuts import render
 from django.shortcuts import redirect
-from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
@@ -49,23 +48,36 @@ def registrasi(request):
 def create_appointment(request):
     context={}
 
-    if Patient.objects.get(user=request.user) == None:
-        return redirect("kesehatan:registrasi")
-
-    else:
+    try:
+        Patient.objects.get(user=request.user)
         if request.method == "POST":
             appointed_by = Patient.objects.get(user=request.user)
+            appointed_by_name = appointed_by.__str__
             facility =  HealthFacility.objects.get(name=request.POST.get("facility"))
+            facility_name = facility.name
             date = request.POST.get("date")
             time = request.POST.get("time")
-            new_appointment = Appointment(appointed_by=appointed_by, facility=facility, date=date, timeslot=time)
+            new_appointment = Appointment(appointed_by=appointed_by, appointed_by_name = appointed_by_name, facility=facility, facility_name = facility_name, date=date, timeslot=time)
             new_appointment.save()
 
             return redirect("kesehatan:show_main")
         
-        return render(request, "create-appointment.html", context)
+    except Patient.DoesNotExist:
+        return redirect("kesehatan:registrasi")
+
+    return render(request, "create-appointment.html", context)
 
 @login_required(login_url='/login/')
 def show_appointment_json(request):
-    appointment = Appointment.objects.filter(appointed_by = Patient.objects.get(user=request.user))
-    return HttpResponse(serializers.serialize('json', appointment), content_type='application/json')
+    try:
+        appointment = Appointment.objects.filter(appointed_by = Patient.objects.get(user=request.user))
+        return HttpResponse(serializers.serialize('json', appointment), content_type='application/json')
+        
+    except Patient.DoesNotExist:
+        return redirect("kesehatan:registrasi")
+
+@login_required(login_url='/login/')
+def delete_appointment(request, id):
+    deleted_appointment = Appointment.objects.get(pk=id)
+    deleted_appointment.delete()
+    return HttpResponseRedirect(reverse("kesehatan:show_main"))

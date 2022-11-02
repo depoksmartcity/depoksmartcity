@@ -12,13 +12,13 @@
       console.log(value)
       $("#appointmentCard").append(`
         <div class="card text-center zoom">
-          <div class="card-header"> Date Created: ${value.fields.date} </div>
+          <div class="card-header" style="text-align:left; background-color:#e3f2fd;"> Fasilitas Kesehatan : ${value.fields.facility_name} </div>
           <div class="image-box card-bg-rv">
-            <img src="https://i.ibb.co/b1tTPqm/todolist.webp" height="200"></img>
             <div class="card responsive-card">
             <div class="card-body card-bg-rv">
-              <h5 class="card-title"> ${value.fields.title} </h5>
-              <p class="card-text"> ${value.fields.description} </p>
+              <p class="card-text"> Tanggal : ${value.fields.date} </p>
+              <p class="card-text"> Waktu : ${value.fields.timeslot} </p>
+              <a class="btn btn-danger btn-md btn-block" type="submit" href="/kesehatan/delete-appointment/${value.pk}">Hapus</a>
             </div>
           </div>
           </div>
@@ -45,6 +45,10 @@
 
       #containerAll{
         padding-top: 3%;
+      }
+
+      .zoom:hover{
+        transform: scale(1.03);
       }
 
     </style>
@@ -123,7 +127,7 @@
   <div class="container mt-5" id="daftarLabel" >
     <h2>Daftar Konsultasi Anda</h2>
   </div>
-  <div class="d-flex flex-wrap justify-content-center align-items-center gap-5 responsive-container py-5" id = "appointmentCard">
+  <div class="d-flex flex-wrap justify-content-left align-items-left gap-5 container py-3 ml-5 mr-5" id = "appointmentCard">
   </div>
 
   </div>
