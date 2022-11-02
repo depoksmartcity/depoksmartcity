@@ -5,7 +5,7 @@ $(document).ready(function()  {
   async function getData() {
     return fetch("restaurants/json").then((res) => res.json())
   }
-  
+
   async function showCard() {
     const panel = document.getElementById("panel");
     const list = await getData()
