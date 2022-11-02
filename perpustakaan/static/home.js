@@ -35,7 +35,7 @@ function bookData(data) {
           subtitle.classList.add('card-subtitle');
 
           title.innerHTML = val.fields.title;
-          subtitle.innerHTML = "Rate: " + val.fields.rate + " (" + val.fields.borrowed_times + ")";
+          subtitle.innerHTML = "Rate: " + val.fields.rate;
           
           card_body.appendChild(image);
           card_body.appendChild(title);
