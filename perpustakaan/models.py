@@ -19,11 +19,7 @@ class Publisher(models.Model):
     country = models.CharField(max_length=50)
     website = models.URLField()
 
-class Book(models.Model):
-    
-    def file_location(instance, filename):
-        return "static/media/books/{0}".format(os.path.basename(filename))
-                                                   
+class Book(models.Model):                                            
     title = models.CharField(max_length=50)
     isbn = models.CharField(max_length=13, null=True, blank=True)
     synopsis = models.TextField()
@@ -32,7 +28,7 @@ class Book(models.Model):
     publisher = models.ForeignKey(Publisher, on_delete=models.CASCADE)
     edition = models.IntegerField(default=1, validators=[MinValueValidator(1)])
     publication_date = models.DateField()
-    photo = models.ImageField(upload_to=file_location)
+    photo = models.ImageField()
     stock = models.IntegerField(default=1, validators=[MinValueValidator(0)])
     is_available = models.BooleanField(default=True)
     rate = models.DecimalField(max_digits=3, decimal_places=2, validators=[MinValueValidator(0), MaxValueValidator(5)], default=0)
