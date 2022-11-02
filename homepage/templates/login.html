@@ -6,81 +6,40 @@
 
 {% block content %}
 
-<style>
-    body {
-        margin-top: 50px;
-        text-align: center;
-    }
+<nav class="navbar" style="background-color: #232b2b;">
+    <div class="container-fluid">
+      <span class="navbar-brand mb-0 h1"> <b style="color:white">Login Page</b></span>
+    </div>
+</nav>
 
-    h1,h2,h3,h4,h5,h6 {
-        color: #395B64;
-        font-weight: 600;
-        font-family: Arial, Helvetica, sans-serif;
-    }
-
-    p,td {
-        color: #2C3333;
-        font-family: Arial, Helvetica, sans-serif;
-    }
-    
-    table {
-        margin-left:auto; 
-        margin-right:auto; 
-    }
-
-    .form-control {
-        margin: 10px
-    }
-
-    button {
-        background-color: #2C3333;
-        border: 2px solid #395B64;
-        border-radius: 8px;
-        color: #E7F6F2;
-        font-family: Arial, Helvetica, sans-serif;
-        margin: 10px;
-        padding: 10px 50px;
-        transition-duration: 0.4s;
-    }
-    button:hover {
-        background-color: #E7F6F2;
-        border: 2px solid #395B64;
-        color: #2C3333;
-    }
-</style>
-
-<div class = "login">
-
-    <h1>To Do List Login</h1>
-
-    <form method="POST" action="">
+<div class = "login" style="text-align:center">
+    <h1 style="margin-top: 25px">Login</h1>
+    <form method="POST" action="" >
         {% csrf_token %}
-        <table>
+        <table style="margin-left:auto;margin-right:auto; margin-top: 25px" class="table table-bordered w-auto">
             <tr>
-                <td>Username: </td>
+                <td style="vertical-align: middle">Username: </td>
                 <td><input type="text" name="username" placeholder="Username" class="form-control"></td>
             </tr>
                     
             <tr>
-                <td>Password: </td>
+                <td style="vertical-align: middle">Password: </td>
                 <td><input type="password" name="password" placeholder="Password" class="form-control"></td>
             </tr>
-
-            <tr>
-                <td></td>
-                <!-- <td><input class="btn btn-outline-secondary" type="submit" value="Login"></td> -->
-                <td><button class="btn btn-outline-secondary" type="submit">Login</button></td>
-            </tr>
         </table>
+        <td><input class="btn btn-primary" type="submit" value="Login"></td>
     </form>
 
     {% if messages %}
-        {% for message in messages %}
-            <p>{{ message }}</p>
-        {% endfor %}
+        <ul>
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
     {% endif %}     
+
+    Belum mempunyai akun? <a href="{% url 'homepage:register' %}">Buat Akun</a>
         
-    Belum mempunyai akun? <a href="{% url 'homepage:register' %}">Create Account</a>
 
 </div>
 
