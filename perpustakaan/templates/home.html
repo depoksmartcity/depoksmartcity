@@ -19,57 +19,9 @@
 
     <!-- Custom styles for this template -->
     <link href={% static 'style.css' %} rel="stylesheet" />
+    <script src={% static 'home.js' %}>
+    </script>
     <script>
-    function bookData(data) {
-      if (data.length == 0) {
-        // If book is empty
-        var pesan = document.createElement('p');
-        pesan.innerHTML = 'Mohon maaf atas ketidaknyamanannya! Belum ada buku ditambahkan!';
-        pesan.style.margin = "0px 10px";
-  
-        $(document.body).append(pesan);
-  
-      } else {
-        $.each( data, function(key, val) {
-            var outerDiv = document.createElement('div');
-            outerDiv.classList.add('col-sm-3');
-  
-            var card_outer = document.createElement('div');
-            card_outer.classList.add('card', 'text-bg-success', 'mb-3');
-  
-            var card_body = document.createElement('div');
-            card_body.classList.add('card-body');
-  
-            card_outer.appendChild(card_body);
-            
-            var image = document.createElement('img');
-            var title = document.createElement('a');
-            var titleText = document.createTextNode(val.fields.title);
-            var subtitle = document.createElement('h6');
-            
-            image.setAttribute('src', val.fields.photo);
-            
-            title.appendChild(titleText);
-            title.classList.add('card-title');
-            title.classList.add('link-light', 'text-decoration-none');
-            title.href = "book/" + val.pk;
-
-            subtitle.classList.add('card-subtitle');
-  
-            title.innerHTML = val.fields.title;
-            subtitle.innerHTML = "Rate: " + val.fields.rate + " (" + val.fields.borrowed_times + ")";
-            
-            card_body.appendChild(image);
-            card_body.appendChild(title);
-            card_body.appendChild(subtitle);
-
-            outerDiv.appendChild(card_outer);
-
-            $("#data").append(outerDiv);
-        });
-      }
-    };
-
     $(document).ready(function(){
 
         // For displaying book data
@@ -136,14 +88,18 @@
                 <div class="col-md-6">
                   <div class="detail-box">
                     <h5>
-                      e-Lib Depok 1
+                      e-Lib Depok
                     </h5>
                     <h1>
                       For All Your <br>
                       Reading Needs
                     </h1>
                     <p>
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste quam velit saepe dolorem deserunt quo quidem ad optio.
+                      e-Lib Depok adalah perpustakaan daring yang disediakan oleh pemerintah Kota Depok. Anda dapat meminjam buku secara daring. <br>
+                      List Perpustakaan Luring Kota Depok: <br>
+                      1. Perpustakaan Umum Kota Depok <br>
+                      2. Perpustakaan Pusat Universitas Indonesia <br>
+
                     </p>
                   </div>
                 </div>
@@ -159,6 +115,46 @@
       </div>
     </section>
     <!-- end slider section -->
+    <section class="slider_section ">
+      <div id="customCarousel1" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="container ">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="detail-box">
+                    <h5>
+                      Manfaat Membaca Buku
+                    </h5>
+                    <h1>
+                      Membaca Buku itu <br>
+                      Penting Lho!
+                    </h1>
+                    <p>
+                      Buku adalah jendela dunia, dan kegiatan membaca buku merupakan suatu cara untuk membuka jendela tersebut agar kita bisa mengetahui lebih tentang dunia yang belum kita tahu sebelumnya.  Kegiatan tersebut dapat dilakukan oleh siapa saja, anak-anak, remaja, dewasa, maupun orang-orang yang telah berusia lanjut. <br>
+                      Berikut manfaat membaca buku: <br>
+                      1. Stimulasi Mental <br>
+                      2. Mengurangi Stress <br>
+                      3. Menambah Wawasan dan Pengetahuan <br>
+                      4. Memperluas Pemikiran Seseorang <br>
+                      5. Meningkatkan Kualitas Memori <br>
+                      6. Meningkatkan Fokus dan Konsentrasi <br>
+                      7. Meningkatkan Kemampuan Menulis <br>
+                      
+                    </p>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="img-box">
+                    <img src="images/slider-img.png" alt="">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   </div>
 
     <!-- Products Start -->
