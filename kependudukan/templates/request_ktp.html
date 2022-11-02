@@ -1,12 +1,14 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block meta %}
 <title>Kependudukan</title>
+<link rel="stylesheet" href="{% static 'css/kependudukan.css' %}">
+<script src="{% static 'script/request_ktp.js' %}"></script>
 {% endblock meta %}
 
 {% block content %}
 <h1>Kependudukan</h1>
-<button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#add-modal" data-bs-whatever="@mdo">Isi Form</button>
+<button type="button" class="btn btn-outline-secondary my-btn" data-bs-toggle="modal" data-bs-target="#add-modal" data-bs-whatever="@mdo">Isi Form</button>
 <div class="modal fade" id="add-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -15,40 +17,53 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <form id="task-form" method="POST" action="/todolist/add/">
+          <form id="request-ktp-form" method="POST" action="{% url 'kependudukan:add_request' %}">
             {% csrf_token %}
             {{ form.as_table }}
-            <div class="mb-3">
-              <label for="recipient-name" class="col-form-label">Title:</label>
-              <input type="text" class="form-control" id="task-title" name="title">
-            </div>
-            <div class="mb-3">
-              <label for="message-text" class="col-form-label">Description:</label>
-              <input type="text" class="form-control" name="description" id="task-desc">
-            </div>
           </form>
         </div> 
         <div class="modal-footer">
-            <button type="button" class="btn btn-outline-secondary" id="add-task-btn" data-bs-dismiss="modal">Kirim</button>
+            <button type="button" class="btn btn-outline-secondary my-btn" id="add-request" data-bs-dismiss="modal">Kirim</button>
         </div>
       </div>
     </div>
 </div>
 
 <div id="no-request">
-    <h6>Belum ada permohonan pembuatan KTP</h6>
+    <h6>Belum terdapat permohonan pembuatan KTP</h6>
 </div>
 
-{% for request in requests %}
-<div class="card" style="width: 18rem;">
+<div class="requests-card-container">
+<!-- {% for request in requests %}
+<div class="card">
     <div class="card-body">
       <h5 class="card-title">Request</h5>
-      <h6 class="card-subtitle mb-2 text-muted">{{request}}</h6>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      <a href="#" class="card-link">Card link</a>
-      <a href="#" class="card-link">Another link</a>
+      <h6 class="card-subtitle mb-2 text-muted">{{request.requested_at}}</h6>
+      <p class="card-text">provinsi: {{request.provinsi}}</p>
+      <p class="card-text">kota: {{request.provinsi}}</p>
+      <p class="card-text">kecamatan: {{request.provinsi}}</p>
+      <p class="card-text">kelurahan: {{request.provinsi}}</p>
+      <p class="card-text">permohonan: {{request.provinsi}}</p>
+    
+      <p class="card-text">nama_lengkap: {{request.provinsi}}</p>
+      <p class="card-text">nomor_kk: {{request.provinsi}}</p>
+      <p class="card-text">nik: {{request.provinsi}}</p>
+      <p class="card-text">alamat: {{request.provinsi}}</p>
+    
+      <p class="card-text">rt: {{request.provinsi}}</p>
+      <p class="card-text">rw: {{request.provinsi}}</p>
+      <p class="card-text">kode_pos: {{request.provinsi}}</p>
+    
+      <p class="card-text">nomor_hp: {{request.provinsi}}</p>
+    
+      <p class="card-text">schedule_date: {{request.provinsi}}</p>
+      <p class="card-text">schedule_time: {{request.provinsi}}</p>
     </div>
 </div>
-{% endfor %}
-
+{% endfor %} -->
+</div>
+<script type="text/javascript">
+  const url_post = "{% url 'kependudukan:add_request' %}";
+  const form_fields = {{ form_fields|safe }};
+</script>
 {% endblock content %}
