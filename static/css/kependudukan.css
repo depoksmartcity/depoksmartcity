@@ -1,8 +1,9 @@
 #content {
+    margin: 10%;
     margin-top: 2%;
-    margin-left: 15%;
+    /* margin-left: 15%;
     margin-right: 15%;
-    margin-bottom: 5%;
+    margin-bottom: 5%; */
 }
 
 h1 {
@@ -17,7 +18,11 @@ p {
     color: #13191F;
 }
 .kelurahan-card {
-    width: 18rem;
+    width: 25rem;
+    margin : 1em;
+    margin-left: 0;
+    margin-right: 2em;
+    padding: 1em;
 }
 
 .my-btn {
@@ -28,4 +33,11 @@ p {
     --bs-btn-hover-color: #13191F;
     --bs-btn-hover-bg: #FFFFFF;
     --bs-btn-hover-border-color: #13191F;
+}
+
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+    width: 100%;
 }

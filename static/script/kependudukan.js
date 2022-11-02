@@ -9,101 +9,101 @@ $(document).ready(function() {
     $.get("/kependudukan/json", function(data) {
 
         for (i=0;i<data.length;i++){
-            if (areEqual(data[i].fields.name, "Beji")) {
+            if (areEqual(data[i].fields.kecamatan, "Beji")) {
                 $("#kec-beji").append(
                     `<div class="card kelurahan-card">
                         <div class="card-body">
-                            <h5 class="card-title">${data[i].fields.name}</h5>
+                            <h5 class="card-title">Kelurahan ${data[i].fields.name}</h5>
                             <h6 class="card-subtitle mb-2 text-muted">${data[i].fields.address}</h6>
                         </div>
                     </div>`
                 )
-            } else if (areEqual(data[i].fields.name, "Pancoran Mas")) {
+            } else if (areEqual(data[i].fields.kecamatan, "Pancoran Mas")) {
                 $("#kec-pancoran-mas").append(
                     `<div class="card kelurahan-card">
                         <div class="card-body">
-                            <h5 class="card-title">${data[i].fields.name}</h5>
+                            <h5 class="card-title">Kelurahan ${data[i].fields.name}</h5>
                             <h6 class="card-subtitle mb-2 text-muted">${data[i].fields.address}</h6>
                         </div>
                     </div>`
                 )
-            } else if (areEqual(data[i].fields.name, "Cipayung")) {
+            } else if (areEqual(data[i].fields.kecamatan, "Cipayung")) {
                 $("#kec-cipayung").append(
                     `<div class="card kelurahan-card">
                         <div class="card-body">
-                            <h5 class="card-title">${data[i].fields.name}</h5>
+                            <h5 class="card-title">Kelurahan ${data[i].fields.name}</h5>
                             <h6 class="card-subtitle mb-2 text-muted">${data[i].fields.address}</h6>
                         </div>
                     </div>`
                 )
-            } else if (areEqual(data[i].fields.name, "Sukmajaya")) {
+            } else if (areEqual(data[i].fields.kecamatan, "Sukmajaya")) {
                 $("#kec-sukmajaya").append(
                     `<div class="card kelurahan-card">
                         <div class="card-body">
-                            <h5 class="card-title">${data[i].fields.name}</h5>
+                            <h5 class="card-title">Kelurahan ${data[i].fields.name}</h5>
                             <h6 class="card-subtitle mb-2 text-muted">${data[i].fields.address}</h6>
                         </div>
                     </div>`
                 )
-            } else if (areEqual(data[i].fields.name, "Cilodong")) {
+            } else if (areEqual(data[i].fields.kecamatan, "Cilodong")) {
                 $("#kec-cilodong").append(
                     `<div class="card kelurahan-card">
                         <div class="card-body">
-                            <h5 class="card-title">${data[i].fields.name}</h5>
+                            <h5 class="card-title">Kelurahan ${data[i].fields.name}</h5>
                             <h6 class="card-subtitle mb-2 text-muted">${data[i].fields.address}</h6>
                         </div>
                     </div>`
                 )
-            } else if (areEqual(data[i].fields.name, "Limo")) {
+            } else if (areEqual(data[i].fields.kecamatan, "Limo")) {
                 $("#kec-limo").append(
                     `<div class="card kelurahan-card">
                         <div class="card-body">
-                            <h5 class="card-title">${data[i].fields.name}</h5>
+                            <h5 class="card-title">Kelurahan ${data[i].fields.name}</h5>
                             <h6 class="card-subtitle mb-2 text-muted">${data[i].fields.address}</h6>
                         </div>
                     </div>`
                 )
-            } else if (areEqual(data[i].fields.name, "Cinere")) {
+            } else if (areEqual(data[i].fields.kecamatan, "Cinere")) {
                 $("#kec-cinere").append(
                     `<div class="card kelurahan-card">
                         <div class="card-body">
-                            <h5 class="card-title">${data[i].fields.name}</h5>
+                            <h5 class="card-title">Kelurahan ${data[i].fields.name}</h5>
                             <h6 class="card-subtitle mb-2 text-muted">${data[i].fields.address}</h6>
                         </div>
                     </div>`
                 )
-            } else if (areEqual(data[i].fields.name, "Cimanggis")) {
+            } else if (areEqual(data[i].fields.kecamatan, "Cimanggis")) {
                 $("#kec-cimanggis").append(
                     `<div class="card kelurahan-card">
                         <div class="card-body">
-                            <h5 class="card-title">${data[i].fields.name}</h5>
+                            <h5 class="card-title">Kelurahan ${data[i].fields.name}</h5>
                             <h6 class="card-subtitle mb-2 text-muted">${data[i].fields.address}</h6>
                         </div>
                     </div>`
                 )
-            } else if (areEqual(data[i].fields.name, "Tapos")) {
+            } else if (areEqual(data[i].fields.kecamatan, "Tapos")) {
                 $("#kec-tapos").append(
                     `<div class="card kelurahan-card">
                         <div class="card-body">
-                            <h5 class="card-title">${data[i].fields.name}</h5>
+                            <h5 class="card-title">Kelurahan ${data[i].fields.name}</h5>
                             <h6 class="card-subtitle mb-2 text-muted">${data[i].fields.address}</h6>
                         </div>
                     </div>`
                 )
-            } else if (areEqual(data[i].fields.name, "Sawangan")) {
+            } else if (areEqual(data[i].fields.kecamatan, "Sawangan")) {
                 $("#kec-sawangan").append(
                     `<div class="card kelurahan-card">
                         <div class="card-body">
-                            <h5 class="card-title">${data[i].fields.name}</h5>
+                            <h5 class="card-title">Kelurahan ${data[i].fields.name}</h5>
                             <h6 class="card-subtitle mb-2 text-muted">${data[i].fields.address}</h6>
                         </div>
                     </div>`
                 )
-            } else if (areEqual(data[i].fields.name, "Bojong Sari")) {
+            } else if (areEqual(data[i].fields.kecamatan, "Bojong Sari")) {
                 $("#kec-bojong-sari").append(
                     `<div class="card kelurahan-card">
                         <div class="card-body">
-                            <h5 class="card-title">${data[i].fields.name}</h5>
+                            <h5 class="card-title">Kelurahan ${data[i].fields.name}</h5>
                             <h6 class="card-subtitle mb-2 text-muted">${data[i].fields.address}</h6>
                         </div>
                     </div>`
