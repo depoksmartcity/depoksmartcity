@@ -27,7 +27,7 @@ function bookData(data) {
       synopsis.innerHTML = val.fields.synopsis;
       author.innerHTML = "By " + val.fields.author;
       publisher.innerHTML = "Published by " + val.fields.publisher;
-      publication_date.innerHTML = val.fields.publication_date;
+      publication_date.innerHTML = "Published on " + val.fields.publication_date;
       isbn.innerHTML = "ISBN " + val.fields.isbn;
       edition.innerHTML = val.fields.edition + " edition";
       pages.innerHTML = val.fields.pages + " pages";
