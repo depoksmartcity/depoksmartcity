@@ -20,7 +20,7 @@ function bookData(data) {
       var returnBtn = document.getElementById('returnBtn');
       var reviewBtn = document.getElementById('reviewBtn');
       
-      image.setAttribute('src', "{{ val.fields.photo }}");
+      image.setAttribute('src', val.fields.photo);
       
       title.innerHTML = val.fields.title;
 
