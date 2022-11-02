@@ -2,7 +2,7 @@ from multiprocessing import context
 from django.shortcuts import render
 from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.core import serializers
 from django.urls import reverse
 
@@ -16,30 +16,38 @@ def show_healthFacility(request):
     context={}
     return render(request, "health-facility.html", context)
 
-@login_required(login_url='/login/')
 def show_healthFacility_json(request):
     facility = HealthFacility.objects.all()
     return HttpResponse(serializers.serialize('json', facility), content_type='application/json')
 
 @login_required(login_url='/login/')
+def show_registered_patient_page(request):
+    context={}
+    return render(request, "registered-patient.html", context)
+
+@login_required(login_url='/login/')
 def registrasi(request):
     context={}
+    try:
+        Patient.objects.get(user=request.user)
+        return redirect("kesehatan:registered-patient")
 
-    if request.method == "POST":
-        first_name = request.POST.get("firstName")
-        last_name = request.POST.get("lastName")
-        mother_name = request.POST.get("motherName")
-        email = request.POST.get("email")
-        gender = request.POST.get("gender")
-        age = request.POST.get("age")
-        address = request.POST.get("address")
-        new_patient = Patient(user = request.user, first_name=first_name, last_name=last_name, mother_name=mother_name, email=email, gender=gender, age=age, address=address)
-        new_patient.save()
+    except Patient.DoesNotExist:
+        if request.method == "POST":
+            first_name = request.POST.get("firstName")
+            last_name = request.POST.get("lastName")
+            mother_name = request.POST.get("motherName")
+            email = request.POST.get("email")
+            gender = request.POST.get("gender")
+            age = request.POST.get("age")
+            address = request.POST.get("address")
+            new_patient = Patient(user = request.user, first_name=first_name, last_name=last_name, mother_name=mother_name, email=email, gender=gender, age=age, address=address)
+            new_patient.save()
 
-        return redirect("kesehatan:create-appointment")
+            return redirect("kesehatan:create-appointment")
+
+        return render(request, "registrasi.html", context)
     
-    return render(request, "registrasi.html", context)
-
 @login_required(login_url='/login/')
 def create_appointment(request):
     context={}
