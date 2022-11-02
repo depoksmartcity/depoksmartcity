@@ -40,3 +40,18 @@ def add_aspirasi_ajax(request):
             return HttpResponse(b"CREATED", status=201)
             
     return HttpResponseNotFound()
+
+@login_required(login_url='/login/')
+def show_json_user(request):
+    data_aspirasi_user = Aspirasi.objects.filter(user=request.user)
+    return HttpResponse(serializers.serialize("json", data_aspirasi_user))
+
+@login_required(login_url='/login/')
+def show_aspirasi_user(request):
+    data_aspirasi_user = Aspirasi.objects.filter(user=request.user)
+    context = {
+        'data_aspirasi_user': data_aspirasi_user,
+    }
+    return render(request, "aspirasiUser.html", context)
+
+
