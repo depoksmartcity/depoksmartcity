@@ -1,6 +1,6 @@
 function bookData(data) {
     $.each(data, function(key, val) {        
-      var image = document.createElement('img');
+      var image = document.getElementById('book-cover');
       var title = document.getElementById('book-title');
       var synopsis = document.getElementById('book-synopsis');
       var star1 = document.getElementById('star1');
