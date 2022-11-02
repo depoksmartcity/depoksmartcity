@@ -37,7 +37,7 @@
                     <div class="col m-2">
                         {% if request.user.is_authenticated %}
                             <!-- form aspirasi -->
-                            <form method="POST" id="postAspirasi" onsubmit="addAspirasi();return false" >
+                            <form method="POST" id="postAspirasi" onsubmit="addAspirasi(`{% url 'aspirasi:add_aspirasi_ajax' %}`);return false" >
                                 <p class="w-100 justify-content-center my-1">Halo, <span style="color: #67809F;">{{ user }}</span>!</p>
                                 {% csrf_token %}
                                 {{ form }}
