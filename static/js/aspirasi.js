@@ -19,5 +19,12 @@ async function getAspirasi(){
     document.getElementById("output").innerHTML = htmlString
   }
   
+  async function addAspirasi() {
+    fetch("{% url 'aspirasi:add_aspirasi_ajax' %}", {
+          method: "POST",
+          body: new FormData(document.querySelector('#postAspirasi'))
+      }).then(refreshAspirasi)
+    return false
+  }
   refreshAspirasi()
  
