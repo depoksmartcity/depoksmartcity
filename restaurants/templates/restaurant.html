@@ -6,14 +6,16 @@
 <script>window.CSRF_TOKEN = "{{ csrf_token }}"</script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <link rel="stylesheet" type="text/css" href={% static 'bootstrap.css' %} />
+<link href={% static 'style.css' %} rel="stylesheet" />
+<link rel="stylesheet" href="{% static 'css/restaurants.css' %}">
+
 
 {% endblock meta %}
 
 {% block content %}
-<link href={% static 'style.css' %} rel="stylesheet" />
 
 
-<style>
+<!-- <style>
 
     .card{
       border-radius: 4px;
@@ -100,7 +102,7 @@
     }
 
 
-</style>
+</style> -->
 
 <header class="header_section">
     <div class="container-fluid">
@@ -438,11 +440,9 @@
     const reviewCard = document.getElementById("review");
     reviewCard.style.transform = "scale(0)";
     reviewCard.style.opacity = 0;
-  
 
-    
 </script>
-
+<script src="{% static 'js/aspirasi.js' %}"></script>
 
 
 
