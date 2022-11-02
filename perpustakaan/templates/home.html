@@ -1,0 +1,164 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block meta %}
+<title> e-Lib Depok</title>
+<head>
+    <!-- Basic -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- bootstrap core css -->
+    <link rel="stylesheet" type="text/css" href={% static 'bootstrap.css' %} />
+    <!-- font awesome style -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    {% comment %} <link href={% static 'font-awesome.min.css' %} rel="stylesheet" />  {% endcomment %}
+
+    <!-- Custom styles for this template -->
+    <link href={% static 'style.css' %} rel="stylesheet" />
+    <script src={% static 'home.js' %}>
+    </script>
+    <script>
+    $(document).ready(function(){
+
+        // For displaying book data
+        $.get( "{% url 'perpustakaan:get_book_json' %}", function(data) {
+          bookData(data);      
+        });
+    });
+    </script>
+</head>
+
+{% endblock meta %}
+
+{% block content %}
+
+<div class="hero_area">
+    <!-- header section strats -->
+    <header class="header_section">
+      <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg custom_nav-container ">
+          <a class="navbar-brand" href="{% url 'perpustakaan:get_book' %}">
+            <span>
+              e-Lib Depok
+            </span>
+          </a>
+
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class=""> </span>
+          </button>
+          
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav">
+              <li class="nav-item active">
+                <a class="nav-link pl-lg-0" href="html"> Home </a>
+              </li>
+
+              {% if user.is_authenticated %}
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Hello, {{user.get_username}}!
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="{% url 'homepage:logout' %}">Logout</a></li>
+              </li>
+            
+            {% else %}
+              <li class="nav-item active">
+                <a class="nav-link pl-lg-0" href="{% url 'homepage:login' %}"> Login </a>
+              </li>
+            {% endif %}
+            </ul>
+          </div>
+          
+        </nav>
+      </div>
+    </header>
+    <!-- end header section -->
+    <!-- slider section -->
+    <section class="slider_section ">
+      <div id="customCarousel1" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="container ">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="detail-box">
+                    <h5>
+                      e-Lib Depok
+                    </h5>
+                    <h1>
+                      For All Your <br>
+                      Reading Needs
+                    </h1>
+                    <p>
+                      e-Lib Depok adalah perpustakaan daring yang disediakan oleh pemerintah Kota Depok. Anda dapat meminjam buku secara daring. <br>
+                      List Perpustakaan Luring Kota Depok: <br>
+                      1. Perpustakaan Umum Kota Depok <br>
+                      2. Perpustakaan Pusat Universitas Indonesia <br>
+
+                    </p>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="img-box">
+                    <img src="images/slider-img.png" alt="">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- end slider section -->
+    <section class="slider_section ">
+      <div id="customCarousel1" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="container ">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="detail-box">
+                    <h5>
+                      Manfaat Membaca Buku
+                    </h5>
+                    <h1>
+                      Membaca Buku itu <br>
+                      Penting Lho!
+                    </h1>
+                    <p>
+                      Buku adalah jendela dunia, dan kegiatan membaca buku merupakan suatu cara untuk membuka jendela tersebut agar kita bisa mengetahui lebih tentang dunia yang belum kita tahu sebelumnya.  Kegiatan tersebut dapat dilakukan oleh siapa saja, anak-anak, remaja, dewasa, maupun orang-orang yang telah berusia lanjut. <br>
+                      Berikut manfaat membaca buku: <br>
+                      1. Stimulasi Mental <br>
+                      2. Mengurangi Stress <br>
+                      3. Menambah Wawasan dan Pengetahuan <br>
+                      4. Memperluas Pemikiran Seseorang <br>
+                      5. Meningkatkan Kualitas Memori <br>
+                      6. Meningkatkan Fokus dan Konsentrasi <br>
+                      7. Meningkatkan Kemampuan Menulis <br>
+                      
+                    </p>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="img-box">
+                    <img src="images/slider-img.png" alt="">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+    <!-- Products Start -->
+    <div class="row" style="margin-left:10px; margin-right:10px" id="data">
+    </div>
+    <!-- Products End -->
+{% endblock content %}

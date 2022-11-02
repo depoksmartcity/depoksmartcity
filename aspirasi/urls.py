@@ -10,3 +10,4 @@ urlpatterns = [
     path('show-aspirasi/', show_aspirasi_pendatang, name='show_aspirasi_pendatang'),
 
 ]
+

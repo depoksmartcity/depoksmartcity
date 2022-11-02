@@ -5,3 +5,4 @@ class AspirasiForm(forms.ModelForm):
     class Meta:
         model = Aspirasi
         exclude = ('user', )
+
