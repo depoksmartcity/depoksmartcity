@@ -28,7 +28,7 @@ class Book(models.Model):
     publisher = models.ForeignKey(Publisher, on_delete=models.CASCADE)
     edition = models.IntegerField(default=1, validators=[MinValueValidator(1)])
     publication_date = models.DateField()
-    photo = models.ImageField()
+    photo = models.ImageField(default='')
     stock = models.IntegerField(default=1, validators=[MinValueValidator(0)])
     is_available = models.BooleanField(default=True)
     rate = models.DecimalField(max_digits=3, decimal_places=2, validators=[MinValueValidator(0), MaxValueValidator(5)], default=0)
