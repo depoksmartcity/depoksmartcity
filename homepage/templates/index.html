@@ -9,7 +9,7 @@
   <link rel="stylesheet" type="text/css" href={% static 'bootstrap.css' %} />
   <!-- font awesome style -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link href={% static 'font-awesome.min.css' %} rel="stylesheet" /> 
+  {% comment %} <link href={% static 'font-awesome.min.css' %} rel="stylesheet" />  {% endcomment %}
 
   <!-- Custom styles for this template -->
   <link href={% static 'style.css' %} rel="stylesheet" />
@@ -22,7 +22,7 @@
   <header class="header_section">
     <div class="container-fluid">
       <nav class="navbar navbar-expand-lg custom_nav-container ">
-        <a class="navbar-brand" href="{% url 'perpustakaan:get_book' %}">
+        <a class="navbar-brand" href="{% url 'homepage:index' %}">
           <span>
             Depok Smart City
           </span>
@@ -35,7 +35,19 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav">
             <li class="nav-item active">
-              <a class="nav-link pl-lg-0" href="html"> Home </a>
+              <a class="nav-link pl-lg-0" href="{% url 'kependudukan:show_kependudukan' %}"> Kependudukan </a>
+            </li>
+
+            <li class="nav-item active">
+              <a class="nav-link pl-lg-0" href="{% url 'restaurants:restaurants' %}"> Restoran </a>
+            </li>
+
+            <li class="nav-item active">
+              <a class="nav-link pl-lg-0" href="{% url 'perpustakaan:get_book' %}"> Perpustakaan </a>
+            </li>
+
+            <li class="nav-item active">
+              <a class="nav-link pl-lg-0" href="{% url 'aspirasi:show_aspirasi' %}"> Aspirasi </a>
             </li>
 
             {% if user.is_authenticated %}
@@ -44,12 +56,12 @@
                   Hello, {{user.get_username}}!
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="">Logout</a></li>
+                  <li><a class="dropdown-item" href="{% url 'homepage:logout' %}">Logout</a></li>
               </li>
             
             {% else %}
               <li class="nav-item active">
-                <a class="nav-link pl-lg-0" href="html"> Login </a>
+                <a class="nav-link pl-lg-0" href="{% url 'homepage:login' %}"> Login </a>
               </li>
             {% endif %}
           </ul>
@@ -69,14 +81,14 @@
               <div class="col-md-6">
                 <div class="detail-box">
                   <h5>
-                    e-Lib Depok 1
+                    Depok Smart City
                   </h5>
                   <h1>
-                    For All Your <br>
-                    Reading Needs
+                    Everything <br>
+                    in one site
                   </h1>
                   <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste quam velit saepe dolorem deserunt quo quidem ad optio.
+                    Depok Smart City adalah Website Kota Depok dengan berbagai fitur dalam satu website. Fitur-fitur tersebut antara lain kependudukan, aspirasi, restoran, perpustakaan, dan kesehatan.
                   </p>
                 </div>
               </div>
@@ -92,5 +104,41 @@
     </div>
   </section>
   <!-- end slider section -->
+  <section class="slider_section ">
+    <div id="customCarousel1" class="carousel slide" data-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <div class="container ">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="detail-box">
+                  <h5>
+                    About Us
+                  </h5>
+                  <h1>
+                    PBP F04 <br>
+                    Depok Smart City
+                  </h1>
+                  <p>
+                    Kelompok F04 PBP Fasilkom UI Semester Gasal 2022/2023. <br>
+                    1. Bagas Shalahuddin Wahid - 2106708904 <br>
+                    2. Maureen Esther Wijaya - 2106705335 <br>
+                    3. Muhammad Abizar Rachmanda - 2106751133 <br>
+                    4. Muhammad Arief Braja Putra - 2106702352 <br>
+                    5. Muhammad Rizqy Ramadhan - 2106632182 <br>
+                  </p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="img-box">
+                  <img src="images/slider-img.png" alt="">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 </div>
 {% endblock content %}
