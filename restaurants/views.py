@@ -34,6 +34,7 @@ def show_restaurants(request, *args, **kwargs):
     }
     return render(request, "restaurant.html", context)
 
+@login_required(login_url='/login/')
 def create_review(request):
     if request.method == 'POST':
         review = request.POST.get('review')
