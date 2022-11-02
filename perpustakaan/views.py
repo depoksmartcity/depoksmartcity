@@ -9,12 +9,12 @@ import datetime
 
 # Create your views here.
 def get_author_by_id_json(request, id):
-    author_data = Author.objects.get(id=id)
+    author_data = Author.objects.filter(id=id)
     context = {'data': author_data}
     return HttpResponse(serializers.serialize("json", author_data), content_type="application/json")
 
 def get_publisher_by_id_json(request, id):
-    publisher_data = Publisher.objects.get(id=id)
+    publisher_data = Publisher.objects.filter(id=id)
     context = {'data': publisher_data}
     return HttpResponse(serializers.serialize("json", publisher_data), content_type="application/json")
 
