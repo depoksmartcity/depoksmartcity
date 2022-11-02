@@ -1,0 +1,131 @@
+{% extends 'base.html' %}
+
+{% block meta %}
+<title>Layanan Kesehatan</title>
+<head>
+    <link rel="shortcut icon" href="https://dinkes.depok.go.id/assets/img/icon/stethoscope%20(1).png">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+    $(document).ready(function(){
+    $.getJSON("{% url 'kesehatan:appointment-json' %}", function(data) {
+    $.each(data, function(index, value) {
+      console.log(value)
+      $("#appointmentCard").append(`
+        <div class="card text-center zoom">
+          <div class="card-header"> Date Created: ${value.fields.date} </div>
+          <div class="image-box card-bg-rv">
+            <img src="https://i.ibb.co/b1tTPqm/todolist.webp" height="200"></img>
+            <div class="card responsive-card">
+            <div class="card-body card-bg-rv">
+              <h5 class="card-title"> ${value.fields.title} </h5>
+              <p class="card-text"> ${value.fields.description} </p>
+            </div>
+          </div>
+          </div>
+        </div>`
+      )
+    })
+  })
+})
+    </script>
+    <style>
+      .carousel-caption{
+        margin-bottom: 10%;
+        margin-right: 40%;
+        align-items: flex-start;
+      }
+
+      #daftarLabel{
+        margin-left: 12%;
+      }
+
+      .carouselDark{
+        margin-top: 3%;
+      }
+
+      #containerAll{
+        padding-top: 3%;
+      }
+
+    </style>
+</head>
+{% endblock meta %}
+
+{% block content %}
+
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
+    <div class="container">
+      <a class="navbar-brand" href="{% url 'homepage:index' %}">Depok Smart City</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain" aria-controls="navbarMain" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>        
+      <div class="collapse navbar-collapse" id="navbarMain">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Hello, {{user.get_username}}!
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="{% url 'homepage:logout' %}">Logout</a></li>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="min-vh-100" style="background-color: #dbe2ef; margin: auto;">
+  <div class="container" id="containerAll">
+    <div id="carouselDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="https://cms.depok.go.id/upload/slider/389432a1026c197418379f753fb9e087.jpg" class="d-block w-100" style="border-radius: 0.5rem;">
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Registrasi Online</h5>
+              <p>Registrasi Online dan Jadwalkan Konsultasi lebih cepat</p>
+              <a class="btn btn-success btn-md btn-block" type="submit" href="{% url 'kesehatan:registrasi' %}">Selengkapnya</a>
+            </div>
+          </div>
+          <div class="carousel-item active">
+            <img src="https://cms.depok.go.id/upload/slider/b091b715bbd5556e9ce1a1306132b3cb.png" class="d-block w-100" style="border-radius: 0.5rem;">
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Daftar Fasilitas Kesehatan</h5>
+              <p>Cek daftar Puskesmas dan Rumah sakit tujuanmu dengan alamat lengkap dan narahubung.</p>
+              <a type="submit" class="btn btn-success  btn-md btn-block" href="{% url 'kesehatan:health-facility' %}">Selengkapnya</a>
+            </div>
+          </div>
+          <div class="carousel-item active">
+            <img src="https://cms.depok.go.id/upload/slider/d75e287d3df9e4cc99f345d3cafd446e.jpg" class="d-block w-100" style="border-radius: 0.5rem;">
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Jadwalkan Konsultasi</h5>
+              <p>Jadwalkan Konsultasi dan Cek Antrian RSUD dan Puskesmas</p>
+              <a class="btn btn-success btn-md btn-block" type="submit" href="{% url 'kesehatan:create-appointment' %}">Selengkapnya</a>
+            </div>
+          </div>
+        </div>
+
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselDark" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Sebelumnya</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselDark" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Selanjutnya</span>
+        </button>
+      </div>
+  </div>
+
+
+  <div class="container mt-5" id="daftarLabel" >
+    <h2>Daftar Konsultasi Anda</h2>
+  </div>
+  <div class="d-flex flex-wrap justify-content-center align-items-center gap-5 responsive-container py-5" id = "appointmentCard">
+  </div>
+
+  </div>
+
+{% endblock content %}
