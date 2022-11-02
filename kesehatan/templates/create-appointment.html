@@ -1,0 +1,143 @@
+{% extends 'base.html' %}
+
+{% block meta %}
+    <title>Layanan Konsultasi</title>
+    <link rel="shortcut icon" href="https://dinkes.depok.go.id/assets/img/icon/contract%20(1).png">
+    
+    <style>
+        #registrationCard{
+            margin: auto;
+            flex-wrap: wrap;
+        }
+
+    </style>
+{% endblock meta %}
+
+{% block content %}
+<script>
+    $(document).ready(function(){
+        $.getJSON("{% url 'kesehatan:health-facility-json' %}", function(data) {
+        $.each(data, function(index, value) {
+            console.log(value);
+            $("#formfacility").append(`
+                <option>${value.fields.name}</option>`
+            )
+        })
+        })                    
+    })
+
+    function showCapacity() {
+        
+        let fasilitas = document.getElementById("formfacility").value;
+        let tanggal = document.getElementById("formdate").value;
+        let waktu = document.getElementById("formtime").value;
+        let kapasitas = 0
+        let id_fasilitas = 1
+        
+        $.getJSON("{% url 'kesehatan:health-facility-json' %}", function(data) {
+        $.each(data, function(index, value) {
+            if (fasilitas == value.fields.name){
+                id_fasilitas = value.pk
+                kapasitas = value.fields.capacity_timeslot;
+        }})
+        })
+
+        $.getJSON("{% url 'kesehatan:appointment-json' %}", function(data) {
+        $.each(data, function(index, value) {
+            if (id_fasilitas == value.fields.facility && tanggal == value.fields.date && waktu == value.fields.timeslot){
+                kapasitas-=1;
+            }
+        })
+        document.getElementById("capacity").value = kapasitas;
+        })
+    }
+
+</script>
+
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
+    <div class="container">
+      <a class="navbar-brand" href="#">Depok Smart City</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain" aria-controls="navbarMain" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>        
+      <div class="collapse navbar-collapse" id="navbarMain">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Hello, {{user.get_username}}!
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="{% url 'homepage:logout' %}">Logout</a></li>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+<div class="min-vh-100" style="background-color: #dbe2ef; margin: auto;">
+    <div class="container py-5 h-100">
+        <div id="registrationCard" class="d-flex justify-content-center align-items-center h-100">
+            <div class="col col-xl-8">
+                <div class="card" style="border-radius: 0.5rem;">
+                    <div class="col-md-12 col-lg-15 d-flex align-items-center">
+                        <div class="card-body p-4 p-lg-5 text-black">
+
+                            <form method="POST" action="">
+                                {% csrf_token %}
+
+                                <div class="d-flex align-items-center mb-3 pb-1">
+                                    <label class="h1 fw-bold mb-0">Layanan Konsultasi</label>
+                                </div>
+            
+                                <div class="form-outline mb-2">
+                                    <label class="form-label" for="formfacility">Fasilitas Kesehatan</label>
+                                    <select type="text" class="form-control form-control-md" id="formfacility" name="facility" required>
+                                    </select>
+                                </div>
+                                
+                                <div class="row form-group mb-3">
+                                    <div class="col-md-5">
+                                        <label class="form-label" for="date">Tanggal</label>
+                                        <input type="date" class="form-control form-control-md" id="formdate" name = "date" required/>
+                                    </div>
+                                    
+                                    <div class="col-md-5">
+                                        <label class="form-label" for="time">Waktu</label>
+                                        <select type="text" class="form-control form-control-md" id="formtime" name="time" required>
+                                            <option>08:00 - 08:30</option>
+                                            <option>08:30 - 09:00</option>
+                                            <option>09:00 - 09:30</option>
+                                            <option>09:30 - 10:00</option>
+                                            <option>10:00 - 10:30</option>
+                                            <option>10:30 - 11:00</option>
+                                            <option>11:00 - 11:30</option>
+                                            <option>11:00 - 11:30</option>
+                                            <option>11:30 - 12:00</option>
+                                            </select>
+                                    </div>
+                                </div>
+
+                                <div class="row form-group mb-2">
+                                    <div class="col-auto">
+                                        <label class="form-label" for="capacity">Kapasitas Pasien</label>
+                                        <input type="capacity" class="form-control form-control-md" name="capacity" id="capacity" value="0" readonly>
+                                    </div>
+                                    <div class="col-auto mt-4 pt-2">
+                                        <button class="btn btn-info btn-md btn-block" type="button" onclick="showCapacity()" id="capacity">Cek Kapasitas</button>
+                                    </div>
+                                </div>
+                                    
+                                    <div class="col pt-4">
+                                        <button class="btn btn-success btn-md btn-block" type="submit">Tambah Pasien</button>
+                                    </div>
+                                    
+                            </form>
+                        </div>    
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

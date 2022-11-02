@@ -48,7 +48,8 @@ INSTALLED_APPS = [
     'kependudukan',
     'aspirasi',
     'restaurants',
-    'perpustakaan'
+    'perpustakaan',
+    'kesehatan'
 
 ]
 
