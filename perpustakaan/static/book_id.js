@@ -1,6 +1,6 @@
 function bookData(data) {
     $.each(data, function(key, val) {        
-      var image = document.createElement('img');
+      var image = document.getElementById('book-cover');
       var title = document.getElementById('book-title');
       var synopsis = document.getElementById('book-synopsis');
       var star1 = document.getElementById('star1');
@@ -114,6 +114,24 @@ function bookData(data) {
           outerDiv.append(outerDiv1);
       });
     }
+  };
+
+  function getAuthorName(data) {
+    $.each(data, function(key, val) {        
+
+      var author = document.getElementById('author');
+
+      author.innerHTML = "By " + val.fields.first_name + " " + val.fields.last_name;
+  });
+  };
+
+  function getPublisherName(data) {
+    $.each(data, function(key, val) {        
+
+      var publisher = document.getElementById('publisher');
+
+      publisher.innerHTML = "Published by " + val.fields.name;
+  });
   };
 
   function checkBorrowReturnButton(data) {
