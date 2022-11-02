@@ -1,14 +1,10 @@
 from multiprocessing import context
 from django.shortcuts import render
 from django.shortcuts import redirect
-from django.contrib import messages
-from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.core import serializers
 from django.urls import reverse
-from django.views.decorators.csrf import csrf_exempt
-import datetime
 
 from kesehatan.models import *
 
