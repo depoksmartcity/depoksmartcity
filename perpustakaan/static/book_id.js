@@ -10,6 +10,7 @@ function bookData(data) {
       var star5 = document.getElementById('star5');
       var author = document.getElementById('author');
       var publisher = document.getElementById('publisher');
+      var publication_date = document.getElementById('publication_date');
       var isbn = document.getElementById('isbn');
       var edition = document.getElementById('edition');
       var pages = document.getElementById('pages');
@@ -25,7 +26,8 @@ function bookData(data) {
 
       synopsis.innerHTML = val.fields.synopsis;
       author.innerHTML = "By " + val.fields.author;
-      publisher.innerHTML = "Published by " + val.fields.publisher + " on " + val.fields.publication_date;
+      publisher.innerHTML = "Published by " + val.fields.publisher;
+      publication_date.innerHTML = "Published on " + val.fields.publication_date;
       isbn.innerHTML = "ISBN " + val.fields.isbn;
       edition.innerHTML = val.fields.edition + " edition";
       pages.innerHTML = val.fields.pages + " pages";
