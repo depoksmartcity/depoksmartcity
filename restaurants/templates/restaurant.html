@@ -1,12 +1,17 @@
 {% extends 'base.html' %}
+{% load static %}
 
 
 {% block meta %}
 <script>window.CSRF_TOKEN = "{{ csrf_token }}"</script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<link rel="stylesheet" type="text/css" href={% static 'bootstrap.css' %} />
+
 {% endblock meta %}
 
 {% block content %}
+<link href={% static 'style.css' %} rel="stylesheet" />
+
 
 <style>
 
@@ -46,7 +51,7 @@
     }
 
     #detail{
-      height: 600px;
+      height: 750px;
       background-color: rgb(255, 255, 255);
       box-shadow: 10px 10px 20px -10px rgba(158, 158, 158, 0.644);
       border-radius: 30px;
@@ -97,9 +102,59 @@
 
 </style>
 
+<header class="header_section">
+    <div class="container-fluid">
+      <nav class="navbar navbar-expand-lg custom_nav-container ">
+        <a class="navbar-brand" href="{% url 'homepage:index' %}">
+          <span>
+            Depok Smart City
+          </span>
+        </a>
 
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class=""> </span>
+        </button>
+        
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+              <a class="nav-link pl-lg-0" href="{% url 'kependudukan:show_kependudukan' %}"> Kependudukan </a>
+            </li>
 
-<br><br><br><br><br>
+            <li class="nav-item active">
+              <a class="nav-link pl-lg-0" href="{% url 'restaurants:restaurants' %}"> Restoran </a>
+            </li>
+
+            <li class="nav-item active">
+              <a class="nav-link pl-lg-0" href="{% url 'perpustakaan:get_book' %}"> Perpustakaan </a>
+            </li>
+
+            <li class="nav-item active">
+              <a class="nav-link pl-lg-0" href="{% url 'aspirasi:show_aspirasi' %}"> Aspirasi </a>
+            </li>
+
+            {% if user.is_authenticated %}
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Hello, {{user.get_username}}!
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="{% url 'homepage:logout' %}">Logout</a></li>
+              </li>
+            
+            {% else %}
+              <li class="nav-item active">
+                <a class="nav-link pl-lg-0" href="{% url 'homepage:login' %}"> Login </a>
+              </li>
+            {% endif %}
+          </ul>
+        </div>
+        
+      </nav>
+    </div>
+  </header>
+
+<br><br>
 
 <div>
     
@@ -145,8 +200,28 @@
       </div>
     </div>
   </div>
-
 </div>
+
+
+<div class="modal" id="warnModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">NotLoggedIn</h5>
+          <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>You need to be logged in to perform this action</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-dark btn-lg px-3"><a href="{% url 'homepage:login' %}">Log In</a></button>
+          <button type="button" class="btn btn-outline-dark btn-lg px-3" data-bs-dismiss="modal">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
 <script>
   $(document).ready(function()  {
@@ -214,8 +289,6 @@
                 <p class="card-text">${item.fields.desc}</p>
               </div>
             </div>
-            
-            <br>
 
             <div class="card" style="width: 48rem;">
               <div class="card-body">
@@ -256,8 +329,11 @@
         <div class="w-100">
           <span class="close float-end" onclick="closeReview()">&times;</span>
           <h1><b>Ulasan</b></h1>
+          {% if user.is_authenticated %}
           <button class="btn btn-outline-dark btn-lg px-5" data-bs-toggle="modal" data-bs-target="#exampleModal" >Create Review</button>
-
+            {% else %}
+            <button class="btn btn-outline-dark btn-lg px-5" data-bs-toggle="modal" data-bs-target="#warnModal" >Create Review</button>
+            {% endif %}
         </div>
 
         
@@ -313,7 +389,6 @@
         htmlString += `
         <div class="card" style="width: 42rem;">
           <div class="card-body">
-            <h5 class="card-title">REVIEW</h5>
             <p class="card-text">${item.fields.review}</p>
           </div>
         </div>`;
