@@ -7,17 +7,19 @@
   
   <head>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-      <script>
+      
+      <!--Embedded JavaScript-->
+      <script>  
         $(document).ready(function(){
         $.getJSON("{% url 'kesehatan:health-facility-json' %}", function(data) {
           $.each(data, function(index, value) {
             $("#facilityTableContents").append(`
             <tbody>
               <tr id="contentTable">
-                  <td style="width: 20%;">${value.fields.name} </td>
-                  <td style="width: 45%;">${value.fields.address} </td>
-                  <td style="width: 20%;">${value.fields.phone_number} </td>
-                  <td style="width: 15%;"><a href="${value.fields.address_url}" class="btn btn-primary btn-md active" role="button" aria-pressed="true">Lihat Peta</a><td>
+                  <td style="width: 20%; vertical-align:middle;">${value.fields.name} </td>
+                  <td style="width: 45%; vertical-align:middle;">${value.fields.address} </td>
+                  <td style="width: 20%; vertical-align:middle;">${value.fields.phone_number} </td>
+                  <td style="width: 15%;"><a href="${value.fields.address_url}" class="btn btn-primary btn-md active" role="button" aria-pressed="true" style="display: block; margin:auto;">Lihat Peta</a><td>
               </tr>
             </tbody>`
           )
@@ -41,17 +43,18 @@
 {% endblock meta %}
 
 {% block content %}
-<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
+<!--Navbar Start-->
+<nav class="navbar navbar-expand-lg navbar-light shadow" style="background-color: #063547;">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">Depok Smart City</a>
+      <a class="navbar-brand" style="color: white;" href="{% url 'homepage:index' %}">Depok Smart City</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain" aria-controls="navbarMain" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>        
       <div class="collapse navbar-collapse" id="navbarMain">
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Hello, {{user.get_username}}!
+            <a class="nav-link dropdown-toggle" style="color: white;" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Hello, {{user.get_username}} !
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
               <li><a class="dropdown-item" href="{% url 'homepage:logout' %}">Logout</a></li>
@@ -60,6 +63,7 @@
       </div>
     </div>
   </nav>
+<!--Navbar End-->
 
   <div class="min-vh-100" style="background-color: #dbe2ef; margin: auto;">
       <div class="container py-5 h-100">
@@ -67,7 +71,7 @@
               <div class="col col-xl-8">
 
                 <div class="container" id = "facilityTable" >
-                  <table class="table table-stripped table-hover table-dark table-bordered">
+                  <table class="table table-stripped table-hover table-dark table-bordered shadow">
                     <thead>
                       <tr id="headerTable">
                         <th style="width: 20%;">Nama</th>
@@ -78,9 +82,8 @@
                     </thead>
                   </table>
               
+                <table class="table table-stripped table-hover table-bordered shadow" id = "facilityTableContents" style="background-color:white;">
                 </table>
-                <table class="table table-stripped table-hover table-bordered" id = "facilityTableContents" style="background-color:white">
-              
                 </div>
               </div>
           </div>
