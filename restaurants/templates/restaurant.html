@@ -200,7 +200,7 @@
             </form>
         </div>
         <div class="modal-footer">
-            <td><button class="btn btn-outline-dark btn-lg px-5" id="button" data-bs-dismiss="modal" onsubmit="return false;">Create</button></td>
+            <td><button class="btn btn-outline-dark btn-lg px-5" id="button" data-bs-dismiss="modal" onsubmit="return false;" onclick="closeReview()">Create</button></td>
         </div>
       </div>
     </div>
@@ -428,6 +428,9 @@
             body: formData
         }).then(refreshReviews(id))
       refreshReviews(id)
+      refreshReviews(id)
+      refreshReviews(id)
+
 
       return false
     }
