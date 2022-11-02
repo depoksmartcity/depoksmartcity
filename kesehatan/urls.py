@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import show_main, registrasi, show_healthFacility, show_healthFacility_json, show_appointment_json, create_appointment, delete_appointment
+from .views import show_main, registrasi, show_healthFacility, show_healthFacility_json, show_appointment_json, create_appointment, delete_appointment, show_registered_patient_page
 
 app_name = 'kesehatan'
 
@@ -11,4 +11,5 @@ urlpatterns = [
     path('create-appointment/json/', show_appointment_json, name='appointment-json'),
     path('create-appointment/', create_appointment, name='create-appointment'),
     path('delete-appointment/<int:id>', delete_appointment, name='delete-appointment'),
+    path('registered-patient/', show_registered_patient_page, name='registered-patient'),
 ]

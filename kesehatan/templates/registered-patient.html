@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block meta %}
+    <title>Registrasi Faskes</title>
+    <link rel="shortcut icon" href="https://dinkes.depok.go.id/assets/img/icon/id-card.png">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+{% endblock meta %}
+
+{% block content %}
+<!--Navbar Start-->
+<nav class="navbar navbar-expand-lg navbar-light shadow" style="background-color: #063547;">
+    <div class="container">
+      <a class="navbar-brand" style="color: white;" href="{% url 'homepage:index' %}">Depok Smart City</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain" aria-controls="navbarMain" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>        
+      <div class="collapse navbar-collapse" id="navbarMain">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" style="color: white;" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Hello, {{user.get_username}} !
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="{% url 'homepage:logout' %}">Logout</a></li>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+<!--Navbar End-->
+
+<!--Keterangan Card Start-->
+<div class="min-vh-100" style="background-color: #dbe2ef; margin: auto;">
+    <div class="container py-5 h-100">
+        <div class="d-flex justify-content-center align-items-center h-100">
+            <div class="col col-xl-8">
+                <div class="card shadow p-3 mb-5 bg-body rounded" id="registrationCard" style="border-radius: 0.5rem;" >
+                    <h3 style="text-align:center; vertical-align:middle">Anda sudah terdaftar di database Faskes Depok</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Keterangan Card End-->
+
+{% endblock content %}
