@@ -12,6 +12,7 @@ import json
 def index(request):
     return render(request, 'index.html')
 
+@csrf_exempt
 def login_user(request):
     if request.method == 'POST':
         username = request.POST.get('username')
@@ -61,6 +62,7 @@ def logout_user(request):
     logout(request)
     return redirect('homepage:login')
 
+@csrf_exempt
 def register_user(request):
     form = UserCreationForm()
 
