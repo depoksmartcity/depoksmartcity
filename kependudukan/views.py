@@ -9,6 +9,7 @@ from django.contrib.auth.decorators import login_required
 from django.utils import timezone
 import datetime
 from .models import KELURAHAN_BY_KECAMATAN_CHOICES
+import json;
 
 
 # Create your views here.
@@ -101,4 +102,27 @@ def get_kelurahan(request):
     for kelurahan in kelurahan_list:
         res.append(kelurahan[0])
     return JsonResponse(res, safe=False)
+
+def add_request_flutter(request):
+    data = json.loads(request.body)
+    reqKtp = RequestKTP.objects.create(
+                    kecamatan = data['kecamatan'],
+                    kelurahan = data['kelurahan'],
+                    permohonan = data['permohonan'],
+
+                    nama_lengkap = data['nama_lengkap'],
+                    nomor_kk = data['nomor_kk'],
+                    nik = data['nik'],
+                    alamat = data['alamat'],
+
+                    rt = data['rt'],
+                    rw = data['rw'],
+                    kode_pos = data['kode_pos'],
+
+                    nomor_hp = data['nomor_hp'],
+
+                    schedule_date = data['schedule_date'],
+                    schedule_time = data['schedule_time'])
+    
+    return serialize_ktp([reqKtp])
     
