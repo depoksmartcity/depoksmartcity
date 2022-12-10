@@ -1,0 +1,155 @@
+[
+    {
+        "model":"kependudukan.kelurahan",
+        "pk":1,
+        "fields":{
+            "name":"Beji",
+            "kecamatan":"Beji",
+            "address": "Jl. H. Asmawi - (021) 7773243"
+        }
+    },
+    {
+        "model":"kependudukan.kelurahan",
+        "pk":2,
+        "fields":{
+            "name":"Beji Timur",
+            "kecamatan":"Beji",
+            "address": "Jl. Raya Pemuda No 3 RT 2 RW 5 Beji Timur - (021) 7521432"
+        }
+    },
+    {
+        "model":"kependudukan.kelurahan",
+        "pk":3,
+        "fields":{
+            "name":"Kemiri Muka",
+            "kecamatan":"Beji",
+            "address": "Jl. H. Fatimah - (021) 77203114"
+        }
+    },
+    {
+        "model":"kependudukan.kelurahan",
+        "pk":4,
+        "fields":{
+            "name":"Pondok Cina",
+            "kecamatan":"Beji",
+            "address": "Jl. H. Yahya Nuih - (021) 7522352"
+        }
+    },
+    {
+        "model":"kependudukan.kelurahan",
+        "pk":5,
+        "fields":{
+            "name":"Kukusan",
+            "kecamatan":"Beji",
+            "address": "Jl. Palakali  - (021) 7271404"
+        }
+    },
+    {
+        "model":"kependudukan.kelurahan",
+        "pk":6,
+        "fields":{
+            "name":"Tanah Baru",
+            "kecamatan":"Beji",
+            "address": "Jl. Palakali RT 6 RW 12 - (021) 7752860"
+        }
+    },
+    {
+        "model":"kependudukan.kelurahan",
+        "pk":7,
+        "fields":{
+            "name":"Pancoran Mas",
+            "kecamatan":"Pancoran Mas",
+            "address": "Jl. Pitara Raya No.49 RT 2 RW 15 - (021) 7759249"
+        }
+    },
+    {
+        "model":"kependudukan.kelurahan",
+        "pk":8,
+        "fields":{
+            "name":"Depok",
+            "kecamatan":"Pancoran Mas",
+            "address": "Jl. Kartini No 26 RT 2 RW 9 - (021) 7520659"
+        }
+    },
+    {
+        "model":"kependudukan.kelurahan",
+        "pk":9,
+        "fields":{
+            "name":"Depok Jaya",
+            "kecamatan":"Pancoran Mas",
+            "address": "Jl. Nusantara Raya - (021) 7520762"
+        }
+    },
+    {
+        "model":"kependudukan.kelurahan",
+        "pk":10,
+        "fields":{
+            "name":"Rangkapan Jaya",
+            "kecamatan":"Pancoran Mas",
+            "address": "Jl. Raya Sawangan No 21 Rangkapan Jaya - (021) 77883634"
+        }
+    },
+    {
+        "model":"kependudukan.kelurahan",
+        "pk":11,
+        "fields":{
+            "name":"Rangkapan Jaya Baru",
+            "kecamatan":"Pancoran Mas",
+            "address": "Jl. Keadilan No 1 - (021) 77880529"
+        }
+    },
+    {
+        "model":"kependudukan.kelurahan",
+        "pk":12,
+        "fields":{
+            "name":"Mampang",
+            "kecamatan":"Pancoran Mas",
+            "address": "Jl. Damai 1 RT 03 RW 12 - (021) 77201335"
+        }
+    },
+    {
+        "model":"kependudukan.kelurahan",
+        "pk":13,
+        "fields":{
+            "name":"Cipayung",
+            "kecamatan":"Cipayung",
+            "address": "Jl. Jembatan Serong - (021) 77880516"
+        }
+    },
+    {
+        "model":"kependudukan.kelurahan",
+        "pk":14,
+        "fields":{
+            "name":"Cipayung Jaya",
+            "kecamatan":"Cipayung",
+            "address": "Jl. Pertanian no 4 RT 4 RW 4 - (021) 77881451"
+        }
+    },
+    {
+        "model":"kependudukan.kelurahan",
+        "pk":15,
+        "fields":{
+            "name":"Ratu Jaya",
+            "kecamatan":"Cipayung",
+            "address": "Jl. Masjid Alfalah - (021) 7758190"
+        }
+    },
+    {
+        "model":"kependudukan.kelurahan",
+        "pk":16,
+        "fields":{
+            "name":"Bojong Pondok Terong",
+            "kecamatan":"Cipayung",
+            "address": "Jl. Masjid Al ittihad - (021) 77213277"
+        }
+    },
+    {
+        "model":"kependudukan.kelurahan",
+        "pk":17,
+        "fields":{
+            "name":"Pondok Jaya",
+            "kecamatan":"Cipayung",
+            "address": "Permata Depok - (021) 32192940"
+        }
+    }
+]
