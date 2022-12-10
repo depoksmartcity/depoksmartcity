@@ -41,7 +41,6 @@ def add_aspirasi_ajax(request):
             
     return HttpResponseNotFound()
 
-@login_required(login_url='/login/')
 def show_json_user(request):
     data_aspirasi_user = Aspirasi.objects.filter(user=request.user)
     return HttpResponse(serializers.serialize("json", data_aspirasi_user))
