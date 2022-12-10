@@ -1,1 +1,1 @@
-web: python manage.py migrate && gunicorn depoksmartcity.wsgi
+web: python manage.py migrate && python manage.py loaddata kelurahan_data.json && gunicorn depoksmartcity.wsgi
