@@ -58,26 +58,6 @@
             "desc": "HokBen (nama baru dari Hoka Hoka Bento) adalah jaringan restoran makanan cepat saji yang menyajikan makanan bergaya Jepang yang berbasis di Jakarta, Indonesia. Hingga kini, HokBen memiliki 170 gerai (per akhir Januari 2020) yang tersebar di pulau Jawa, Bali dan Sumatera. Nama Hoka Hoka Bento sendiri berasal dari bahasa Jepang yang berarti 'makanan hangat dalam Kotak'.",
             "img": "https://seeklogo.com/images/H/hokben-logo-C25A703DFE-seeklogo.com.png"
         }
-    },
-    {
-        "model":"restaurants.restaurant",
-        "pk":7,
-        "fields":{
-            "name":"SATEPACIL",
-            "lokasi":"UI",
-            "desc": "KFC (kependekan dari Kentucky Fried Chicken), adalah jaringan restoran cepat saji Amerika yang berkantor pusat di Louisville, Kentucky, yang berspesialisasi dalam ayam goreng. Ini adalah jaringan restoran terbesar kedua di dunia (diukur berdasarkan penjualan) setelah McDonald's, dengan 22.621 lokasi secara global di 150 negara pada Desember 2019.",
-            "img": "https://www.qries.com/images/banner_logo.png"
-        }
-    },
-    {
-        "model":"restaurants.restaurant",
-        "pk":8,
-        "fields":{
-            "name":"KARDUS",
-            "lokasi":"UI",
-            "desc": "KFC (kependekan dari Kentucky Fried Chicken), adalah jaringan restoran cepat saji Amerika yang berkantor pusat di Louisville, Kentucky, yang berspesialisasi dalam ayam goreng. Ini adalah jaringan restoran terbesar kedua di dunia (diukur berdasarkan penjualan) setelah McDonald's, dengan 22.621 lokasi secara global di 150 negara pada Desember 2019.",
-            "img": "https://www.qries.com/images/banner_logo.png"
-        }
     }
 
 ]
