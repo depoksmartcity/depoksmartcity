@@ -6,6 +6,7 @@ from kependudukan.forms import RequestKTPForm
 from django.http import HttpResponse
 from django.core import serializers
 from django.contrib.auth.decorators import login_required
+from django.views.decorators.csrf import csrf_exempt
 from django.utils import timezone
 import datetime
 from .models import KELURAHAN_BY_KECAMATAN_CHOICES
@@ -103,6 +104,7 @@ def get_kelurahan(request):
         res.append(kelurahan[0])
     return JsonResponse(res, safe=False)
 
+@csrf_exempt
 def add_request_flutter(request):
     data = json.loads(request.body)
     reqKtp = RequestKTP.objects.create(
@@ -126,6 +128,7 @@ def add_request_flutter(request):
     
     return serialize_ktp([reqKtp])
 
+@csrf_exempt
 def show_request_ktp_json_flutter(request):
     username = json.loads(request.body)['username']
     data = RequestKTP.objects.filter(username=username)
