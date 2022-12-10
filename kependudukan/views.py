@@ -125,4 +125,9 @@ def add_request_flutter(request):
                     schedule_time = data['schedule_time'])
     
     return serialize_ktp([reqKtp])
+
+def show_request_ktp_json_flutter(request):
+    username = json.loads(request.body)['username']
+    data = RequestKTP.objects.filter(username=username)
+    return serialize_ktp(data)
     
