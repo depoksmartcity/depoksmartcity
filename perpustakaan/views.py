@@ -5,7 +5,9 @@ from django.core import serializers
 from django.contrib.auth.decorators import login_required
 from perpustakaan.forms import reviewForm
 from .models import Author, BookHistory, Publisher, Book, BookReview
+from django.views.decorators.http import require_http_methods
 import datetime
+import json
 
 # Create your views here.
 def get_author_by_id_json(request, id):
@@ -152,15 +154,22 @@ def review(request, id):
         book.save()
     return redirect('perpustakaan:get_book_by_id', id)
 
+@require_http_methods(["POST"])
+@csrf.csrf_exempt  
 def review_json(request, id):
     if request.method == "POST":
-        data = reviewForm(request.POST)
-        
-        if data.is_valid():
+        if request.COOKIES['sessionid'] != None:
+            try:
+                # flutter request sends data in body
+                data = json.loads(request.body)
+            except:
+                # django sends html form (old fashioned way)
+                data = reviewForm(request.POST).data
+
             user = request.user
             book = Book.objects.get(id=id)
-            review = data.cleaned_data["review"]
-            rate = data.cleaned_data["rate"]
+            review = data["review"]
+            rate = data["rate"]
             book_review = BookReview.objects.create(user=user, book=book, rate=rate, review=review)
             book_review.save()
             
