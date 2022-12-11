@@ -175,11 +175,11 @@ def review_json(request, id):
             book_review.save()
             
             total_rate = book.rate * book.review_times
-            total_rate += rate
+            total_rate += int(rate)
             book.review_times += 1
             book.rate = total_rate/book.review_times
             book.save()
-            return HttpResponse(serializers.serialize("json", [book_review]), content_type="application/json")
+            return JsonResponse({"status": "Success"}, status=201)
         return JsonResponse({"status": "Invalid input"}, status=400)
     else:
         response = JsonResponse({"status": "Invalid method"}, status=405)
