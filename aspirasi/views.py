@@ -7,6 +7,8 @@ from django.http import JsonResponse, HttpResponse, HttpResponseNotFound
 from django.core import serializers
 from django.contrib.auth.models import User
 from django.shortcuts import redirect
+import json
+from django.views.decorators.csrf import csrf_exempt
 
 def show_aspirasi(request):
     data_aspirasi = Aspirasi.objects.all()
@@ -52,5 +54,27 @@ def show_aspirasi_user(request):
         'data_aspirasi_user': data_aspirasi_user,
     }
     return render(request, "aspirasiUser.html", context)
+
+@csrf_exempt
+def add_aspirasi_flutter(request):
+    data = json.loads(request.body)
+    aspirasi = data['aspirasi']
+    user = User.objects.get(username=request.user.username)
+    if request.method == 'POST':
+        aspirasi = Aspirasi(aspirasi=aspirasi, user=user)
+        aspirasi.save()
+        return JsonResponse({
+                "status": True,
+                "message": "Successfull!"
+            }, status=200)
+    return JsonResponse({
+            "status": False,
+            "message": "Failed!"
+    }, status=502)
+
+
+
+
+
 
 
