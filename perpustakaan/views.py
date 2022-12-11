@@ -7,6 +7,7 @@ from perpustakaan.forms import reviewForm
 from .models import Author, BookHistory, Publisher, Book, BookReview
 from django.views.decorators.http import require_http_methods
 import datetime
+from django.views.decorators import csrf
 import json
 
 # Create your views here.
