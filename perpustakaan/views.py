@@ -1,6 +1,6 @@
 from django.urls import reverse
 from django.shortcuts import render, redirect
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.core import serializers
 from django.contrib.auth.decorators import login_required
 from perpustakaan.forms import reviewForm
@@ -76,6 +76,23 @@ def borrow(request, id):
     book_history.save()
     return redirect('perpustakaan:get_book')
 
+@login_required(login_url='/login/')     
+def borrow_json(request, id):
+    user = request.user
+    
+    book = Book.objects.get(id=id)
+    book.stock -= 1
+    book.borrowed_times += 1
+    
+    if (book.stock == 0):
+        book.is_available = False
+    
+    book.save()
+    
+    book_history = BookHistory.objects.create(user=user, book=book, borrow_date=datetime.datetime.now())
+    book_history.save()
+
+
 @login_required(login_url='/login/')
 def return_book(request, id):
     user = request.user
@@ -96,6 +113,24 @@ def return_book(request, id):
     return redirect('perpustakaan:get_book')
 
 @login_required(login_url='/login/')
+def return_book_json(request, id):
+    user = request.user
+    
+    book = Book.objects.get(id=id)
+    book.stock += 1
+    
+    if (book.stock == 1):
+        book.is_available = True
+        
+    book.save()   
+        
+    book_history = BookHistory.objects.get(user=user, book=book, is_active=True)
+    book_history.is_active = False
+    book_history.return_date = datetime.datetime.now()
+    
+    book_history.save()
+
+@login_required(login_url='/login/')
 def review(request, id):
     data = reviewForm(request.POST)
     
@@ -107,12 +142,47 @@ def review(request, id):
         book_review = BookReview.objects.create(user=user, book=book, rate=rate, review=review)
         book_review.save()
         
-    total_rate = book.rate * book.review_times
-    total_rate += rate
-    book.review_times += 1
-    book.rate = total_rate/book.review_times
-    book.save()
+        total_rate = book.rate * book.review_times
+        total_rate += rate
+        book.review_times += 1
+        book.rate = total_rate/book.review_times
+        book.save()
+
+@login_required(login_url='/login/')
+def review(request, id):
+    data = reviewForm(request.POST)
     
-    return redirect('perpustakaan:get_book_by_id', id)
+    if data.is_valid():
+        user = request.user
+        book = Book.objects.get(id=id)
+        review = data.cleaned_data["review"]
+        rate = data.cleaned_data["rate"]
+        book_review = BookReview.objects.create(user=user, book=book, rate=rate, review=review)
+        book_review.save()
         
-      
+        total_rate = book.rate * book.review_times
+        total_rate += rate
+        book.review_times += 1
+        book.rate = total_rate/book.review_times
+        book.save()
+    return redirect('perpustakaan:get_book_by_id', id)
+
+@login_required(login_url='/login/')
+def review_json(request, id):
+    data = reviewForm(request.POST)
+    
+    if data.is_valid():
+        user = request.user
+        book = Book.objects.get(id=id)
+        review = data.cleaned_data["review"]
+        rate = data.cleaned_data["rate"]
+        book_review = BookReview.objects.create(user=user, book=book, rate=rate, review=review)
+        book_review.save()
+        
+        total_rate = book.rate * book.review_times
+        total_rate += rate
+        book.review_times += 1
+        book.rate = total_rate/book.review_times
+        book.save()
+
+
