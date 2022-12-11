@@ -91,7 +91,7 @@ def borrow_json(request, id):
     
     book_history = BookHistory.objects.create(user=user, book=book, borrow_date=datetime.datetime.now())
     book_history.save()
-    return HttpResponse(serializers.serialize("json", book_history), content_type="application/json")
+    return HttpResponse("success")
 
 
 
@@ -131,7 +131,7 @@ def return_book_json(request, id):
     book_history.return_date = datetime.datetime.now()
     
     book_history.save()
-    return HttpResponse(serializers.serialize("json", book_history), content_type="application/json")
+    return HttpResponse("success")
 
 @login_required(login_url='/login/')
 def review(request, id):
@@ -169,9 +169,6 @@ def review_json(request, id):
         book.review_times += 1
         book.rate = total_rate/book.review_times
         book.save()
-        return HttpResponse(serializers.serialize("json", book_review), content_type="application/json")
-    book = Book.objects.get(id=id)
-    book_review_data = BookReview.objects.filter(book=book)
-    return HttpResponse(serializers.serialize("json", book_review_data), content_type="application/json")
-
+        return HttpResponse("success")
+    return HttpResponse("success")
 
