@@ -107,7 +107,7 @@ def return_book(request, id):
         
     book.save()   
         
-    book_history = BookHistory.objects.get(user=user, book=book, is_active=True)
+    book_history = BookHistory.objects.filter(user=user, book=book, is_active=True)[0]
     book_history.is_active = False
     book_history.return_date = datetime.datetime.now()
     
@@ -126,7 +126,7 @@ def return_book_json(request, id):
         
     book.save()   
         
-    book_history = BookHistory.objects.get(user=user, book=book, is_active=True)
+    book_history = BookHistory.objects.filter(user=user, book=book, is_active=True)[0]
     book_history.is_active = False
     book_history.return_date = datetime.datetime.now()
     
