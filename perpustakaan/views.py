@@ -91,7 +91,7 @@ def borrow_json(request, id):
     
     book_history = BookHistory.objects.create(user=user, book=book, borrow_date=datetime.datetime.now())
     book_history.save()
-    return HttpResponse()
+    return HttpResponse(serializers.serialize("json", [book_history]), content_type="application/json")
 
 
 
@@ -131,7 +131,7 @@ def return_book_json(request, id):
     book_history.return_date = datetime.datetime.now()
     
     book_history.save()
-    return HttpResponse()
+    return HttpResponse(serializers.serialize("json", [book_history]), content_type="application/json")
 
 @login_required(login_url='/login/')
 def review(request, id):
@@ -154,21 +154,26 @@ def review(request, id):
 
 @login_required(login_url='/login/')
 def review_json(request, id):
-    data = reviewForm(request.POST)
-    
-    if data.is_valid():
-        user = request.user
-        book = Book.objects.get(id=id)
-        review = data.cleaned_data["review"]
-        rate = data.cleaned_data["rate"]
-        book_review = BookReview.objects.create(user=user, book=book, rate=rate, review=review)
-        book_review.save()
+    if request.method == "POST":
+        data = reviewForm(request.POST)
         
-        total_rate = book.rate * book.review_times
-        total_rate += rate
-        book.review_times += 1
-        book.rate = total_rate/book.review_times
-        book.save()
-        return HttpResponse()
-    return HttpResponse()
+        if data.is_valid():
+            user = request.user
+            book = Book.objects.get(id=id)
+            review = data.cleaned_data["review"]
+            rate = data.cleaned_data["rate"]
+            book_review = BookReview.objects.create(user=user, book=book, rate=rate, review=review)
+            book_review.save()
+            
+            total_rate = book.rate * book.review_times
+            total_rate += rate
+            book.review_times += 1
+            book.rate = total_rate/book.review_times
+            book.save()
+            return HttpResponse(serializers.serialize("json", [book_review]), content_type="application/json")
+        return JsonResponse({"status": "Invalid input"}, status=400)
+    else:
+        response = JsonResponse({"status": "Invalid method"}, status=405)
+        response['Allow'] = 'POST'
+        return response
 
