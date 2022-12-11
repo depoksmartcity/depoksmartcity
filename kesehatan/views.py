@@ -56,7 +56,7 @@ def create_appointment(request):
         Patient.objects.get(user=request.user)
         if request.method == "POST":
             appointed_by = Patient.objects.get(user=request.user)
-            appointed_by_name = appointed_by.__str__
+            appointed_by_name = str(appointed_by)
             facility =  HealthFacility.objects.get(name=request.POST.get("facility"))
             facility_name = facility.name
             date = request.POST.get("date")

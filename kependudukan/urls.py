@@ -1,5 +1,5 @@
 from django.urls import path
-from kependudukan.views import show_kependudukan, show_request_ktp, show_json, show_request_ktp_json, add_request, get_kelurahan, show_all_request_ktp_json
+from kependudukan.views import show_kependudukan, show_request_ktp, show_json, show_request_ktp_json, add_request, get_kelurahan, show_all_request_ktp_json, add_request_flutter, show_request_ktp_json_flutter
 
 app_name = 'kependudukan'
 
@@ -11,4 +11,8 @@ urlpatterns = [
     path('request-ktp/json', show_request_ktp_json, name='show_request_ktp_json'),
     path('all-request-ktp/json', show_all_request_ktp_json, name='show_all_request_ktp_json'),
     path('request-ktp/add', add_request, name='add_request'),
+    path('request-ktp/add-flutter', add_request_flutter, name='add_request_flutter'),
+    path('request-ktp/json-flutter', show_request_ktp_json_flutter, name='show_request_ktp_json_flutter'),
+
+    
 ]
