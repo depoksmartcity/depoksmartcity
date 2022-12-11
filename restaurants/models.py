@@ -10,7 +10,7 @@ class Restaurant(models.Model):
     lokasi = models.TextField()
     desc = models.TextField()
     img = models.URLField(default='')
-    rev = ArrayField(models.TextField(unique=True, null=True))
+    rev = ArrayField(models.TextField())
 
 class Reviews(models.Model):
     resto = models.ForeignKey(Restaurant, on_delete=models.CASCADE)
