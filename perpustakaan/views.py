@@ -152,7 +152,6 @@ def review(request, id):
         book.save()
     return redirect('perpustakaan:get_book_by_id', id)
 
-@login_required(login_url='/login/')
 def review_json(request, id):
     if request.method == "POST":
         data = reviewForm(request.POST)
