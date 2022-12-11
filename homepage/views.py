@@ -8,6 +8,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import redirect
 from django.http.response import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
+from django.contrib.auth.models import User
 import json
 
 def index(request):
@@ -36,6 +37,8 @@ def login_flutter(request):
 
     if request.method == 'POST':
         user = authenticate(username=username, password=password)
+        temp = User.objects.get(username=username)
+        print(temp.id)
         print("AUTENTHICATE")
         print(username)
         print(password)
@@ -44,6 +47,7 @@ def login_flutter(request):
             return JsonResponse({
                 "status": True,
                 "username": request.user.username,
+                "id": temp.id,
                 "message": "Successfully Logged In!"
             }, status=200)
 
