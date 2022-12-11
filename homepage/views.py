@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.models import User
 from django.contrib import messages
 from django.urls import reverse
 from django.contrib.auth.forms import UserCreationForm
@@ -72,6 +73,7 @@ def register_user(request):
 
     if request.method == "POST":
         form = UserCreationForm(request.POST)
+        print(request.POST)
         if form.is_valid():
             form.save()
             messages.success(request, 'Your account has been successfully created!')
@@ -79,3 +81,24 @@ def register_user(request):
     
     context = {'form':form}
     return render(request, 'register.html', context)
+
+@csrf_exempt
+def register_flutter(request):
+    data = json.loads(request.body)
+    username = data['username']
+    password = data['password']
+    confirm_pass = data['confirm_password']
+    print(username)
+    print(password)
+    print(confirm_pass)
+
+    if (password == confirm_pass):
+        try:
+        #Cek jika username atau email sudah terdaftar
+            user = User.objects.get(username=username)
+            print(user)
+            return JsonResponse({'status':'register gagal'})
+        except (User.DoesNotExist):
+        #Jika username belum terdaftar
+            user = User.objects.create_user(username=username, password=password)
+            return JsonResponse({'status':'register berhasil', 'username':username, 'password':password})
