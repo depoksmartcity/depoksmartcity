@@ -91,7 +91,7 @@ def borrow_json(request, id):
     
     book_history = BookHistory.objects.create(user=user, book=book, borrow_date=datetime.datetime.now())
     book_history.save()
-    return HttpResponse("success")
+    return HttpResponse()
 
 
 
@@ -131,7 +131,7 @@ def return_book_json(request, id):
     book_history.return_date = datetime.datetime.now()
     
     book_history.save()
-    return HttpResponse("success")
+    return HttpResponse()
 
 @login_required(login_url='/login/')
 def review(request, id):
@@ -169,6 +169,6 @@ def review_json(request, id):
         book.review_times += 1
         book.rate = total_rate/book.review_times
         book.save()
-        return HttpResponse("success")
-    return HttpResponse("success")
+        return HttpResponse()
+    return HttpResponse()
 
