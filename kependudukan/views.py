@@ -6,10 +6,13 @@ from kependudukan.forms import RequestKTPForm
 from django.http import HttpResponse
 from django.core import serializers
 from django.contrib.auth.decorators import login_required
+from django.views.decorators.csrf import csrf_exempt
 from django.utils import timezone
 import datetime
 from .models import KELURAHAN_BY_KECAMATAN_CHOICES
 import json;
+from django.contrib.auth.models import User
+
 
 
 # Create your views here.
@@ -103,9 +106,15 @@ def get_kelurahan(request):
         res.append(kelurahan[0])
     return JsonResponse(res, safe=False)
 
+@csrf_exempt
 def add_request_flutter(request):
     data = json.loads(request.body)
+    username = data['username']
+    print(username)
+    thisUser = User.objects.filter(username=username)
+    print(data)
     reqKtp = RequestKTP.objects.create(
+                    user = thisUser[0],
                     kecamatan = data['kecamatan'],
                     kelurahan = data['kelurahan'],
                     permohonan = data['permohonan'],
@@ -125,4 +134,13 @@ def add_request_flutter(request):
                     schedule_time = data['schedule_time'])
     
     return serialize_ktp([reqKtp])
+
+@csrf_exempt
+def show_request_ktp_json_flutter(request):
+    username = json.loads(request.body)['username']
+    print(username)
+    thisUser = User.objects.filter(username=username)
+    data = RequestKTP.objects.filter(user=thisUser[0])
+    print(data)
+    return serialize_ktp(data)
     

@@ -151,5 +151,419 @@
             "kecamatan":"Cipayung",
             "address": "Permata Depok - (021) 32192940"
         }
+    },
+    {
+        "model":"kependudukan.kelurahan",
+        "pk":18,
+        "fields":{
+            "name":"Sukmajaya",
+            "kecamatan":"Sukmajaya",
+            "address": "Perumahan Pondok Sukmajaya Permai - (021) 7706854"
+        }
+    },
+    {
+        "model":"kependudukan.kelurahan",
+        "pk":19,
+        "fields":{
+            "name":"Mekar Jaya",
+            "kecamatan":"Sukmajaya",
+            "address": "Jl. Waru Jaya No 9 Kp. Sugutamu - (021) 7710283"
+        }
+    },
+    {
+        "model":"kependudukan.kelurahan",
+        "pk":20,
+        "fields":{
+            "name":"Bakti Jaya",
+            "kecamatan":"Sukmajaya",
+            "address": "Jl. Cimanuk - (021) 7709806"
+        }
+    },
+    {
+        "model":"kependudukan.kelurahan",
+        "pk":21,
+        "fields":{
+            "name":"Abadi Jaya",
+            "kecamatan":"Sukmajaya",
+            "address": "Jl. Musi Raya No 1 - (021) 77830676"
+        }
+    },
+    {
+        "model":"kependudukan.kelurahan",
+        "pk":22,
+        "fields":{
+            "name":"Tirta Jaya",
+            "kecamatan":"Sukmajaya",
+            "address": "Jl. Tugu Jaya RT 4 RW 3 - (021) 77822769"
+        }
+    },
+    {
+        "model":"kependudukan.kelurahan",
+        "pk":23,
+        "fields":{
+            "name":"Cisalak",
+            "kecamatan":"Sukmajaya",
+            "address": "(021) 87708662"
+        }
+    },
+    {
+        "model":"kependudukan.kelurahan",
+        "pk":24,
+        "fields":{
+            "name":"Sukamaju",
+            "kecamatan":"Cilodong",
+            "address": "Jl. Jakarta Bogor - (021) 8752270"
+        }
+    },
+    {
+        "model":"kependudukan.kelurahan",
+        "pk":25,
+        "fields":{
+            "name":"Cilodong",
+            "kecamatan":"Cilodong",
+            "address": "(021) 7705292"
+        }
+    },
+    {
+        "model":"kependudukan.kelurahan",
+        "pk":26,
+        "fields":{
+            "name":"Kalibaru",
+            "kecamatan":"Cilodong",
+            "address": "Jl. H. Nirun No.7 - (021) 8762480"
+        }
+    },
+    {
+        "model":"kependudukan.kelurahan",
+        "pk":27,
+        "fields":{
+            "name":"Kalimulya",
+            "kecamatan":"Cilodong",
+            "address": "Jl. PTU I - (021) 8764582"
+        }
+    },
+    {
+        "model":"kependudukan.kelurahan",
+        "pk":28,
+        "fields":{
+            "name":"Jatimulya",
+            "kecamatan":"Cilodong",
+            "address": "Perumahan GDC sektor melati - (021) 8753669"
+        }
+    },
+    {
+        "model":"kependudukan.kelurahan",
+        "pk":29,
+        "fields":{
+            "name":"Limo",
+            "kecamatan":"Limo",
+            "address": "Jl. Koman Muin, Limo Raya - (021) 7535481"
+        }
+    },
+    {
+        "model":"kependudukan.kelurahan",
+        "pk":30,
+        "fields":{
+            "name":"Meruyung",
+            "kecamatan":"Limo",
+            "address": "Jl. Meruyung raya - (021) 7535403"
+        }
+    },
+    {
+        "model":"kependudukan.kelurahan",
+        "pk":31,
+        "fields":{
+            "name":"Grogol",
+            "kecamatan":"Limo",
+            "address": "Jl. Raya Grogol - (021) 7754824"
+        }
+    },
+    {
+        "model":"kependudukan.kelurahan",
+        "pk":32,
+        "fields":{
+            "name":"Krukut",
+            "kecamatan":"Limo",
+            "address": "Jl. Krukut - (021) 7533331"
+        }
+    },
+    {
+        "model":"kependudukan.kelurahan",
+        "pk":33,
+        "fields":{
+            "name":"Cinere",
+            "kecamatan":"Cinere",
+            "address": "(021) 7543340"
+        }
+    },
+    {
+        "model":"kependudukan.kelurahan",
+        "pk":34,
+        "fields":{
+            "name":"Gandul",
+            "kecamatan":"Cinere",
+            "address": "(021) 7545084"
+        }
+    },
+    {
+        "model":"kependudukan.kelurahan",
+        "pk":35,
+        "fields":{
+            "name":"Pangkalan Jati",
+            "kecamatan":"Cinere",
+            "address": "(021) 75913351"
+        }
+    },
+    {
+        "model":"kependudukan.kelurahan",
+        "pk":36,
+        "fields":{
+            "name":"Pangkalan Jati Baru",
+            "kecamatan":"Cinere",
+            "address": "(021) 75906649"
+        }
+    },
+    {
+        "model":"kependudukan.kelurahan",
+        "pk":37,
+        "fields":{
+            "name":"Cisalak Pasar",
+            "kecamatan":"Cimanggis",
+            "address": "(021) 8734132"
+        }
+    },
+    {
+        "model":"kependudukan.kelurahan",
+        "pk":38,
+        "fields":{
+            "name":"Mekarsari",
+            "kecamatan":"Cimanggis",
+            "address": "Jl. Raya Mekarsari - (021) 8711734"
+        }
+    },
+    {
+        "model":"kependudukan.kelurahan",
+        "pk":39,
+        "fields":{
+            "name":"Tugu",
+            "kecamatan":"Cimanggis",
+            "address": "(021) 87720940"
+        }
+    },
+    {
+        "model":"kependudukan.kelurahan",
+        "pk":40,
+        "fields":{
+            "name":"Pasir Gunung Selatan",
+            "kecamatan":"Cimanggis",
+            "address": "Jl. Garuda II - (021) 8725611"
+        }
+    },
+    {
+        "model":"kependudukan.kelurahan",
+        "pk":41,
+        "fields":{
+            "name":"Harjamukti",
+            "kecamatan":"Cimanggis",
+            "address": "Jl. Raya Gas Alam - (021) 8731217"
+        }
+    },
+    {
+        "model":"kependudukan.kelurahan",
+        "pk":42,
+        "fields":{
+            "name":"Curug",
+            "kecamatan":"Cimanggis",
+            "address": "Jl. Raya Pekapuran - (021) 8741672"
+        }
+    },
+    {
+        "model":"kependudukan.kelurahan",
+        "pk":43,
+        "fields":{
+            "name":"Tapos",
+            "kecamatan":"Tapos",
+            "address": "Jl. Raya Tapos - (021) 8757714"
+        }
+    },
+    {
+        "model":"kependudukan.kelurahan",
+        "pk":44,
+        "fields":{
+            "name":"Leuwinanggung",
+            "kecamatan":"Tapos",
+            "address": "Jl. Raya Leuwinanggung - (021) 844922"
+        }
+    },
+    {
+        "model":"kependudukan.kelurahan",
+        "pk":45,
+        "fields":{
+            "name":"Sukatani",
+            "kecamatan":"Tapos",
+            "address": "Jl. Gas Alam - (021) 87742075"
+        }
+    },
+    {
+        "model":"kependudukan.kelurahan",
+        "pk":46,
+        "fields":{
+            "name":"Sukamaju Baru",
+            "kecamatan":"Tapos",
+            "address": "Gg Nangka - (021) 70782035"
+        }
+    },
+    {
+        "model":"kependudukan.kelurahan",
+        "pk":47,
+        "fields":{
+            "name":"Jatijajar",
+            "kecamatan":"Tapos",
+            "address": "Perum Jatijar - (021) 8725923"
+        }
+    },
+    {
+        "model":"kependudukan.kelurahan",
+        "pk":48,
+        "fields":{
+            "name":"Cilangkap",
+            "kecamatan":"Tapos",
+            "address": "Jl. Lurah Ripan Kel Cilangkap RT 1 - (021) 8751838"
+        }
+    },
+    {
+        "model":"kependudukan.kelurahan",
+        "pk":49,
+        "fields":{
+            "name":"Cimpaeun",
+            "kecamatan":"Tapos",
+            "address": "Jl. Raya Cimpaeun - (021) 8757333"
+        }
+    },
+    {
+        "model":"kependudukan.kelurahan",
+        "pk":50,
+        "fields":{
+            "name":"Sawangan",
+            "kecamatan":"Sawangan",
+            "address": "Jl. Raya Sawangan - (021) 8617531"
+        }
+    },
+    {
+        "model":"kependudukan.kelurahan",
+        "pk":51,
+        "fields":{
+            "name":"Kedaung",
+            "kecamatan":"Sawangan",
+            "address": "Jl. Raya Ketapang No 5 RT 1 RW 2 - (021) 7494350"
+        }
+    },
+    {
+        "model":"kependudukan.kelurahan",
+        "pk":52,
+        "fields":{
+            "name":"Cinangka",
+            "kecamatan":"Sawangan",
+            "address": "Jl. Pahlawan RT 2 RW 9 no 8 - (021) 70623458"
+        }
+    },
+    {
+        "model":"kependudukan.kelurahan",
+        "pk":53,
+        "fields":{
+            "name":"Sawangan Baru",
+            "kecamatan":"Sawangan",
+            "address": "Jl. Raya Sawangan Permai - (021) 70888683"
+        }
+    },
+    {
+        "model":"kependudukan.kelurahan",
+        "pk":54,
+        "fields":{
+            "name":"Bedahan",
+            "kecamatan":"Sawangan",
+            "address": "Jl. H Sulaeman - (021) 8619159"
+        }
+    },
+    {
+        "model":"kependudukan.kelurahan",
+        "pk":55,
+        "fields":{
+            "name":"Pengasinan",
+            "kecamatan":"Sawangan",
+            "address": "Jl. Raya Pengasinan RT 2 RW 3) - (021) 8619521"
+        }
+    },
+    {
+        "model":"kependudukan.kelurahan",
+        "pk":56,
+        "fields":{
+            "name":"Pasir Putih",
+            "kecamatan":"Sawangan",
+            "address": "Jl. Raya Pasir  putih No. 1 RT 4 RW 2 - (021) 8610872"
+        }
+    },
+    {
+        "model":"kependudukan.kelurahan",
+        "pk":57,
+        "fields":{
+            "name":"Bojong Sari",
+            "kecamatan":"Bojong Sari",
+            "address": "Jl. Bojongsari - (021) 619766"
+        }
+    },
+    {
+        "model":"kependudukan.kelurahan",
+        "pk":58,
+        "fields":{
+            "name":"Bojongsari Baru",
+            "kecamatan":"Bojong Sari",
+            "address": "Jl. Bojongsari  gg. Rotan - (021) 8610108"
+        }
+    },
+    {
+        "model":"kependudukan.kelurahan",
+        "pk":59,
+        "fields":{
+            "name":"Serua",
+            "kecamatan":"Bojong Sari",
+            "address": "Jl. Raya Serua"
+        }
+    },
+    {
+        "model":"kependudukan.kelurahan",
+        "pk":60,
+        "fields":{
+            "name":"Pondok Petir",
+            "kecamatan":"Bojong Sari",
+            "address": "Jl. Raya Serua - (021) 7421409"
+        }
+    },
+    {
+        "model":"kependudukan.kelurahan",
+        "pk":61,
+        "fields":{
+            "name":"Curug ",
+            "kecamatan":"Bojong Sari",
+            "address": "Jl. Raya curug - (021) 8610044"
+        }
+    },
+    {
+        "model":"kependudukan.kelurahan",
+        "pk":62,
+        "fields":{
+            "name":"Duren Mekar",
+            "kecamatan":"Bojong Sari",
+            "address": "Jl. H. Suhaemi - (021) 8613522"
+        }
+    },
+    {
+        "model":"kependudukan.kelurahan",
+        "pk":63,
+        "fields":{
+            "name":"Duren Seribu",
+            "kecamatan":"Bojong Sari",
+            "address": "Jl. Harco Raya - (021) 8613522"
+        }
     }
 ]

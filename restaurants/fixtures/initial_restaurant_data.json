@@ -58,6 +58,96 @@
             "desc": "HokBen (nama baru dari Hoka Hoka Bento) adalah jaringan restoran makanan cepat saji yang menyajikan makanan bergaya Jepang yang berbasis di Jakarta, Indonesia. Hingga kini, HokBen memiliki 170 gerai (per akhir Januari 2020) yang tersebar di pulau Jawa, Bali dan Sumatera. Nama Hoka Hoka Bento sendiri berasal dari bahasa Jepang yang berarti 'makanan hangat dalam Kotak'.",
             "img": "https://seeklogo.com/images/H/hokben-logo-C25A703DFE-seeklogo.com.png"
         }
+    },
+    {
+        "model":"restaurants.restaurant",
+        "pk":7,
+        "fields":{
+            "name":"Warteg Putri Bahari",
+            "lokasi":"Jl. Margonda Raya",
+            "desc": "Warung tegal (warteg) adalah salah satu jenis usaha gastronomi yang menyediakan makanan dan minuman dengan harga terjangkau. Nama ini cenderung menjadi istilah umum untuk warung makan kelas menengah ke bawah di pinggir jalan, baik yang berada di Kota Tegal maupun di tempat lain, baik yang dikelola oleh orang asal Tegal maupun dari daerah lain. ",
+            "img": "https://www.putribahari.id/wp-content/uploads/2022/10/logo_putri_bahari.png.webp"
+        }
+    },
+    {
+        "model":"restaurants.restaurant",
+        "pk":8,
+        "fields":{
+            "name":"Texas Chicken Indonesia",
+            "lokasi":"Jl. Margonda Raya",
+            "desc": "Texas Fried Chicken membuka restoran pertamanya di Indonesia pada tanggal 4 Juli 1984 di Pasar Baru, Jakarta Pusat. Pada tahun 1993, Texas Fried Chicken Indonesia berganti nama menjadi Texas Chicken Indonesia.",
+            "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Texas_Chicken_logo.png/300px-Texas_Chicken_logo.png"
+        }
+    },
+    {
+        "model":"restaurants.restaurant",
+        "pk":9,
+        "fields":{
+            "name":"Restoran Sederhana",
+            "lokasi":"Jl. Margonda Raya",
+            "desc": "Sederhana adalah perusahaan waralaba Indonesia yang bergerak di bidang jasa boga atau makanan dengan ciri khas masakan Padang.",
+            "img": "https://restoransederhana.id/wp-content/uploads/2018/11/PTSA-LOGO-ADR-4.png"
+        }
+    },
+    {
+        "model":"restaurants.restaurant",
+        "pk":10,
+        "fields":{
+            "name":"Ta Wan",
+            "lokasi":"Jl. Margonda Raya",
+            "desc": "Ta Wan adalah rumah makan masakan Chinese dengan jumlah outlet terbanyak di Indonesia, yang telah hadir lebih dari dua dekade. Ta Wan menyajikan menu legendaris berupa bubur, serta beragam hidangan khas Chinese lainnya dengan sentuhan lokal sesuai dengan selera masyarakat Indonesia.",
+            "img": "http://www.tawanrestaurant.com/assets/images/logo.png"
+        }
+    },
+    {
+        "model":"restaurants.restaurant",
+        "pk":11,
+        "fields":{
+            "name":"A&W Restaurants",
+            "lokasi":"Jl. Margonda Raya No.3",
+            "desc": "A&W Restaurants adalah jaringan restoran siap saji yang tersebar di seluruh dunia. Waralaba perusahaan ini dikelola oleh Yum! brands. Restoran ini pertama kali dibuka di California pada tahun 1919. Produk yang dijual adalah A&W Root Beer, ayam goreng, burger maupun nugget.",
+            "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/All_American_Food_Logo.svg/330px-All_American_Food_Logo.svg.png"
+        }
+    },
+    {
+        "model":"restaurants.restaurant",
+        "pk":12,
+        "fields":{
+            "name":"Wendy's",
+            "lokasi":"Jl. Margonda Raya",
+            "desc": "Pada tahun 2006, pemegang hak waralaba Wendy’s di Indonesia diambil alih oleh Sierad Produce resmi mengakuisisi PT Wendy Citrarasa.",
+            "img": "http://www.wendys.co.id/assets/img/logo_wendys.png"
+        }
+    },
+    {
+        "model":"restaurants.restaurant",
+        "pk":13,
+        "fields":{
+            "name":"Yoshinoya",
+            "lokasi":"Jl. Margonda Raya",
+            "desc": "Di Indonesia, Yoshinoya pernah membuka satu restorannya di Jakarta pada tahun 1994, akan tetapi tutup pada 1998 akibat krisis finansial 1997.[6] Yoshinoya hadir kembali di Jakarta pada Juli 2010 dengan membuka rumah makan pertamanya di Grand Indonesia.",
+            "img": "https://upload.wikimedia.org/wikipedia/id/thumb/3/3d/Yoshinoya_logo.jpg/375px-Yoshinoya_logo.jpg"
+        }
+    },
+    {
+        "model":"restaurants.restaurant",
+        "pk":14,
+        "fields":{
+            "name":"Mixue",
+            "lokasi":"Jl. Margonda Raya No.356",
+            "desc": "Mixue telah hadir di Indonesia sejak tahun 2020 dengan gerai pertamanya di Cihampelas Walk, Kota Bandung dan saat ini memiliki lebih dari ratusan gerai di seluruh Indonesia.",
+            "img": "https://upload.wikimedia.org/wikipedia/id/thumb/b/bc/Mixue.svg/330px-Mixue.svg.png"
+        }
+    },
+    {
+        "model":"restaurants.restaurant",
+        "pk":15,
+        "fields":{
+            "name":"Subway",
+            "lokasi":"Jl. Margonda Raya Lantai Ground No.2/5",
+            "desc": "Subway kembali hadir di Indonesia pada tahun 2021 di bawah Mitra Adiperkasa (MAP Boga Adiperkasa, yang juga mengoperasikan waralaba Burger King, Domino's Pizza, Krispy Kreme dan Starbucks) melalui anak perusahaannya, PT Sari Sandwich Indonesia, dan membuka cabang pertamanya di Cilandak Town Square, Jakarta pada tanggal 15 Oktober 2021.",
+            "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Subway_2016_logo.svg/330px-Subway_2016_logo.svg.png"
+        }
     }
 
 ]

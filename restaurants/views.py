@@ -14,7 +14,7 @@ from django.views.decorators.csrf import csrf_exempt
 from restaurants.models import Restaurant
 from restaurants.models import Reviews
 
-
+#p
 # Create your views here.
 def show_json(request):
     restaurants = Restaurant.objects.all()
