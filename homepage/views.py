@@ -58,6 +58,13 @@ def login_flutter(request):
             "message": "Failed to Login, your username/password may be wrong."
         }, status=401)
 
+@csrf_exempt
+def logout_flutter(request):
+    logout(request)
+    return JsonResponse({
+            "status": True,
+            "message": "Berhasil"
+        }, status=200)
 
 def logout_user(request):
     logout(request)
