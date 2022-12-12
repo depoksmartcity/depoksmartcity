@@ -133,7 +133,7 @@
         "model":"restaurants.restaurant",
         "pk":14,
         "fields":{
-            "name":"Marugame Udon",
+            "name":"Mixue",
             "lokasi":"Jl. Margonda Raya No.356",
             "desc": "Mixue telah hadir di Indonesia sejak tahun 2020 dengan gerai pertamanya di Cihampelas Walk, Kota Bandung dan saat ini memiliki lebih dari ratusan gerai di seluruh Indonesia.",
             "img": "https://upload.wikimedia.org/wikipedia/id/thumb/b/bc/Mixue.svg/330px-Mixue.svg.png"
