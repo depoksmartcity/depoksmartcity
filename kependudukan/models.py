@@ -64,7 +64,7 @@ KELURAHAN_BY_KECAMATAN_CHOICES = {
     "Cipayung" :
     [("Cipayung", "Cipayung"), ("Cipayung Jaya", "Cipayung Jaya"), ("Ratu Jaya", "Ratu Jaya"), 
     ("Bojong Pondok Terong", "Bojong Pondok Terong"), ("Pondok Jaya", "Pondok Jaya")], 
-    "Sukamajaya" :
+    "Sukmajaya" :
     [("Sukmajaya", "Sukmajaya"), ("Mekar Jaya", "Mekar Jaya"), ("Bakti Jaya", "Bakti Jaya"), 
     ("Abadi Jaya", "Abadi Jaya"), ("Tirta Jaya", "Tirta Jaya"), ("Cisalak", "Cisalak")], 
     "Cilodong" :
