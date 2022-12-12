@@ -5,7 +5,8 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.core import serializers
 from django.urls import reverse
-
+from django.views.decorators.csrf import csrf_exempt
+import json
 from kesehatan.models import *
 
 def show_main(request):
@@ -56,7 +57,7 @@ def create_appointment(request):
         Patient.objects.get(user=request.user)
         if request.method == "POST":
             appointed_by = Patient.objects.get(user=request.user)
-            appointed_by_name = appointed_by.__str__
+            appointed_by_name = str(appointed_by)
             facility =  HealthFacility.objects.get(name=request.POST.get("facility"))
             facility_name = facility.name
             date = request.POST.get("date")
@@ -85,3 +86,71 @@ def delete_appointment(request, id):
     deleted_appointment = Appointment.objects.get(pk=id)
     deleted_appointment.delete()
     return HttpResponseRedirect(reverse("kesehatan:show_main"))
+
+@csrf_exempt
+def delete_appointment_flutter(request, id):
+    data = json.loads(request.body)
+    appointmentId = data['appointmentId']
+    deleted_appointment = Appointment.objects.get(pk=int(appointmentId))
+    deleted_appointment.delete()
+    return JsonResponse({"status": "Success"}, status=204, safe=False)
+    
+@csrf_exempt
+def get_appointment_flutter_json_by_userId(request, id):
+    user = User.objects.get(pk= id)
+    patient = Patient.objects.get(user = user)
+    data = Appointment.objects.filter(appointed_by=patient)
+    return HttpResponse(serializers.serialize("json", data), content_type="application/json")
+
+@csrf_exempt
+def get_patient_flutter_by_userId(request, id):
+    try:
+        patient = Patient.objects.filter(user = id)
+        return HttpResponse(serializers.serialize('json', patient), content_type='application/json')
+    
+    except Patient.DoesNotExist:
+        return HttpResponse(serializers.serialize('json', []), content_type='application/json')
+
+@csrf_exempt
+def add_patient_flutter(request):
+    data = json.loads(request.body)
+    user = User.objects.get(id = int(data['user']))
+    
+    try:
+        Patient.objects.get(user=user)
+        return JsonResponse({"status": "Failed"}, status=409, safe=False)
+    
+    except Patient.DoesNotExist:
+        new_patient = Patient.objects.create(
+                user = user,
+                first_name = data['first_name'],
+                last_name = data['last_name'],
+                mother_name = data['mother_name'],
+                email = data['email'],
+                gender = data['gender'],
+                age = int(data['age']),
+                address = data['address'])
+        new_patient.save()
+        print("success")
+        return JsonResponse({"status": "Success"}, status=201, safe=False)
+
+@csrf_exempt
+def add_appointment_flutter(request):
+    data = json.loads(request.body)
+    user = User.objects.get(id = int(data['user']))
+    
+    try:
+        Patient.objects.get(user=user)        
+        appointed_by = Patient.objects.get(user=user)
+        appointed_by_name = str(appointed_by)
+        facility =  HealthFacility.objects.get(name=data['facility'])
+        facility_name = facility.name
+        date = data['date']
+        timeslot = data['timeslot']
+        new_appointment = Appointment(appointed_by=appointed_by, appointed_by_name = appointed_by_name, facility=facility, facility_name = facility_name, date=date, timeslot=timeslot)
+        new_appointment.save()
+
+        return JsonResponse({"status": "Success"}, status=201, safe=False)
+        
+    except Patient.DoesNotExist:
+        return JsonResponse({"status": "Failed"}, status=409, safe=False)
